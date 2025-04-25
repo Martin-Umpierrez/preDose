@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+box-sizing: border-box;
+min-width: 200px;
+max-width: 980px;
+margin: 0 auto;
+padding: 45px;
+padding-top: 0px;
+}
+</style>
+
+
+</head>
+
+<body>
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+<h1 id="predose-">preDose
+<img role="img" align="right" src="data:image/png;base64,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" width="135px"></h1>
+<!-- badges: start -->
+
+<p><a href="https://CRAN.R-project.org/package=mapbayr"><img role="img" aria-label="CRAN status" src="data:image/svg+xml; charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNjkiIGhlaWdodD0iMjAiIGFyaWEtbGFiZWw9IkNSQU4gMC4xMC4wIOKAkyAyMDIzLTA3LTE3Ij4KICA8bGluZWFyR3JhZGllbnQgaWQ9ImIiIHgyPSIwIiB5Mj0iMTAwJSI+CiAgICA8c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNiYmIiIHN0b3Atb3BhY2l0eT0iLjEiLz4KICAgIDxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPG1hc2sgaWQ9ImEiPgogICAgPHJlY3Qgd2lkdGg9IjE2OSIgaGVpZ2h0PSIyMCIgcng9IjMiIGZpbGw9IiNmZmYiLz4KICA8L21hc2s+CiAgPGcgbWFzaz0idXJsKCNhKSI+CiAgICA8cGF0aCBmaWxsPSIjNTU1IiBkPSJNMCAwaDQzdjIwSDB6Ii8+CiAgICA8cGF0aCBmaWxsPSIjNGMxIiBkPSJNNDMgMGgxNDd2MjBINDN6Ii8+CiAgICA8cGF0aCBmaWxsPSJ1cmwoI2IpIiBkPSJNMCAwaDE2OXYyMEgweiIvPgogIDwvZz4KICA8ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIgogICAgIGZvbnQtZmFtaWx5PSJEZWphVnUgU2FucyxWZXJkYW5hLEdlbmV2YSxzYW5zLXNlcmlmIiBmb250LXNpemU9IjExIj4KICAgIDx0ZXh0IHg9IjIxLjUiIHk9IjE1IiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIj4KICAgICAgQ1JBTgogICAgPC90ZXh0PgogICAgPHRleHQgeD0iMjEuNSIgeT0iMTQiPgogICAgICBDUkFOCiAgICA8L3RleHQ+CiAgICA8dGV4dCB4PSIxMDUiIHk9IjE1IiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIj4KICAgICAgMC4xMC4wIOKAkyAyMDIzLTA3LTE3CiAgICA8L3RleHQ+CiAgICA8dGV4dCB4PSIxMDUiIHk9IjE0Ij4KICAgICAgMC4xMC4wIOKAkyAyMDIzLTA3LTE3CiAgICA8L3RleHQ+CiAgPC9nPgo8L3N2Zz4=" alt="CRAN status" /></a> <a href="https://pubmed.ncbi.nlm.nih.gov/34342170/"><img role="img" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTAiIGhlaWdodD0iMjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iQ2l0YXRpb246IENQVDpQU1AiPjx0aXRsZT5DaXRhdGlvbjogQ1BUOlBTUDwvdGl0bGU+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPjwvbGluZWFyR3JhZGllbnQ+PGNsaXBQYXRoIGlkPSJyIj48cmVjdCB3aWR0aD0iMTEwIiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI3IpIj48cmVjdCB3aWR0aD0iNTMiIGhlaWdodD0iMjAiIGZpbGw9IiM1NTUiLz48cmVjdCB4PSI1MyIgd2lkdGg9IjU3IiBoZWlnaHQ9IjIwIiBmaWxsPSIjMDA3ZWM2Ii8+PHJlY3Qgd2lkdGg9IjExMCIgaGVpZ2h0PSIyMCIgZmlsbD0idXJsKCNzKSIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iVmVyZGFuYSxHZW5ldmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSIyNzUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjQzMCI+Q2l0YXRpb248L3RleHQ+PHRleHQgeD0iMjc1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSI0MzAiPkNpdGF0aW9uPC90ZXh0Pjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSI4MDUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjQ3MCI+Q1BUOlBTUDwvdGV4dD48dGV4dCB4PSI4MDUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiNmZmYiIHRleHRMZW5ndGg9IjQ3MCI+Q1BUOlBTUDwvdGV4dD48L2c+PC9zdmc+" /></a></p>
+<!-- badges: end -->
+
+<h1 id="predose-an-r-package-for-robust-external-evaluation-of-poppkpd-models">preDose:
+An R-package for Robust External Evaluation of popPKPD Models.</h1>
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+<p>preDose is a free and open source package that automatize the process
+of <em>external evaluation process</em> using an independent dataset
+from which the original popPK model was developed.</p>
+<p>Currently, the user can choose to use the package based on either<a href="https://monolix.lixoft.com/monolix-api/examples/">lixoftconnectors</a>
+or via <a href="https://github.com/FelicienLL/mapbayr">mapbayr</a>
+depending on whether lixoftconnectors(which comes with the installation
+of Lixoft software) is available in their environment.</p>
+<p>You can perform an external evaluation for a single model from :</p>
+<ul>
+<li>a population PK model (coded in <a href="https://github.com/metrumresearchgroup/mrgsolve">mrgsolve</a>, or
+from <a href="https://monolix.lixoft.com/demo-projects/modelimplementation/">Monolix</a>,</li>
+<li>a data set with concentrations (NONMEM format or Monolix
+format)</li>
+<li></li>
+</ul>
+<p>The package requires the user to provide a popPK model and an
+external dataset, regardless of the processing engine they choose. Below
+are the functions established for both utilities.</p>
+<h2 id="installation">Installation</h2>
+<p>preDose is available on <a href="https://CRAN.R-project.org">CRAN</a></p>
+<p>You can install the development version of preDose from <a href="https://github.com/">GitHub</a> with:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" tabindex="-1"></a>devtools<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">&quot;Martin-Umpierrez/R.preDose&quot;</span>)</span></code></pre></div>
+<h2 id="example">Example</h2>
+<p>This is a basic example which shows you how to solve a common problem
+for external evaluation.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">library</span>(preDose)</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a><span class="do">## basic example code</span></span></code></pre></div>
+<h4 id="id_1-properly-code-you-model">1) Properly code you model</h4>
+<h5 id="id_11-code-your-model-in-mrgsolve-format">1.1) Code your model
+in mrgsolve format.</h5>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>Han_etal_test<span class="ot">&lt;-</span></span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>  <span class="st">&#39;$PROB</span></span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a><span class="st"># One Comparment Model with first order absorption- Ka is FIXED</span></span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a><span class="st">$GLOBAL</span></span>
+<span id="cb3-5"><a href="#cb3-5" tabindex="-1"></a><span class="st">#define CP (CENT/iV)</span></span>
+<span id="cb3-6"><a href="#cb3-6" tabindex="-1"></a><span class="st">$CMT  @annotated</span></span>
+<span id="cb3-7"><a href="#cb3-7" tabindex="-1"></a><span class="st">EV   : Extravascular compartment</span></span>
+<span id="cb3-8"><a href="#cb3-8" tabindex="-1"></a><span class="st">CENT : Central compartment#two compt model with first order absorption</span></span>
+<span id="cb3-9"><a href="#cb3-9" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" tabindex="-1"></a><span class="st">$PARAM @annotated </span></span>
+<span id="cb3-11"><a href="#cb3-11" tabindex="-1"></a><span class="st">CL  :  24.13 : Clearance for CYP3A5*3*3</span></span>
+<span id="cb3-12"><a href="#cb3-12" tabindex="-1"></a><span class="st">V  :  716 : central volume</span></span>
+<span id="cb3-13"><a href="#cb3-13" tabindex="-1"></a><span class="st">KA  : 4.5 : absorption rate constant</span></span>
+<span id="cb3-14"><a href="#cb3-14" tabindex="-1"></a><span class="st">ETA1 : 0 : IIVCl (L/h)</span></span>
+<span id="cb3-15"><a href="#cb3-15" tabindex="-1"></a><span class="st">ETA2 : 0 : IIVV (L)</span></span>
+<span id="cb3-16"><a href="#cb3-16" tabindex="-1"></a></span>
+<span id="cb3-17"><a href="#cb3-17" tabindex="-1"></a><span class="st">$PARAM @annotated @covariate</span></span>
+<span id="cb3-18"><a href="#cb3-18" tabindex="-1"></a><span class="st">POD    : 0   : COV POST OPERATIVE DAY</span></span>
+<span id="cb3-19"><a href="#cb3-19" tabindex="-1"></a><span class="st">HCT      : 0  : COV HCH</span></span>
+<span id="cb3-20"><a href="#cb3-20" tabindex="-1"></a><span class="st">WT      : 0  : COV WT</span></span>
+<span id="cb3-21"><a href="#cb3-21" tabindex="-1"></a><span class="st">CYP3A5      : 0  : Polimorfismo CYP3A5</span></span>
+<span id="cb3-22"><a href="#cb3-22" tabindex="-1"></a><span class="st">OCC     : -99  : Occasion, shall be passed by dataset imported</span></span>
+<span id="cb3-23"><a href="#cb3-23" tabindex="-1"></a></span>
+<span id="cb3-24"><a href="#cb3-24" tabindex="-1"></a><span class="st">$ODE</span></span>
+<span id="cb3-25"><a href="#cb3-25" tabindex="-1"></a><span class="st">dxdt_EV = -iKA*EV;</span></span>
+<span id="cb3-26"><a href="#cb3-26" tabindex="-1"></a><span class="st">dxdt_CENT = iKA*EV  - iCL*CP;</span></span>
+<span id="cb3-27"><a href="#cb3-27" tabindex="-1"></a></span>
+<span id="cb3-28"><a href="#cb3-28" tabindex="-1"></a><span class="st">$MAIN</span></span>
+<span id="cb3-29"><a href="#cb3-29" tabindex="-1"></a><span class="st">##CYP3A5 effect on Cl##</span></span>
+<span id="cb3-30"><a href="#cb3-30" tabindex="-1"></a></span>
+<span id="cb3-31"><a href="#cb3-31" tabindex="-1"></a><span class="st">double HM = 1.186 ;  ####METABOLIZADOR ULTRA RAPIDO ####</span></span>
+<span id="cb3-32"><a href="#cb3-32" tabindex="-1"></a><span class="st">double IM = 1.13 ;  ####METABOLIZADOR INTERMEDIO ####</span></span>
+<span id="cb3-33"><a href="#cb3-33" tabindex="-1"></a><span class="st">double PM = 1 ;  ####METABOLIZADOR POBRE ####</span></span>
+<span id="cb3-34"><a href="#cb3-34" tabindex="-1"></a></span>
+<span id="cb3-35"><a href="#cb3-35" tabindex="-1"></a><span class="st">if(CYP3A5==1) double CL_EFFECT = HM ;</span></span>
+<span id="cb3-36"><a href="#cb3-36" tabindex="-1"></a><span class="st">if(CYP3A5==2) CL_EFFECT = IM ;</span></span>
+<span id="cb3-37"><a href="#cb3-37" tabindex="-1"></a><span class="st">if(CYP3A5==3) CL_EFFECT = PM ;</span></span>
+<span id="cb3-38"><a href="#cb3-38" tabindex="-1"></a></span>
+<span id="cb3-39"><a href="#cb3-39" tabindex="-1"></a><span class="st">double CL_HCT1 = 1.3458 ; ##Effect of HCT&lt; 33</span></span>
+<span id="cb3-40"><a href="#cb3-40" tabindex="-1"></a><span class="st">double CL_HCT2 = 1.124 ;  ##Effect of HCT &gt;33</span></span>
+<span id="cb3-41"><a href="#cb3-41" tabindex="-1"></a></span>
+<span id="cb3-42"><a href="#cb3-42" tabindex="-1"></a><span class="st">if(HCT&lt; 33) double CL_HCT = CL_HCT1 ;</span></span>
+<span id="cb3-43"><a href="#cb3-43" tabindex="-1"></a><span class="st">if(HCT &gt;= 33) CL_HCT = CL_HCT2 ;</span></span>
+<span id="cb3-44"><a href="#cb3-44" tabindex="-1"></a></span>
+<span id="cb3-45"><a href="#cb3-45" tabindex="-1"></a><span class="st">double CL_POD = - 0.00762 ;</span></span>
+<span id="cb3-46"><a href="#cb3-46" tabindex="-1"></a></span>
+<span id="cb3-47"><a href="#cb3-47" tabindex="-1"></a><span class="st">double iCL =  CL *exp(ETA(1) + ETA1)* pow(POD, CL_POD) * CL_EFFECT * CL_HCT ;  </span></span>
+<span id="cb3-48"><a href="#cb3-48" tabindex="-1"></a><span class="st">double iV =  V *exp(ETA(2) + ETA2) * exp (0.355*WT/59.025) ;  </span></span>
+<span id="cb3-49"><a href="#cb3-49" tabindex="-1"></a><span class="st">double iKA =  KA ;    </span></span>
+<span id="cb3-50"><a href="#cb3-50" tabindex="-1"></a></span>
+<span id="cb3-51"><a href="#cb3-51" tabindex="-1"></a></span>
+<span id="cb3-52"><a href="#cb3-52" tabindex="-1"></a><span class="st">$OMEGA @name IIV </span></span>
+<span id="cb3-53"><a href="#cb3-53" tabindex="-1"></a><span class="st">0.248 </span></span>
+<span id="cb3-54"><a href="#cb3-54" tabindex="-1"></a><span class="st">0.237</span></span>
+<span id="cb3-55"><a href="#cb3-55" tabindex="-1"></a></span>
+<span id="cb3-56"><a href="#cb3-56" tabindex="-1"></a><span class="st">$SIGMA  @name SIGMA @annotated</span></span>
+<span id="cb3-57"><a href="#cb3-57" tabindex="-1"></a><span class="st">ADD : 0 : ADD residual error</span></span>
+<span id="cb3-58"><a href="#cb3-58" tabindex="-1"></a><span class="st">PROP : 0.16 : Proportional residual error</span></span>
+<span id="cb3-59"><a href="#cb3-59" tabindex="-1"></a></span>
+<span id="cb3-60"><a href="#cb3-60" tabindex="-1"></a></span>
+<span id="cb3-61"><a href="#cb3-61" tabindex="-1"></a><span class="st">$TABLE</span></span>
+<span id="cb3-62"><a href="#cb3-62" tabindex="-1"></a><span class="st">double IPRED = CENT/iV;</span></span>
+<span id="cb3-63"><a href="#cb3-63" tabindex="-1"></a><span class="st">double DV = IPRED * (1 + PROP) ;</span></span>
+<span id="cb3-64"><a href="#cb3-64" tabindex="-1"></a></span>
+<span id="cb3-65"><a href="#cb3-65" tabindex="-1"></a><span class="st">$CAPTURE @annotated</span></span>
+<span id="cb3-66"><a href="#cb3-66" tabindex="-1"></a><span class="st">CP : Plasma concentration (mass/volume)</span></span>
+<span id="cb3-67"><a href="#cb3-67" tabindex="-1"></a><span class="st">iCL :  Clearance</span></span>
+<span id="cb3-68"><a href="#cb3-68" tabindex="-1"></a><span class="st">iV : :Central Volume</span></span>
+<span id="cb3-69"><a href="#cb3-69" tabindex="-1"></a><span class="st">iKA : KA: absorption rate constant</span></span>
+<span id="cb3-70"><a href="#cb3-70" tabindex="-1"></a><span class="st">EVID : EVENT ID</span></span>
+<span id="cb3-71"><a href="#cb3-71" tabindex="-1"></a><span class="st">DV : PREDICCION</span></span>
+<span id="cb3-72"><a href="#cb3-72" tabindex="-1"></a><span class="st">OCC: OCCASION</span></span>
+<span id="cb3-73"><a href="#cb3-73" tabindex="-1"></a></span>
+<span id="cb3-74"><a href="#cb3-74" tabindex="-1"></a><span class="st">               &#39;</span></span></code></pre></div>
+<h4 id="id_2-import-your-external-data">2) Import your external
+data</h4>
+<p>Import the data set either in Monolix-formatted datasets or
+NM-TRAN-formatted datasets Ensure that the dataset structure aligns with
+the required format for proper processing.</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" tabindex="-1"></a><span class="fu">data</span>(<span class="st">&quot;external_data_mapbayr&quot;</span>, <span class="at">package =</span> <span class="st">&quot;preDose&quot;</span>)  <span class="co"># Cargar dataset desde el paquete</span></span>
+<span id="cb4-2"><a href="#cb4-2" tabindex="-1"></a><span class="fu">head</span>(external_data_mapbayr)  <span class="co"># Ver primeras filas</span></span>
+<span id="cb4-3"><a href="#cb4-3" tabindex="-1"></a><span class="co">#&gt; # A tibble: 6 × 30</span></span>
+<span id="cb4-4"><a href="#cb4-4" tabindex="-1"></a><span class="co">#&gt;      ID   OCC    DD   AMT  TIME   POD    DV  EVID   CMT   MDV    II    SS Creatinine   SCR</span></span>
+<span id="cb4-5"><a href="#cb4-5" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;      &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" tabindex="-1"></a><span class="co">#&gt; 1     1     1   6    3000   168     7   0       1     1     1    12     1       5.3   469.</span></span>
+<span id="cb4-7"><a href="#cb4-7" tabindex="-1"></a><span class="co">#&gt; 2     1     1   6       0   168     7   9.4     0     2     0     0     0       5.3   469.</span></span>
+<span id="cb4-8"><a href="#cb4-8" tabindex="-1"></a><span class="co">#&gt; 3     1     2   6.5  3250   264    11   0       1     1     1    12     1       4.17  369.</span></span>
+<span id="cb4-9"><a href="#cb4-9" tabindex="-1"></a><span class="co">#&gt; 4     1     2   6.5     0   264    11   8.4     0     2     0     0     0       4.17  369.</span></span>
+<span id="cb4-10"><a href="#cb4-10" tabindex="-1"></a><span class="co">#&gt; 5     1     3   7.5  3750   360    15   0       1     1     1    12     1       3.56  315.</span></span>
+<span id="cb4-11"><a href="#cb4-11" tabindex="-1"></a><span class="co">#&gt; 6     1     3   7.5     0   360    15   8.4     0     2     0     0     0       3.56  315.</span></span>
+<span id="cb4-12"><a href="#cb4-12" tabindex="-1"></a><span class="co">#&gt; # ℹ 16 more variables: eGFR &lt;dbl&gt;, ClCrea &lt;dbl&gt;, AGE &lt;dbl&gt;, SEX &lt;dbl&gt;, WT &lt;dbl&gt;,</span></span>
+<span id="cb4-13"><a href="#cb4-13" tabindex="-1"></a><span class="co">#&gt; #   HCT &lt;dbl&gt;, CYP3A5 &lt;dbl&gt;, EXPRESSION &lt;dbl&gt;, PDN_DOSE &lt;dbl&gt;, PDNXWT &lt;dbl&gt;,</span></span>
+<span id="cb4-14"><a href="#cb4-14" tabindex="-1"></a><span class="co">#&gt; #   Heigth &lt;dbl&gt;, Height..m. &lt;dbl&gt;, BSA &lt;dbl&gt;, BMIcalc &lt;dbl&gt;, LBW &lt;dbl&gt;, DMELITU &lt;dbl&gt;</span></span></code></pre></div>
+<h4 id="id_3-calculate-individual-parameters-with-run_map_estimations">3)
+Calculate individual parameters with run_MAP_estimations</h4>
+<p>The <code>run_MAP_estimations()</code> returns a list with four
+elements: * Observed data per occasion: Includes the observed values for
+each individual in each occasion. * Treatments per occasion: Contains
+information on the treatments administered in each occasion. * Estimated
+individual parameters: Provides the MAP-estimated values of individual
+parameters for each subject and occasion. * Mandatory: + Progressive +
+Most_Recent_Progressive + Cronologic_Ref + Most_Recent_rEF</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" tabindex="-1"></a>map.est <span class="ot">&lt;-</span> <span class="fu">run_MAP_estimations</span>(<span class="at">model_name =</span> <span class="st">&quot;Test_Model&quot;</span>,</span>
+<span id="cb5-2"><a href="#cb5-2" tabindex="-1"></a>                               <span class="at">model_code =</span> Han_etal_test,</span>
+<span id="cb5-3"><a href="#cb5-3" tabindex="-1"></a>                               <span class="at">tool =</span> <span class="st">&quot;mapbayr&quot;</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" tabindex="-1"></a>                               <span class="at">data =</span> external_data_mapbayr,</span>
+<span id="cb5-5"><a href="#cb5-5" tabindex="-1"></a>                               <span class="at">evaluation_type=</span> <span class="st">&quot;Progressive&quot;</span>)  <span class="co"># Cargar dataset desde el paquete</span></span>
+<span id="cb5-6"><a href="#cb5-6" tabindex="-1"></a><span class="fu">head</span>(map.est[[<span class="st">&quot;map_estimations&quot;</span>]])</span>
+<span id="cb5-7"><a href="#cb5-7" tabindex="-1"></a><span class="co">#&gt; $map.estimation.occ_0_1</span></span>
+<span id="cb5-8"><a href="#cb5-8" tabindex="-1"></a><span class="co">#&gt; Model: Test_Model </span></span>
+<span id="cb5-9"><a href="#cb5-9" tabindex="-1"></a><span class="co">#&gt; ID : 49 individual(s).</span></span>
+<span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; OBS: 52 observation(s).</span></span>
+<span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt; ETA: 2 parameter(s) to estimate.</span></span>
+<span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt; Estimates: </span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt;   ID         ETA1          ETA2</span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; 1  1 -0.320890726  0.0379857047</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; 2  2  0.046760864 -0.0073378345</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; 3  3  0.002284814 -0.0002314673</span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; 4  4  0.049273957 -0.0053421340</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt; 5  5  0.131312414 -0.0233519095</span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt; 6  6  0.502843351 -0.1430738187</span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt; Output (101 lines): </span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co">#&gt;   ID DD  amt time evid cmt mdv ii ss Creatinine    SCR  eGFR ClCrea AGE SEX EXPRESSION</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co">#&gt; 1  1  6 3000  168    1   1   1 12  1       5.30  468.6  9.16   9.80  49   0          0</span></span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co">#&gt; 2  1  6    0  168    0   2   0  0  0       5.30  468.6  9.16   9.80  49   0          0</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="co">#&gt; 3  2  6 3000  408    1   1   1 12  1       0.99   87.5 89.59  90.26  39   1          0</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co">#&gt; 4  2  6    0  408    0   2   0  0  0       0.99   87.5 89.59  90.26  39   1          0</span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co">#&gt; 5  3 18 9000   72    1   1   1 12  1      14.99 1325.4  3.58   7.21  59   1          0</span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="co">#&gt; 6  3 18    0   72    0   2   0  0  0      14.99 1325.4  3.58   7.21  59   1          0</span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="co">#&gt;   PDN_DOSE PDNXWT Heigth Height..m.  BSA BMIcalc  LBW DMELITU   DV IPRED  PRED    CP  iCL</span></span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="co">#&gt; 1       55  1.138    150       1.50 1.41    21.5 34.8       0  0.0  9.38  6.40  9.38 23.2</span></span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="co">#&gt; 2       55  1.138    150       1.50 1.41    21.5 34.8       0  9.4  9.38  6.40  9.38 23.2</span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="co">#&gt; 3       25  0.392    175       1.75 1.78    20.8 53.5       1  0.0  6.20  6.57  6.20 33.3</span></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co">#&gt; 4       25  0.392    175       1.75 1.78    20.8 53.5       1  6.2  6.20  6.57  6.20 33.3</span></span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co">#&gt; 5       60  0.624    176       1.76 2.12    31.0 66.9       0  0.0 20.00 20.05 20.00 32.3</span></span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="co">#&gt; 6       60  0.624    176       1.76 2.12    31.0 66.9       0 20.0 20.00 20.05 20.00 32.3</span></span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="co">#&gt;     iV iKA EVID OCC POD  HCT   WT CYP3A5     ETA1      ETA2 OCC</span></span>
+<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="co">#&gt; 1  995 4.5    1   1   7 29.9 48.4      3 -0.32089  0.037986   1</span></span>
+<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="co">#&gt; 2  995 4.5    0   1   7 29.9 48.4      3 -0.32089  0.037986   1</span></span>
+<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a><span class="co">#&gt; 3 1043 4.5    1   1  17 29.0 63.7      3  0.04676 -0.007338   1</span></span>
+<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="co">#&gt; 4 1043 4.5    0   1  17 29.0 63.7      3  0.04676 -0.007338   1</span></span>
+<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="co">#&gt; 5 1276 4.5    1   1   3 25.0 96.1      3  0.00228 -0.000231   1</span></span>
+<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="co">#&gt; 6 1276 4.5    0   1   3 25.0 96.1      3  0.00228 -0.000231   1</span></span>
+<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a><span class="co">#&gt; $map.estimation.occ_0_1_2</span></span>
+<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a><span class="co">#&gt; Model: Test_Model </span></span>
+<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a><span class="co">#&gt; ID : 49 individual(s).</span></span>
+<span id="cb5-48"><a href="#cb5-48" tabindex="-1"></a><span class="co">#&gt; OBS: 107 observation(s).</span></span>
+<span id="cb5-49"><a href="#cb5-49" tabindex="-1"></a><span class="co">#&gt; ETA: 2 parameter(s) to estimate.</span></span>
+<span id="cb5-50"><a href="#cb5-50" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-51"><a href="#cb5-51" tabindex="-1"></a><span class="co">#&gt; Estimates: </span></span>
+<span id="cb5-52"><a href="#cb5-52" tabindex="-1"></a><span class="co">#&gt;   ID        ETA1         ETA2</span></span>
+<span id="cb5-53"><a href="#cb5-53" tabindex="-1"></a><span class="co">#&gt; 1  1 -0.23374713  0.035521855</span></span>
+<span id="cb5-54"><a href="#cb5-54" tabindex="-1"></a><span class="co">#&gt; 2  2  0.14616515  0.126768247</span></span>
+<span id="cb5-55"><a href="#cb5-55" tabindex="-1"></a><span class="co">#&gt; 3  3  0.11643641  0.043605246</span></span>
+<span id="cb5-56"><a href="#cb5-56" tabindex="-1"></a><span class="co">#&gt; 4  4 -0.03729051  0.001914509</span></span>
+<span id="cb5-57"><a href="#cb5-57" tabindex="-1"></a><span class="co">#&gt; 5  5 -0.09949947  0.002831244</span></span>
+<span id="cb5-58"><a href="#cb5-58" tabindex="-1"></a><span class="co">#&gt; 6  6  0.50680894 -0.536198588</span></span>
+<span id="cb5-59"><a href="#cb5-59" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-60"><a href="#cb5-60" tabindex="-1"></a><span class="co">#&gt; Output (205 lines): </span></span>
+<span id="cb5-61"><a href="#cb5-61" tabindex="-1"></a><span class="co">#&gt;   ID  DD  amt time evid cmt mdv ii ss Creatinine   SCR  eGFR ClCrea AGE SEX EXPRESSION</span></span>
+<span id="cb5-62"><a href="#cb5-62" tabindex="-1"></a><span class="co">#&gt; 1  1 6.0 3000  168    1   1   1 12  1       5.30 468.6  9.16    9.8  49   0          0</span></span>
+<span id="cb5-63"><a href="#cb5-63" tabindex="-1"></a><span class="co">#&gt; 2  1 6.0    0  168    0   2   0  0  0       5.30 468.6  9.16    9.8  49   0          0</span></span>
+<span id="cb5-64"><a href="#cb5-64" tabindex="-1"></a><span class="co">#&gt; 3  1 6.5 3250  264    1   1   1 12  1       4.17 368.7 12.07   12.5  49   0          0</span></span>
+<span id="cb5-65"><a href="#cb5-65" tabindex="-1"></a><span class="co">#&gt; 4  1 6.5    0  264    0   2   0  0  0       4.17 368.7 12.07   12.5  49   0          0</span></span>
+<span id="cb5-66"><a href="#cb5-66" tabindex="-1"></a><span class="co">#&gt; 5  2 6.0 3000  408    1   1   1 12  1       0.99  87.5 89.59   90.3  39   1          0</span></span>
+<span id="cb5-67"><a href="#cb5-67" tabindex="-1"></a><span class="co">#&gt; 6  2 6.0    0  408    0   2   0  0  0       0.99  87.5 89.59   90.3  39   1          0</span></span>
+<span id="cb5-68"><a href="#cb5-68" tabindex="-1"></a><span class="co">#&gt;   PDN_DOSE PDNXWT Heigth Height..m.  BSA BMIcalc  LBW DMELITU  DV IPRED PRED   CP  iCL</span></span>
+<span id="cb5-69"><a href="#cb5-69" tabindex="-1"></a><span class="co">#&gt; 1       55  1.138    150       1.50 1.41    21.5 34.8       0 0.0  8.48 6.40 8.48 25.3</span></span>
+<span id="cb5-70"><a href="#cb5-70" tabindex="-1"></a><span class="co">#&gt; 2       55  1.138    150       1.50 1.41    21.5 34.8       0 9.4  8.48 6.40 8.48 25.3</span></span>
+<span id="cb5-71"><a href="#cb5-71" tabindex="-1"></a><span class="co">#&gt; 3       30  0.620    150       1.50 1.41    21.5 34.8       0 0.0  9.23 6.96 9.23 25.2</span></span>
+<span id="cb5-72"><a href="#cb5-72" tabindex="-1"></a><span class="co">#&gt; 4       30  0.620    150       1.50 1.41    21.5 34.8       0 8.4  9.23 6.96 9.23 25.2</span></span>
+<span id="cb5-73"><a href="#cb5-73" tabindex="-1"></a><span class="co">#&gt; 5       25  0.392    175       1.75 1.78    20.8 53.5       1 0.0  5.65 6.57 5.65 36.8</span></span>
+<span id="cb5-74"><a href="#cb5-74" tabindex="-1"></a><span class="co">#&gt; 6       25  0.392    175       1.75 1.78    20.8 53.5       1 6.2  5.65 6.57 5.65 36.8</span></span>
+<span id="cb5-75"><a href="#cb5-75" tabindex="-1"></a><span class="co">#&gt;     iV iKA EVID OCC POD  HCT   WT CYP3A5   ETA1   ETA2 OCC</span></span>
+<span id="cb5-76"><a href="#cb5-76" tabindex="-1"></a><span class="co">#&gt; 1  992 4.5    1   1   7 29.9 48.4      3 -0.234 0.0355   1</span></span>
+<span id="cb5-77"><a href="#cb5-77" tabindex="-1"></a><span class="co">#&gt; 2  992 4.5    0   1   7 29.9 48.4      3 -0.234 0.0355   1</span></span>
+<span id="cb5-78"><a href="#cb5-78" tabindex="-1"></a><span class="co">#&gt; 3  992 4.5    1   2  11 28.7 48.4      3 -0.234 0.0355   2</span></span>
+<span id="cb5-79"><a href="#cb5-79" tabindex="-1"></a><span class="co">#&gt; 4  992 4.5    0   2  11 28.7 48.4      3 -0.234 0.0355   2</span></span>
+<span id="cb5-80"><a href="#cb5-80" tabindex="-1"></a><span class="co">#&gt; 5 1192 4.5    1   1  17 29.0 63.7      3  0.146 0.1268   1</span></span>
+<span id="cb5-81"><a href="#cb5-81" tabindex="-1"></a><span class="co">#&gt; 6 1192 4.5    0   1  17 29.0 63.7      3  0.146 0.1268   1</span></span>
+<span id="cb5-82"><a href="#cb5-82" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-83"><a href="#cb5-83" tabindex="-1"></a><span class="co">#&gt; $map.estimation.occ_0_1_2_3</span></span>
+<span id="cb5-84"><a href="#cb5-84" tabindex="-1"></a><span class="co">#&gt; Model: Test_Model </span></span>
+<span id="cb5-85"><a href="#cb5-85" tabindex="-1"></a><span class="co">#&gt; ID : 49 individual(s).</span></span>
+<span id="cb5-86"><a href="#cb5-86" tabindex="-1"></a><span class="co">#&gt; OBS: 178 observation(s).</span></span>
+<span id="cb5-87"><a href="#cb5-87" tabindex="-1"></a><span class="co">#&gt; ETA: 2 parameter(s) to estimate.</span></span>
+<span id="cb5-88"><a href="#cb5-88" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-89"><a href="#cb5-89" tabindex="-1"></a><span class="co">#&gt; Estimates: </span></span>
+<span id="cb5-90"><a href="#cb5-90" tabindex="-1"></a><span class="co">#&gt;   ID        ETA1         ETA2</span></span>
+<span id="cb5-91"><a href="#cb5-91" tabindex="-1"></a><span class="co">#&gt; 1  1 -0.14778899  0.067740613</span></span>
+<span id="cb5-92"><a href="#cb5-92" tabindex="-1"></a><span class="co">#&gt; 2  2 -0.24011686 -0.783600462</span></span>
+<span id="cb5-93"><a href="#cb5-93" tabindex="-1"></a><span class="co">#&gt; 3  3  0.21086919  0.242430612</span></span>
+<span id="cb5-94"><a href="#cb5-94" tabindex="-1"></a><span class="co">#&gt; 4  4 -0.18108584  0.080840185</span></span>
+<span id="cb5-95"><a href="#cb5-95" tabindex="-1"></a><span class="co">#&gt; 5  5 -0.01541337  0.006064084</span></span>
+<span id="cb5-96"><a href="#cb5-96" tabindex="-1"></a><span class="co">#&gt; 6  6  0.44284669 -0.412880374</span></span>
+<span id="cb5-97"><a href="#cb5-97" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-98"><a href="#cb5-98" tabindex="-1"></a><span class="co">#&gt; Output (343 lines): </span></span>
+<span id="cb5-99"><a href="#cb5-99" tabindex="-1"></a><span class="co">#&gt;   ID  DD  amt time evid cmt mdv ii ss Creatinine SCR  eGFR ClCrea AGE SEX EXPRESSION</span></span>
+<span id="cb5-100"><a href="#cb5-100" tabindex="-1"></a><span class="co">#&gt; 1  1 6.0 3000  168    1   1   1 12  1       5.30 469  9.16    9.8  49   0          0</span></span>
+<span id="cb5-101"><a href="#cb5-101" tabindex="-1"></a><span class="co">#&gt; 2  1 6.0    0  168    0   2   0  0  0       5.30 469  9.16    9.8  49   0          0</span></span>
+<span id="cb5-102"><a href="#cb5-102" tabindex="-1"></a><span class="co">#&gt; 3  1 6.5 3250  264    1   1   1 12  1       4.17 369 12.07   12.5  49   0          0</span></span>
+<span id="cb5-103"><a href="#cb5-103" tabindex="-1"></a><span class="co">#&gt; 4  1 6.5    0  264    0   2   0  0  0       4.17 369 12.07   12.5  49   0          0</span></span>
+<span id="cb5-104"><a href="#cb5-104" tabindex="-1"></a><span class="co">#&gt; 5  1 7.5 3750  360    1   1   1 12  1       3.56 315 14.49   15.1  49   0          0</span></span>
+<span id="cb5-105"><a href="#cb5-105" tabindex="-1"></a><span class="co">#&gt; 6  1 7.5    0  360    0   2   0  0  0       3.56 315 14.49   15.1  49   0          0</span></span>
+<span id="cb5-106"><a href="#cb5-106" tabindex="-1"></a><span class="co">#&gt;   PDN_DOSE PDNXWT Heigth Height..m.  BSA BMIcalc  LBW DMELITU  DV IPRED PRED   CP  iCL</span></span>
+<span id="cb5-107"><a href="#cb5-107" tabindex="-1"></a><span class="co">#&gt; 1       55  1.138    150        1.5 1.41    21.5 34.8       0 0.0  7.72 6.40 7.72 27.6</span></span>
+<span id="cb5-108"><a href="#cb5-108" tabindex="-1"></a><span class="co">#&gt; 2       55  1.138    150        1.5 1.41    21.5 34.8       0 9.4  7.72 6.40 7.72 27.6</span></span>
+<span id="cb5-109"><a href="#cb5-109" tabindex="-1"></a><span class="co">#&gt; 3       30  0.620    150        1.5 1.41    21.5 34.8       0 0.0  8.40 6.96 8.40 27.5</span></span>
+<span id="cb5-110"><a href="#cb5-110" tabindex="-1"></a><span class="co">#&gt; 4       30  0.620    150        1.5 1.41    21.5 34.8       0 8.4  8.40 6.96 8.40 27.5</span></span>
+<span id="cb5-111"><a href="#cb5-111" tabindex="-1"></a><span class="co">#&gt; 5       20  0.398    150        1.5 1.43    22.3 35.3       0 0.0  9.73 8.07 9.73 27.4</span></span>
+<span id="cb5-112"><a href="#cb5-112" tabindex="-1"></a><span class="co">#&gt; 6       20  0.398    150        1.5 1.43    22.3 35.3       0 8.4  9.73 8.07 9.73 27.4</span></span>
+<span id="cb5-113"><a href="#cb5-113" tabindex="-1"></a><span class="co">#&gt;     iV iKA EVID OCC POD  HCT   WT CYP3A5   ETA1   ETA2 OCC</span></span>
+<span id="cb5-114"><a href="#cb5-114" tabindex="-1"></a><span class="co">#&gt; 1 1025 4.5    1   1   7 29.9 48.4      3 -0.148 0.0677   1</span></span>
+<span id="cb5-115"><a href="#cb5-115" tabindex="-1"></a><span class="co">#&gt; 2 1025 4.5    0   1   7 29.9 48.4      3 -0.148 0.0677   1</span></span>
+<span id="cb5-116"><a href="#cb5-116" tabindex="-1"></a><span class="co">#&gt; 3 1025 4.5    1   2  11 28.7 48.4      3 -0.148 0.0677   2</span></span>
+<span id="cb5-117"><a href="#cb5-117" tabindex="-1"></a><span class="co">#&gt; 4 1025 4.5    0   2  11 28.7 48.4      3 -0.148 0.0677   2</span></span>
+<span id="cb5-118"><a href="#cb5-118" tabindex="-1"></a><span class="co">#&gt; 5 1036 4.5    1   3  15 26.9 50.2      3 -0.148 0.0677   3</span></span>
+<span id="cb5-119"><a href="#cb5-119" tabindex="-1"></a><span class="co">#&gt; 6 1036 4.5    0   3  15 26.9 50.2      3 -0.148 0.0677   3</span></span>
+<span id="cb5-120"><a href="#cb5-120" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-121"><a href="#cb5-121" tabindex="-1"></a><span class="co">#&gt; $map.estimation.occ_0_1_2_3_4</span></span>
+<span id="cb5-122"><a href="#cb5-122" tabindex="-1"></a><span class="co">#&gt; Model: Test_Model </span></span>
+<span id="cb5-123"><a href="#cb5-123" tabindex="-1"></a><span class="co">#&gt; ID : 49 individual(s).</span></span>
+<span id="cb5-124"><a href="#cb5-124" tabindex="-1"></a><span class="co">#&gt; OBS: 229 observation(s).</span></span>
+<span id="cb5-125"><a href="#cb5-125" tabindex="-1"></a><span class="co">#&gt; ETA: 2 parameter(s) to estimate.</span></span>
+<span id="cb5-126"><a href="#cb5-126" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-127"><a href="#cb5-127" tabindex="-1"></a><span class="co">#&gt; Estimates: </span></span>
+<span id="cb5-128"><a href="#cb5-128" tabindex="-1"></a><span class="co">#&gt;   ID        ETA1         ETA2</span></span>
+<span id="cb5-129"><a href="#cb5-129" tabindex="-1"></a><span class="co">#&gt; 1  1 -0.12219227  0.059301520</span></span>
+<span id="cb5-130"><a href="#cb5-130" tabindex="-1"></a><span class="co">#&gt; 2  2 -0.36744127 -1.153906522</span></span>
+<span id="cb5-131"><a href="#cb5-131" tabindex="-1"></a><span class="co">#&gt; 3  3  0.30421201  0.371398310</span></span>
+<span id="cb5-132"><a href="#cb5-132" tabindex="-1"></a><span class="co">#&gt; 4  4 -0.25929073  0.296624570</span></span>
+<span id="cb5-133"><a href="#cb5-133" tabindex="-1"></a><span class="co">#&gt; 5  5  0.04742231  0.008149163</span></span>
+<span id="cb5-134"><a href="#cb5-134" tabindex="-1"></a><span class="co">#&gt; 6  6  0.41364034 -0.340017817</span></span>
+<span id="cb5-135"><a href="#cb5-135" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-136"><a href="#cb5-136" tabindex="-1"></a><span class="co">#&gt; Output (465 lines): </span></span>
+<span id="cb5-137"><a href="#cb5-137" tabindex="-1"></a><span class="co">#&gt;   ID  DD  amt time evid cmt mdv ii ss Creatinine SCR  eGFR ClCrea AGE SEX EXPRESSION</span></span>
+<span id="cb5-138"><a href="#cb5-138" tabindex="-1"></a><span class="co">#&gt; 1  1 6.0 3000  168    1   1   1 12  1       5.30 469  9.16    9.8  49   0          0</span></span>
+<span id="cb5-139"><a href="#cb5-139" tabindex="-1"></a><span class="co">#&gt; 2  1 6.0    0  168    0   2   0  0  0       5.30 469  9.16    9.8  49   0          0</span></span>
+<span id="cb5-140"><a href="#cb5-140" tabindex="-1"></a><span class="co">#&gt; 3  1 6.5 3250  264    1   1   1 12  1       4.17 369 12.07   12.5  49   0          0</span></span>
+<span id="cb5-141"><a href="#cb5-141" tabindex="-1"></a><span class="co">#&gt; 4  1 6.5    0  264    0   2   0  0  0       4.17 369 12.07   12.5  49   0          0</span></span>
+<span id="cb5-142"><a href="#cb5-142" tabindex="-1"></a><span class="co">#&gt; 5  1 7.5 3750  360    1   1   1 12  1       3.56 315 14.49   15.1  49   0          0</span></span>
+<span id="cb5-143"><a href="#cb5-143" tabindex="-1"></a><span class="co">#&gt; 6  1 7.5    0  360    0   2   0  0  0       3.56 315 14.49   15.1  49   0          0</span></span>
+<span id="cb5-144"><a href="#cb5-144" tabindex="-1"></a><span class="co">#&gt;   PDN_DOSE PDNXWT Heigth Height..m.  BSA BMIcalc  LBW DMELITU  DV IPRED PRED   CP  iCL</span></span>
+<span id="cb5-145"><a href="#cb5-145" tabindex="-1"></a><span class="co">#&gt; 1       55  1.138    150        1.5 1.41    21.5 34.8       0 0.0  7.48 6.40 7.48 28.3</span></span>
+<span id="cb5-146"><a href="#cb5-146" tabindex="-1"></a><span class="co">#&gt; 2       55  1.138    150        1.5 1.41    21.5 34.8       0 9.4  7.48 6.40 7.48 28.3</span></span>
+<span id="cb5-147"><a href="#cb5-147" tabindex="-1"></a><span class="co">#&gt; 3       30  0.620    150        1.5 1.41    21.5 34.8       0 0.0  8.14 6.96 8.14 28.2</span></span>
+<span id="cb5-148"><a href="#cb5-148" tabindex="-1"></a><span class="co">#&gt; 4       30  0.620    150        1.5 1.41    21.5 34.8       0 8.4  8.14 6.96 8.14 28.2</span></span>
+<span id="cb5-149"><a href="#cb5-149" tabindex="-1"></a><span class="co">#&gt; 5       20  0.398    150        1.5 1.43    22.3 35.3       0 0.0  9.43 8.07 9.43 28.2</span></span>
+<span id="cb5-150"><a href="#cb5-150" tabindex="-1"></a><span class="co">#&gt; 6       20  0.398    150        1.5 1.43    22.3 35.3       0 8.4  9.43 8.07 9.43 28.2</span></span>
+<span id="cb5-151"><a href="#cb5-151" tabindex="-1"></a><span class="co">#&gt;     iV iKA EVID OCC POD  HCT   WT CYP3A5   ETA1   ETA2 OCC</span></span>
+<span id="cb5-152"><a href="#cb5-152" tabindex="-1"></a><span class="co">#&gt; 1 1016 4.5    1   1   7 29.9 48.4      3 -0.122 0.0593   1</span></span>
+<span id="cb5-153"><a href="#cb5-153" tabindex="-1"></a><span class="co">#&gt; 2 1016 4.5    0   1   7 29.9 48.4      3 -0.122 0.0593   1</span></span>
+<span id="cb5-154"><a href="#cb5-154" tabindex="-1"></a><span class="co">#&gt; 3 1016 4.5    1   2  11 28.7 48.4      3 -0.122 0.0593   2</span></span>
+<span id="cb5-155"><a href="#cb5-155" tabindex="-1"></a><span class="co">#&gt; 4 1016 4.5    0   2  11 28.7 48.4      3 -0.122 0.0593   2</span></span>
+<span id="cb5-156"><a href="#cb5-156" tabindex="-1"></a><span class="co">#&gt; 5 1028 4.5    1   3  15 26.9 50.2      3 -0.122 0.0593   3</span></span>
+<span id="cb5-157"><a href="#cb5-157" tabindex="-1"></a><span class="co">#&gt; 6 1028 4.5    0   3  15 26.9 50.2      3 -0.122 0.0593   3</span></span>
+<span id="cb5-158"><a href="#cb5-158" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-159"><a href="#cb5-159" tabindex="-1"></a><span class="co">#&gt; $map.estimation.occ_0_1_2_3_4_5</span></span>
+<span id="cb5-160"><a href="#cb5-160" tabindex="-1"></a><span class="co">#&gt; Model: Test_Model </span></span>
+<span id="cb5-161"><a href="#cb5-161" tabindex="-1"></a><span class="co">#&gt; ID : 49 individual(s).</span></span>
+<span id="cb5-162"><a href="#cb5-162" tabindex="-1"></a><span class="co">#&gt; OBS: 282 observation(s).</span></span>
+<span id="cb5-163"><a href="#cb5-163" tabindex="-1"></a><span class="co">#&gt; ETA: 2 parameter(s) to estimate.</span></span>
+<span id="cb5-164"><a href="#cb5-164" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-165"><a href="#cb5-165" tabindex="-1"></a><span class="co">#&gt; Estimates: </span></span>
+<span id="cb5-166"><a href="#cb5-166" tabindex="-1"></a><span class="co">#&gt;   ID         ETA1         ETA2</span></span>
+<span id="cb5-167"><a href="#cb5-167" tabindex="-1"></a><span class="co">#&gt; 1  1 -0.138751408  0.078938994</span></span>
+<span id="cb5-168"><a href="#cb5-168" tabindex="-1"></a><span class="co">#&gt; 2  2 -0.436171445 -1.350114471</span></span>
+<span id="cb5-169"><a href="#cb5-169" tabindex="-1"></a><span class="co">#&gt; 3  3  0.380180978  0.666563142</span></span>
+<span id="cb5-170"><a href="#cb5-170" tabindex="-1"></a><span class="co">#&gt; 4  4 -0.267043059  0.322228491</span></span>
+<span id="cb5-171"><a href="#cb5-171" tabindex="-1"></a><span class="co">#&gt; 5  5 -0.009526934  0.001370777</span></span>
+<span id="cb5-172"><a href="#cb5-172" tabindex="-1"></a><span class="co">#&gt; 6  6  0.376713295 -0.245237759</span></span>
+<span id="cb5-173"><a href="#cb5-173" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-174"><a href="#cb5-174" tabindex="-1"></a><span class="co">#&gt; Output (596 lines): </span></span>
+<span id="cb5-175"><a href="#cb5-175" tabindex="-1"></a><span class="co">#&gt;   ID  DD  amt time evid cmt mdv ii ss Creatinine SCR  eGFR ClCrea AGE SEX EXPRESSION</span></span>
+<span id="cb5-176"><a href="#cb5-176" tabindex="-1"></a><span class="co">#&gt; 1  1 6.0 3000  168    1   1   1 12  1       5.30 469  9.16    9.8  49   0          0</span></span>
+<span id="cb5-177"><a href="#cb5-177" tabindex="-1"></a><span class="co">#&gt; 2  1 6.0    0  168    0   2   0  0  0       5.30 469  9.16    9.8  49   0          0</span></span>
+<span id="cb5-178"><a href="#cb5-178" tabindex="-1"></a><span class="co">#&gt; 3  1 6.5 3250  264    1   1   1 12  1       4.17 369 12.07   12.5  49   0          0</span></span>
+<span id="cb5-179"><a href="#cb5-179" tabindex="-1"></a><span class="co">#&gt; 4  1 6.5    0  264    0   2   0  0  0       4.17 369 12.07   12.5  49   0          0</span></span>
+<span id="cb5-180"><a href="#cb5-180" tabindex="-1"></a><span class="co">#&gt; 5  1 7.5 3750  360    1   1   1 12  1       3.56 315 14.49   15.1  49   0          0</span></span>
+<span id="cb5-181"><a href="#cb5-181" tabindex="-1"></a><span class="co">#&gt; 6  1 7.5    0  360    0   2   0  0  0       3.56 315 14.49   15.1  49   0          0</span></span>
+<span id="cb5-182"><a href="#cb5-182" tabindex="-1"></a><span class="co">#&gt;   PDN_DOSE PDNXWT Heigth Height..m.  BSA BMIcalc  LBW DMELITU  DV IPRED PRED   CP  iCL</span></span>
+<span id="cb5-183"><a href="#cb5-183" tabindex="-1"></a><span class="co">#&gt; 1       55  1.138    150        1.5 1.41    21.5 34.8       0 0.0  7.65 6.40 7.65 27.9</span></span>
+<span id="cb5-184"><a href="#cb5-184" tabindex="-1"></a><span class="co">#&gt; 2       55  1.138    150        1.5 1.41    21.5 34.8       0 9.4  7.65 6.40 7.65 27.9</span></span>
+<span id="cb5-185"><a href="#cb5-185" tabindex="-1"></a><span class="co">#&gt; 3       30  0.620    150        1.5 1.41    21.5 34.8       0 0.0  8.32 6.96 8.32 27.8</span></span>
+<span id="cb5-186"><a href="#cb5-186" tabindex="-1"></a><span class="co">#&gt; 4       30  0.620    150        1.5 1.41    21.5 34.8       0 8.4  8.32 6.96 8.32 27.8</span></span>
+<span id="cb5-187"><a href="#cb5-187" tabindex="-1"></a><span class="co">#&gt; 5       20  0.398    150        1.5 1.43    22.3 35.3       0 0.0  9.65 8.07 9.65 27.7</span></span>
+<span id="cb5-188"><a href="#cb5-188" tabindex="-1"></a><span class="co">#&gt; 6       20  0.398    150        1.5 1.43    22.3 35.3       0 8.4  9.65 8.07 9.65 27.7</span></span>
+<span id="cb5-189"><a href="#cb5-189" tabindex="-1"></a><span class="co">#&gt;     iV iKA EVID OCC POD  HCT   WT CYP3A5   ETA1   ETA2 OCC</span></span>
+<span id="cb5-190"><a href="#cb5-190" tabindex="-1"></a><span class="co">#&gt; 1 1036 4.5    1   1   7 29.9 48.4      3 -0.139 0.0789   1</span></span>
+<span id="cb5-191"><a href="#cb5-191" tabindex="-1"></a><span class="co">#&gt; 2 1036 4.5    0   1   7 29.9 48.4      3 -0.139 0.0789   1</span></span>
+<span id="cb5-192"><a href="#cb5-192" tabindex="-1"></a><span class="co">#&gt; 3 1036 4.5    1   2  11 28.7 48.4      3 -0.139 0.0789   2</span></span>
+<span id="cb5-193"><a href="#cb5-193" tabindex="-1"></a><span class="co">#&gt; 4 1036 4.5    0   2  11 28.7 48.4      3 -0.139 0.0789   2</span></span>
+<span id="cb5-194"><a href="#cb5-194" tabindex="-1"></a><span class="co">#&gt; 5 1048 4.5    1   3  15 26.9 50.2      3 -0.139 0.0789   3</span></span>
+<span id="cb5-195"><a href="#cb5-195" tabindex="-1"></a><span class="co">#&gt; 6 1048 4.5    0   3  15 26.9 50.2      3 -0.139 0.0789   3</span></span></code></pre></div>
+<h4 id="id_4-actualize-indiviudal-models-with-parameters-calcualted-before">4)
+Actualize Indiviudal models with parameters calcualted before.</h4>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" tabindex="-1"></a>updt.md <span class="ot">=</span> <span class="fu">actualize_model</span>(map.est, <span class="at">evaluation_type =</span> <span class="st">&quot;Progressive&quot;</span>) <span class="do">#### Individual Models</span></span></code></pre></div>
+<h4 id="id_5-simulate-observed-concentrations">5) Simulate observed
+concentrations</h4>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" tabindex="-1"></a>sim <span class="ot">=</span> <span class="fu">run_ind_simulations</span>(updt.md, map.est) <span class="co"># Simulate for every ID in every OCC</span></span></code></pre></div>
+<h4 id="id_6-calucalte-metrics-accross-occasions">6) Calucalte Metrics
+Accross Occasions</h4>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" tabindex="-1"></a>metrics <span class="ot">=</span> <span class="fu">metrics_occ</span>(<span class="at">simulations=</span> sim, </span>
+<span id="cb8-2"><a href="#cb8-2" tabindex="-1"></a>                      <span class="at">tool=</span><span class="st">&quot;mapbayr&quot;</span>) <span class="co"># Simulate for every ID in every OCC</span></span>
+<span id="cb8-3"><a href="#cb8-3" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" tabindex="-1"></a><span class="fu">head</span>(metrics[<span class="dv">1</span>])</span>
+<span id="cb8-5"><a href="#cb8-5" tabindex="-1"></a><span class="co">#&gt; $metrics</span></span>
+<span id="cb8-6"><a href="#cb8-6" tabindex="-1"></a><span class="co">#&gt;     ID OCC  TIME Ind_Prediction   DV        IPE        APE         RMSE</span></span>
+<span id="cb8-7"><a href="#cb8-7" tabindex="-1"></a><span class="co">#&gt; 1    1   2   264      10.202397  8.4  21.457102  21.457102 0.0460407240</span></span>
+<span id="cb8-8"><a href="#cb8-8" tabindex="-1"></a><span class="co">#&gt; 2    2   2   744       5.157715  4.0  28.942871  28.942871 0.0837689783</span></span>
+<span id="cb8-9"><a href="#cb8-9" tabindex="-1"></a><span class="co">#&gt; 3    3   2   168      16.791274 12.0  39.927279  39.927279 0.1594187646</span></span>
+<span id="cb8-10"><a href="#cb8-10" tabindex="-1"></a><span class="co">#&gt; 4    4   2   264      12.474168 15.8 -21.049568  21.049568 0.0443084316</span></span>
+<span id="cb8-11"><a href="#cb8-11" tabindex="-1"></a><span class="co">#&gt; 5    5   2   240       8.269958 12.6 -34.365410  34.365410 0.1180981409</span></span>
+<span id="cb8-12"><a href="#cb8-12" tabindex="-1"></a><span class="co">#&gt; 6    6   2   240       7.236177  5.8  24.761675  24.761675 0.0613140549</span></span>
+<span id="cb8-13"><a href="#cb8-13" tabindex="-1"></a><span class="co">#&gt; 7    6   2   241      14.361739 16.1 -10.796653  10.796653 0.0116567721</span></span>
+<span id="cb8-14"><a href="#cb8-14" tabindex="-1"></a><span class="co">#&gt; 8    6   2   242      13.570436 15.5 -12.448800  12.448800 0.0154972628</span></span>
+<span id="cb8-15"><a href="#cb8-15" tabindex="-1"></a><span class="co">#&gt; 9    6   2   248       9.305847  7.3  27.477360  27.477360 0.0755005305</span></span>
+<span id="cb8-16"><a href="#cb8-16" tabindex="-1"></a><span class="co">#&gt; 10   7   2   192       8.563264 12.1 -29.229224  29.229224 0.0854347527</span></span>
+<span id="cb8-17"><a href="#cb8-17" tabindex="-1"></a><span class="co">#&gt; 11   8   2   216      11.162344  6.1  82.989254  82.989254 0.6887216222</span></span>
+<span id="cb8-18"><a href="#cb8-18" tabindex="-1"></a><span class="co">#&gt; 12   9   2   120       8.157215  4.7  73.557764  73.557764 0.5410744577</span></span>
+<span id="cb8-19"><a href="#cb8-19" tabindex="-1"></a><span class="co">#&gt; 13  10   2   288       9.338606  9.6  -2.722856   2.722856 0.0007413946</span></span>
+<span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co">#&gt; 14  11   2   216       5.350110  3.0  78.337009  78.337009 0.6136687036</span></span>
+<span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co">#&gt; 15  12   2   120       3.099998  4.0 -22.500054  22.500054 0.0506252412</span></span>
+<span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="co">#&gt; 16  13   2   192       9.408703  8.5  10.690624  10.690624 0.0114289447</span></span>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#&gt; 17  14   2   192      10.693000 11.2  -4.526789   4.526789 0.0020491819</span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co">#&gt; 18  15   2   168       6.611083  6.1   8.378406   8.378406 0.0070197692</span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co">#&gt; 19  16   2   168       4.098255  2.2  86.284323  86.284323 0.7444984383</span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="co">#&gt; 20  17   2   240       9.095784 20.5 -55.630322  55.630322 0.3094732734</span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="co">#&gt; 21  18   2   288      11.659817  8.4  38.807349  38.807349 0.1506010339</span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="co">#&gt; 22  19   2   312      13.619266 16.7 -18.447506  18.447506 0.0340310480</span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co">#&gt; 23  20   2   168       7.863820  7.2   9.219726   9.219726 0.0085003350</span></span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co">#&gt; 24  21   2   264       4.049074  6.1 -33.621742  33.621742 0.1130421535</span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="co">#&gt; 25  22   2   240       9.836280  9.1   8.090992   8.090992 0.0065464152</span></span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="co">#&gt; 26  23   2   192      11.806861 10.8   9.322789   9.322789 0.0086914394</span></span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt; 27  24   2   264       2.948288  4.2 -29.802668  29.802668 0.0888199015</span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="co">#&gt; 28  25   2   144       9.555375 11.7 -18.330130  18.330130 0.0335993674</span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="co">#&gt; 29  26   2   144       9.632986  9.2   4.706364   4.706364 0.0022149866</span></span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="co">#&gt; 30  27   2 23592       4.168467  4.8 -13.156941  13.156941 0.0173105094</span></span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="co">#&gt; 31  27   2 23593       6.756144 25.3 -73.295874  73.295874 0.5372285125</span></span>
+<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="co">#&gt; 32  27   2 23594       6.493895 18.8 -65.458005  65.458005 0.4284750399</span></span>
+<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="co">#&gt; 33  27   2 23596       5.943179  8.3 -28.395433  28.395433 0.0806300630</span></span>
+<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="co">#&gt; 34  28   2   240      10.181470  7.3  39.472187  39.472187 0.1558053545</span></span>
+<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="co">#&gt; 35  29   2   120      15.566979 11.4  36.552449  36.552449 0.1336081557</span></span>
+<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="co">#&gt; 36  30   2   144      17.913216 10.3  73.914714  73.914714 0.5463384902</span></span>
+<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="co">#&gt; 37  31   2   120      11.546283 10.5   9.964602   9.964602 0.0099293303</span></span>
+<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="co">#&gt; 38  32   2   168      11.865797  5.6 111.889227 111.889227 1.2519199216</span></span>
+<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="co">#&gt; 39  33   2   120       5.324573  3.2  66.392898  66.392898 0.4408016879</span></span>
+<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a><span class="co">#&gt; 40  34   2   216       7.747274  6.4  21.051160  21.051160 0.0443151318</span></span>
+<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a><span class="co">#&gt; 41  35   2   144       8.181903  8.0   2.273789   2.273789 0.0005170116</span></span>
+<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a><span class="co">#&gt; 42  36   2 26280       6.394832  2.7 136.845627 136.845627 1.8726725746</span></span>
+<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a><span class="co">#&gt; 43  37   2   120       6.828113 10.9 -37.356764  37.356764 0.1395527835</span></span>
+<span id="cb8-50"><a href="#cb8-50" tabindex="-1"></a><span class="co">#&gt; 44  38   2   144       6.678532  9.4 -28.951783  28.951783 0.0838205749</span></span>
+<span id="cb8-51"><a href="#cb8-51" tabindex="-1"></a><span class="co">#&gt; 45  39   2   192       6.662144  5.4  23.373031  23.373031 0.0546298582</span></span>
+<span id="cb8-52"><a href="#cb8-52" tabindex="-1"></a><span class="co">#&gt; 46  40   2   192       6.111837 19.1 -68.000852  68.000852 0.4624115869</span></span>
+<span id="cb8-53"><a href="#cb8-53" tabindex="-1"></a><span class="co">#&gt; 47  41   2   144       6.005625  3.7  62.314180  62.314180 0.3883057043</span></span>
+<span id="cb8-54"><a href="#cb8-54" tabindex="-1"></a><span class="co">#&gt; 48  42   2   144      13.828245 10.0  38.282453  38.282453 0.1465546172</span></span>
+<span id="cb8-55"><a href="#cb8-55" tabindex="-1"></a><span class="co">#&gt; 49  43   2   240      12.712205 10.8  17.705606  17.705606 0.0313488469</span></span>
+<span id="cb8-56"><a href="#cb8-56" tabindex="-1"></a><span class="co">#&gt; 50  44   2   216      13.712239 11.6  18.208958  18.208958 0.0331566134</span></span>
+<span id="cb8-57"><a href="#cb8-57" tabindex="-1"></a><span class="co">#&gt; 51  45   2   120       9.483664 25.4 -62.662739  62.662739 0.3926618799</span></span>
+<span id="cb8-58"><a href="#cb8-58" tabindex="-1"></a><span class="co">#&gt; 52  46   2   144      10.818177  7.8  38.694576  38.694576 0.1497270179</span></span>
+<span id="cb8-59"><a href="#cb8-59" tabindex="-1"></a><span class="co">#&gt; 53  47   2   168       9.568364  8.0  19.604544  19.604544 0.0384338144</span></span>
+<span id="cb8-60"><a href="#cb8-60" tabindex="-1"></a><span class="co">#&gt; 54  48   2   192       5.926869  4.9  20.956510  20.956510 0.0439175319</span></span>
+<span id="cb8-61"><a href="#cb8-61" tabindex="-1"></a><span class="co">#&gt; 55  49   2   120      10.356577  8.9  16.366031  16.366031 0.0267846977</span></span>
+<span id="cb8-62"><a href="#cb8-62" tabindex="-1"></a><span class="co">#&gt; 56   1   3   360      10.695098  8.4  27.322593  27.322593 0.0746524063</span></span>
+<span id="cb8-63"><a href="#cb8-63" tabindex="-1"></a><span class="co">#&gt; 57   2   3 37848       4.859537  9.9 -50.913773  50.913773 0.2592212247</span></span>
+<span id="cb8-64"><a href="#cb8-64" tabindex="-1"></a><span class="co">#&gt; 58   3   3   240      14.917337 11.1  34.390426  34.390426 0.1182701375</span></span>
+<span id="cb8-65"><a href="#cb8-65" tabindex="-1"></a><span class="co">#&gt; 59   4   3   432      12.349780 21.8 -43.349634  43.349634 0.1879190776</span></span>
+<span id="cb8-66"><a href="#cb8-66" tabindex="-1"></a><span class="co">#&gt; 60   5   3   336       9.776186  7.0  39.659803  39.659803 0.1572899979</span></span>
+<span id="cb8-67"><a href="#cb8-67" tabindex="-1"></a><span class="co">#&gt; 61   6   3   336       8.159830 12.0 -32.001415  32.001415 0.1024090565</span></span>
+<span id="cb8-68"><a href="#cb8-68" tabindex="-1"></a><span class="co">#&gt; 62   7   3   240      13.002006 15.3 -15.019571  15.019571 0.0225587521</span></span>
+<span id="cb8-69"><a href="#cb8-69" tabindex="-1"></a><span class="co">#&gt; 63   8   3   312       9.785943  6.9  41.825268  41.825268 0.1749353044</span></span>
+<span id="cb8-70"><a href="#cb8-70" tabindex="-1"></a><span class="co">#&gt; 64   9   3   336       8.492916  4.5  88.731469  88.731469 0.7873273612</span></span>
+<span id="cb8-71"><a href="#cb8-71" tabindex="-1"></a><span class="co">#&gt; 65  10   3   480       9.518061 14.0 -32.013851  32.013851 0.1024886629</span></span>
+<span id="cb8-72"><a href="#cb8-72" tabindex="-1"></a><span class="co">#&gt; 66  11   3   288       2.825170  2.3  22.833479  22.833479 0.0521367772</span></span>
+<span id="cb8-73"><a href="#cb8-73" tabindex="-1"></a><span class="co">#&gt; 67  12   3   144       3.550675  5.2 -31.717785  31.717785 0.1006017878</span></span>
+<span id="cb8-74"><a href="#cb8-74" tabindex="-1"></a><span class="co">#&gt; 68  13   3   384      12.149334 15.4 -21.108223  21.108223 0.0445557071</span></span>
+<span id="cb8-75"><a href="#cb8-75" tabindex="-1"></a><span class="co">#&gt; 69  14   3   264      10.092813  9.4   7.370350   7.370350 0.0054322052</span></span>
+<span id="cb8-76"><a href="#cb8-76" tabindex="-1"></a><span class="co">#&gt; 70  15   3   264       7.650655  4.6  66.318584  66.318584 0.4398154535</span></span>
+<span id="cb8-77"><a href="#cb8-77" tabindex="-1"></a><span class="co">#&gt; 71  16   3   360       8.616419  8.4   2.576416   2.576416 0.0006637919</span></span>
+<span id="cb8-78"><a href="#cb8-78" tabindex="-1"></a><span class="co">#&gt; 72  16   3   361      18.020936 16.4   9.883758   9.883758 0.0097688678</span></span>
+<span id="cb8-79"><a href="#cb8-79" tabindex="-1"></a><span class="co">#&gt; 73  16   3   362      16.316355 15.5   5.266806   5.266806 0.0027739245</span></span>
+<span id="cb8-80"><a href="#cb8-80" tabindex="-1"></a><span class="co">#&gt; 74  16   3   363      14.670937 12.8  14.616694  14.616694 0.0213647753</span></span>
+<span id="cb8-81"><a href="#cb8-81" tabindex="-1"></a><span class="co">#&gt; 75  16   3   368       8.618748  9.0  -4.236137   4.236137 0.0017944856</span></span>
+<span id="cb8-82"><a href="#cb8-82" tabindex="-1"></a><span class="co">#&gt; 76  17   3   336      15.332986 19.1 -19.722584  19.722584 0.0388980333</span></span>
+<span id="cb8-83"><a href="#cb8-83" tabindex="-1"></a><span class="co">#&gt; 77  18   3   384       8.263052  9.0  -8.188314   8.188314 0.0067048487</span></span>
+<span id="cb8-84"><a href="#cb8-84" tabindex="-1"></a><span class="co">#&gt; 78  19   3   456      12.690861 21.9 -42.050864  42.050864 0.1768275136</span></span>
+<span id="cb8-85"><a href="#cb8-85" tabindex="-1"></a><span class="co">#&gt; 79  20   3   240       8.410193  7.5  12.135903  12.135903 0.0147280134</span></span>
+<span id="cb8-86"><a href="#cb8-86" tabindex="-1"></a><span class="co">#&gt; 80  21   3   360       6.669286  7.4  -9.874511   9.874511 0.0097505966</span></span>
+<span id="cb8-87"><a href="#cb8-87" tabindex="-1"></a><span class="co">#&gt; 81  22   3   336      10.264948  9.6   6.926541   6.926541 0.0047976974</span></span>
+<span id="cb8-88"><a href="#cb8-88" tabindex="-1"></a><span class="co">#&gt; 82  23   3   264      11.366666 13.0 -12.564109  12.564109 0.0157856832</span></span>
+<span id="cb8-89"><a href="#cb8-89" tabindex="-1"></a><span class="co">#&gt; 83  24   3   432       5.013308  6.2 -19.140201  19.140201 0.0366347292</span></span>
+<span id="cb8-90"><a href="#cb8-90" tabindex="-1"></a><span class="co">#&gt; 84  24   3   433       9.597667 16.6 -42.182730  42.182730 0.1779382678</span></span>
+<span id="cb8-91"><a href="#cb8-91" tabindex="-1"></a><span class="co">#&gt; 85  24   3   434       8.795922 11.9 -26.084687  26.084687 0.0680410885</span></span>
+<span id="cb8-92"><a href="#cb8-92" tabindex="-1"></a><span class="co">#&gt; 86  24   3   435       8.010538  9.3 -13.865179  13.865179 0.0192243184</span></span>
+<span id="cb8-93"><a href="#cb8-93" tabindex="-1"></a><span class="co">#&gt; 87  24   3   436       7.294722  8.5 -14.179737  14.179737 0.0201064944</span></span>
+<span id="cb8-94"><a href="#cb8-94" tabindex="-1"></a><span class="co">#&gt; 88  24   3   440       5.016437  8.4 -40.280510  40.280510 0.1622519517</span></span>
+<span id="cb8-95"><a href="#cb8-95" tabindex="-1"></a><span class="co">#&gt; 89  25   3   312      11.060399 12.0  -7.830009   7.830009 0.0061309038</span></span>
+<span id="cb8-96"><a href="#cb8-96" tabindex="-1"></a><span class="co">#&gt; 90  26   3   240       9.480924  6.0  58.015400  58.015400 0.3365786646</span></span>
+<span id="cb8-97"><a href="#cb8-97" tabindex="-1"></a><span class="co">#&gt; 91  27   3 25248       3.749914 10.6 -64.623454  64.623454 0.4176190819</span></span>
+<span id="cb8-98"><a href="#cb8-98" tabindex="-1"></a><span class="co">#&gt; 92  28   3   336       7.184458 12.3 -41.589775  41.589775 0.1729709391</span></span>
+<span id="cb8-99"><a href="#cb8-99" tabindex="-1"></a><span class="co">#&gt; 93  28   3   337      13.432840 19.2 -30.037292  30.037292 0.0902238923</span></span>
+<span id="cb8-100"><a href="#cb8-100" tabindex="-1"></a><span class="co">#&gt; 94  28   3   338      12.757076 28.3 -54.921994  54.921994 0.3016425420</span></span>
+<span id="cb8-101"><a href="#cb8-101" tabindex="-1"></a><span class="co">#&gt; 95  28   3   339      12.045976 43.4 -72.244294  72.244294 0.5219237989</span></span>
+<span id="cb8-102"><a href="#cb8-102" tabindex="-1"></a><span class="co">#&gt; 96  28   3   340      11.373749 26.6 -57.241544  57.241544 0.3276594358</span></span>
+<span id="cb8-103"><a href="#cb8-103" tabindex="-1"></a><span class="co">#&gt; 97  29   3   192      13.537321  8.4  61.158582  61.158582 0.3740372178</span></span>
+<span id="cb8-104"><a href="#cb8-104" tabindex="-1"></a><span class="co">#&gt; 98  30   3   408      16.316269 11.3  44.391761  44.391761 0.1970628450</span></span>
+<span id="cb8-105"><a href="#cb8-105" tabindex="-1"></a><span class="co">#&gt; 99  31   3   288      11.520210  8.6  33.955932  33.955932 0.1153005322</span></span>
+<span id="cb8-106"><a href="#cb8-106" tabindex="-1"></a><span class="co">#&gt; 100 32   3   264      11.509710  4.5 155.771327 155.771327 2.4264706240</span></span>
+<span id="cb8-107"><a href="#cb8-107" tabindex="-1"></a><span class="co">#&gt; 101 33   3   168       4.389350  8.5 -48.360590  48.360590 0.2338746618</span></span>
+<span id="cb8-108"><a href="#cb8-108" tabindex="-1"></a><span class="co">#&gt; 102 33   3   169       8.628646 32.0 -73.035482  73.035482 0.5334181692</span></span>
+<span id="cb8-109"><a href="#cb8-109" tabindex="-1"></a><span class="co">#&gt; 103 33   3   170       8.159847 23.1 -64.675986  64.675986 0.4182983182</span></span>
+<span id="cb8-110"><a href="#cb8-110" tabindex="-1"></a><span class="co">#&gt; 104 33   3   176       5.625041 11.4 -50.657537  50.657537 0.2566186078</span></span>
+<span id="cb8-111"><a href="#cb8-111" tabindex="-1"></a><span class="co">#&gt; 105 34   3   288       7.582638  8.2  -7.528804   7.528804 0.0056682893</span></span>
+<span id="cb8-112"><a href="#cb8-112" tabindex="-1"></a><span class="co">#&gt; 106 35   3   240       8.939184 12.8 -30.162629  30.162629 0.0909784159</span></span>
+<span id="cb8-113"><a href="#cb8-113" tabindex="-1"></a><span class="co">#&gt; 107 36   3 30192       6.766432  3.5  93.326628  93.326628 0.8709859498</span></span>
+<span id="cb8-114"><a href="#cb8-114" tabindex="-1"></a><span class="co">#&gt; 108 37   3   192       8.910583 11.2 -20.441224  20.441224 0.0417843635</span></span>
+<span id="cb8-115"><a href="#cb8-115" tabindex="-1"></a><span class="co">#&gt; 109 38   3   216       8.277464  7.4  11.857623  11.857623 0.0140603215</span></span>
+<span id="cb8-116"><a href="#cb8-116" tabindex="-1"></a><span class="co">#&gt; 110 39   3   432       9.437661 19.5 -51.601736  51.601736 0.2662739207</span></span>
+<span id="cb8-117"><a href="#cb8-117" tabindex="-1"></a><span class="co">#&gt; 111 40   3   288      12.713427 18.5 -31.278775  31.278775 0.0978361789</span></span>
+<span id="cb8-118"><a href="#cb8-118" tabindex="-1"></a><span class="co">#&gt; 112 41   3   240       5.496548  5.1   7.775454   7.775454 0.0060457692</span></span>
+<span id="cb8-119"><a href="#cb8-119" tabindex="-1"></a><span class="co">#&gt; 113 41   3   241      12.263493 10.8  13.550862  13.550862 0.0183625870</span></span>
+<span id="cb8-120"><a href="#cb8-120" tabindex="-1"></a><span class="co">#&gt; 114 41   3   242      11.472879 10.1  13.592864  13.592864 0.0184765954</span></span>
+<span id="cb8-121"><a href="#cb8-121" tabindex="-1"></a><span class="co">#&gt; 115 41   3   243      10.659738 10.5   1.521314   1.521314 0.0002314396</span></span>
+<span id="cb8-122"><a href="#cb8-122" tabindex="-1"></a><span class="co">#&gt; 116 41   3   244       9.903417 13.3 -25.538216  25.538216 0.0652200474</span></span>
+<span id="cb8-123"><a href="#cb8-123" tabindex="-1"></a><span class="co">#&gt; 117 41   3   248       7.377981  6.6  11.787598  11.787598 0.0138947470</span></span>
+<span id="cb8-124"><a href="#cb8-124" tabindex="-1"></a><span class="co">#&gt; 118 41   3   252       5.496548  5.1   7.775455   7.775455 0.0060457696</span></span>
+<span id="cb8-125"><a href="#cb8-125" tabindex="-1"></a><span class="co">#&gt; 119 42   3   240      12.252487  9.9  23.762500  23.762500 0.0564656391</span></span>
+<span id="cb8-126"><a href="#cb8-126" tabindex="-1"></a><span class="co">#&gt; 120 43   3   312      14.522188 11.6  25.191273  25.191273 0.0634600258</span></span>
+<span id="cb8-127"><a href="#cb8-127" tabindex="-1"></a><span class="co">#&gt; 121 44   3   288      12.848480 12.3   4.459186   4.459186 0.0019884342</span></span>
+<span id="cb8-128"><a href="#cb8-128" tabindex="-1"></a><span class="co">#&gt; 122 45   3   288       7.143854 12.5 -42.849166  42.849166 0.1836051058</span></span>
+<span id="cb8-129"><a href="#cb8-129" tabindex="-1"></a><span class="co">#&gt; 123 46   3   216      10.982188 14.1 -22.112145  22.112145 0.0488946970</span></span>
+<span id="cb8-130"><a href="#cb8-130" tabindex="-1"></a><span class="co">#&gt; 124 47   3   264       8.801330  6.3  39.703656  39.703656 0.1576380280</span></span>
+<span id="cb8-131"><a href="#cb8-131" tabindex="-1"></a><span class="co">#&gt; 125 48   3   264       5.272667  7.9 -33.257380  33.257380 0.1106053305</span></span>
+<span id="cb8-132"><a href="#cb8-132" tabindex="-1"></a><span class="co">#&gt;  [ reached &#39;max&#39; / getOption(&quot;max.print&quot;) -- omitted 140 rows ]</span></span>
+<span id="cb8-133"><a href="#cb8-133" tabindex="-1"></a><span class="fu">head</span>(metrics[<span class="dv">2</span>])</span>
+<span id="cb8-134"><a href="#cb8-134" tabindex="-1"></a><span class="co">#&gt; $metrics_means</span></span>
+<span id="cb8-135"><a href="#cb8-135" tabindex="-1"></a><span class="co">#&gt; # A tibble: 5 × 8</span></span>
+<span id="cb8-136"><a href="#cb8-136" tabindex="-1"></a><span class="co">#&gt;     OCC  rBIAS rBIAS_lower rBIAS_upper MAIPE rRMSE  IF20  IF30</span></span>
+<span id="cb8-137"><a href="#cb8-137" tabindex="-1"></a><span class="co">#&gt;   &lt;dbl&gt;  &lt;dbl&gt;       &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;</span></span>
+<span id="cb8-138"><a href="#cb8-138" tabindex="-1"></a><span class="co">#&gt; 1     2 11.6        -0.576       23.7   36.0  46.0  34.5  58.2</span></span>
+<span id="cb8-139"><a href="#cb8-139" tabindex="-1"></a><span class="co">#&gt; 2     3 -4.78      -14.6          5.08  32.6  41.7  38.0  50.7</span></span>
+<span id="cb8-140"><a href="#cb8-140" tabindex="-1"></a><span class="co">#&gt; 3     4 -0.422     -10.0          9.17  26.3  33.4  38    66  </span></span>
+<span id="cb8-141"><a href="#cb8-141" tabindex="-1"></a><span class="co">#&gt; 4     5 -8.76      -18.5          1.02  25.9  35.1  52    66  </span></span>
+<span id="cb8-142"><a href="#cb8-142" tabindex="-1"></a><span class="co">#&gt; 5     6 -1.96      -13.9          9.94  31.2  36.3  30.8  53.8</span></span></code></pre></div>
+<h4 id="id_7-make-some-important">7) Make Some Important.</h4>
+<h5 id="id_71-bias-barplot">7.1) Bias BarPlot</h5>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" tabindex="-1"></a></span>
+<span id="cb9-2"><a href="#cb9-2" tabindex="-1"></a>plot1 <span class="ot">=</span> <span class="fu">metrics_Plot</span>(<span class="at">mm=</span>metrics,</span>
+<span id="cb9-3"><a href="#cb9-3" tabindex="-1"></a>             <span class="at">type =</span> <span class="st">&quot;bias_barplot&quot;</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" tabindex="-1"></a></span>
+<span id="cb9-5"><a href="#cb9-5" tabindex="-1"></a><span class="fu">print</span>(plot1)</span></code></pre></div>
+<p><img role="img" src="data:image/png;base64,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" width="100%" /> ##### 7.2)
+Bias boxplot</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" tabindex="-1"></a></span>
+<span id="cb10-2"><a href="#cb10-2" tabindex="-1"></a>plot1 <span class="ot">=</span> <span class="fu">metrics_Plot</span>(<span class="at">mm=</span>metrics,</span>
+<span id="cb10-3"><a href="#cb10-3" tabindex="-1"></a>             <span class="at">type =</span> <span class="st">&quot;bias_boxplot&quot;</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" tabindex="-1"></a></span>
+<span id="cb10-5"><a href="#cb10-5" tabindex="-1"></a><span class="fu">print</span>(plot1)</span></code></pre></div>
+<img role="img" src="data:image/png;base64,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" width="100%" />
+
+</body>
+</html>
