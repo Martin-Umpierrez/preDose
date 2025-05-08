@@ -18,42 +18,31 @@ knitr::opts_chunk$set(
 ```{r,echo=FALSE}
 library(knitr)
 ```
-# preDose <img align="right" src = "man/figures/logo.png" width="135px">
-
-
-<!-- badges: start -->
-[![CRAN status](https://www.r-pkg.org/badges/version-last-release/mapbayr)](https://CRAN.R-project.org/package=mapbayr)
-[![](https://img.shields.io/badge/Citation-CPT:PSP-blue.svg)](https://pubmed.ncbi.nlm.nih.gov/34342170/)
-<!-- badges: end -->
+# preDose <img align="right" src = "man/figures/predose_hex_only.png" width="135px">
 
 # preDose: An R-package for Robust External Evaluation of popPKPD Models. 
 
-<!-- badges: start -->
-<!-- badges: end -->
-
-preDose is a free and open source package that automatize the process of *external evaluation process* using an independent dataset from which the original popPK model was developed.
+preDose is a free and open source package that automatize the process of *external evaluation process* using an independent dataset from which the original popPKPD model was developed.
 
 Currently, the user can choose to use the package based on either[lixoftconnectors](https://monolix.lixoft.com/monolix-api/examples/)  or via [mapbayr](https://github.com/FelicienLL/mapbayr)  depending on whether lixoftconnectors(which comes with the installation of Lixoft software) is available in their environment.
 
 
 You can perform an external evaluation for a single model from :
 
-* a population PK model 
+* a population PKPD model 
 (coded in [mrgsolve](https://github.com/metrumresearchgroup/mrgsolve), or from [Monolix](https://monolix.lixoft.com/demo-projects/modelimplementation/),
 * a data set with concentrations (NONMEM format or Monolix format)
-* 
 
-The package requires the user to provide a popPK model and an external dataset, regardless of the processing engine they choose. Below are the functions established for both utilities.
+
+The package requires the user to provide a popPKPD model and an external dataset, regardless of the processing engine they choose. Below are the functions established for both utilities.
 
 
 ## Installation
 
-preDose is available on [CRAN](https://CRAN.R-project.org)
-
 You can install the development version of preDose from [GitHub](https://github.com/) with:
 ```{r, eval = F}
 install.packages("devtools")
-devtools::install_github("Martin-Umpierrez/R.preDose")
+devtools::install_github("Martin-Umpierrez/preDose")
 ```
 
 ```{r, setup, include=FALSE}
@@ -77,8 +66,9 @@ library(preDose)
 #### 1) Properly code you model 
 
 ##### 1.1) Code your model in mrgsolve format. 
+This is an example of a Tacrolimus model developed by Han et al(2011) :Prediction of the tacrolimus population pharmacokinetic parameters according to CYP3A5 genotype and clinical factors using NONMEM in adult kidney transplant recipients
 
-```{r, echo = T, results='hide', message=FALSE}
+```{r Model, echo=T, message=FALSE, results='hide'}
 Han_etal_test<-
   '$PROB
 # One Comparment Model with first order absorption- Ka is FIXED
@@ -185,7 +175,8 @@ map.est <- run_MAP_estimations(model_name = "Test_Model",
                                tool = "mapbayr",
                                data = external_data_mapbayr,
                                evaluation_type= "Progressive")  # Cargar dataset desde el paquete
-head(map.est[["map_estimations"]])
+knitr::kable(head(map.est[["map_estimations"]], 10))
+
 ```
 
 #### 4) Actualize  Indiviudal models with parameters calcualted before. 
@@ -207,8 +198,8 @@ sim = run_ind_simulations(updt.md, map.est) # Simulate for every ID in every OCC
 metrics = metrics_occ(simulations= sim, 
                       tool="mapbayr") # Simulate for every ID in every OCC
 
-head(metrics[1])
-head(metrics[2])
+head(metrics[1],10)
+head(metrics[2],10)
 
 ```
 
