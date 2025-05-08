@@ -169,32 +169,32 @@ The  `run_MAP_estimations()` returns a list with four elements:
   + Most_Recent_rEF
 
 
-```{r map_estim, echo=TRUE, message=FALSE, warning=FALSE}
+```{r map_estim, echo=TRUE, message=FALSE, warning=FALSE, cache=TRUE}
 map.est <- run_MAP_estimations(model_name = "Test_Model",
                                model_code = Han_etal_test,
                                tool = "mapbayr",
                                data = external_data_mapbayr,
                                evaluation_type= "Progressive")  # Cargar dataset desde el paquete
-knitr::kable(head(map.est[["map_estimations"]], 10))
+head(map.est[["map_estimations"]], 10)
 
 ```
 
 #### 4) Actualize  Indiviudal models with parameters calcualted before. 
 
-```{r indiviudal_Actualization, echo=TRUE, message=FALSE, warning=FALSE}
+```{r indiviudal_Actualization, echo=TRUE, message=FALSE, warning=FALSE, cache=TRUE}
 updt.md = actualize_model(map.est, evaluation_type = "Progressive") #### Individual Models
 ```
 
 #### 5) Simulate observed concentrations
 
-```{r Simulate, echo=TRUE, message=FALSE, warning=FALSE, error=FALSE}
+```{r Simulate, echo=TRUE, message=FALSE, warning=FALSE, error=FALSE, cache=TRUE }
 sim = run_ind_simulations(updt.md, map.est) # Simulate for every ID in every OCC
 
 ```
 
 #### 6) Calucalte Metrics Accross Occasions 
 
-```{r calcualte_metrics, echo=TRUE, message=FALSE}
+```{r calcualte_metrics, echo=TRUE, message=FALSE, cache=TRUE}
 metrics = metrics_occ(simulations= sim, 
                       tool="mapbayr") # Simulate for every ID in every OCC
 
