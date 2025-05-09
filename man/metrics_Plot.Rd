@@ -6,8 +6,8 @@
 \usage{
 metrics_Plot(
   mm,
-  type = c("bias_barplot", "MAIPE_barplot", "bias_boxplot", "bias_violin", "IF20_plot",
-    "IF30_plot", )
+  type = c("bias_barplot", "MAIPE_barplot", "bias_boxplot", "bias_violin",
+    "bias_dotplot", "bias_density", "IF20_plot", "IF30_plot")
 )
 }
 \arguments{
@@ -18,6 +18,8 @@ metrics_Plot(
   \item \code{"bias_barplot"}: Bar plot of relative bias (\code{rBIAS}) with error bars.
   \item \code{"MAIPE_barplot"}: Bar plot of MAIPE values.
   \item \code{"bias_boxplot"}: Box plot of IPE values.
+  \item \code{"bias_dotplot"}: Dotplot of rBIAS values. Variability on individual bias
+  \item \code{"bias_density"}: Density Plot for rBias throughout occasions .
   \item \code{"bias_violin"}: Violin plot of IPE values.
   \item \code{"IF20_plot"}: Bar plot of IF20 values with reference line at 35%.
   \item \code{"IF30_plot"}: Bar plot of IF30 values with reference line at 50%.

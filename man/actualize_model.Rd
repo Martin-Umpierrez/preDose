@@ -2,7 +2,7 @@
 % Please edit documentation in R/actualize_model.R
 \name{actualize_model}
 \alias{actualize_model}
-\title{Update MAP estimations across occasions for each ID}
+\title{Update MAP estimations across occasions for each IDs}
 \usage{
 actualize_model(
   actualization_map,

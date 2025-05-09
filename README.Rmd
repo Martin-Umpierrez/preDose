@@ -66,7 +66,7 @@ library(preDose)
 #### 1) Properly code you model 
 
 ##### 1.1) Code your model in mrgsolve format. 
-This is an example of a Tacrolimus model developed by Han et al(2011) :Prediction of the tacrolimus population pharmacokinetic parameters according to CYP3A5 genotype and clinical factors using NONMEM in adult kidney transplant recipients
+This is an example of a Tacrolimus model developed by Han et al(2011) : "Prediction of the tacrolimus population pharmacokinetic parameters according to CYP3A5 genotype and clinical factors using NONMEM in adult kidney transplant recipients"
 
 ```{r Model, echo=T, message=FALSE, results='hide'}
 Han_etal_test<-
@@ -99,9 +99,9 @@ dxdt_CENT = iKA*EV  - iCL*CP;
 $MAIN
 ##CYP3A5 effect on Cl##
 
-double HM = 1.186 ;  ####METABOLIZADOR ULTRA RAPIDO ####
-double IM = 1.13 ;  ####METABOLIZADOR INTERMEDIO ####
-double PM = 1 ;  ####METABOLIZADOR POBRE ####
+double HM = 1.186 ;  ####Rapid Metabolizer ####
+double IM = 1.13 ;  ####Intermediate Metabolizer ####
+double PM = 1 ;  ####Poor Metabolizer####
 
 if(CYP3A5==1) double CL_EFFECT = HM ;
 if(CYP3A5==2) CL_EFFECT = IM ;
@@ -175,7 +175,7 @@ map.est <- run_MAP_estimations(model_name = "Test_Model",
                                tool = "mapbayr",
                                data = external_data_mapbayr,
                                evaluation_type= "Progressive")  # Cargar dataset desde el paquete
-head(map.est[["map_estimations"]], 10)
+head(map.est[["map_estimations"]])
 
 ```
 
@@ -198,12 +198,13 @@ sim = run_ind_simulations(updt.md, map.est) # Simulate for every ID in every OCC
 metrics = metrics_occ(simulations= sim, 
                       tool="mapbayr") # Simulate for every ID in every OCC
 
-head(metrics[1],10)
-head(metrics[2],10)
+head((metrics[["metrics"]]),10)
+
+head(metrics[2])
 
 ```
 
-#### 7) Make Some Important.
+#### 7) Make Some Important Plots to compare metrics
 ##### 7.1) Bias BarPlot 
 ```{r plot1, echo=TRUE, message=FALSE}
 
@@ -217,10 +218,21 @@ print(plot1)
 
 ```{r plot2, echo=TRUE, message=FALSE}
 
-plot1 = metrics_Plot(mm=metrics,
+plot2 = metrics_Plot(mm=metrics,
              type = "bias_boxplot")
 
-print(plot1)
+print(plot2)
+
+```
+
+##### 7.3) Bias dotplot 
+
+```{r plot3, echo=TRUE, message=FALSE}
+
+plot3 = metrics_Plot(mm=metrics,
+             type = 'bias_dotplot')
+
+print(plot3)
 
 ```
 
