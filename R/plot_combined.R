@@ -24,6 +24,7 @@ function(cmetrics, type = c('bias_barplot',
                                       'IF30_plot')) {
     pplot <- NULL
     if (type == 'bias_barplot') {
+      n_occs <- length(unique(cmetrics$OCC))
       pplot <- cmetrics %>%
         mutate(OCC = factor(OCC) ) %>%
         ggplot(aes(x = Model, y = rBIAS, fill = Model)) +
@@ -42,10 +43,11 @@ function(cmetrics, type = c('bias_barplot',
               legend.title = element_text(size = 17, face = "bold"), # tamaño de titulo de leyenda
               legend.text = element_text(size = 17), # tamaño de texto de leyenda
               axis.title.y = element_text(size = 20),
-              strip.text = element_text(size = 20, face = "bold")) + # tamaño y estilo del texto del encabezado
-        facet_wrap(~OCC)
+              strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
+        facet_wrap(~OCC, ncol = n_occs, labeller = labeller(OCC = function(x) paste0("OCC ", x)))
     } else if (type == 'MAIPE_barplot') {
-      pplot <-   cmetrics |>  # rBIAS_boxplot
+      n_occs <- length(unique(cmetrics$OCC))
+      pplot <-   cmetrics %>% # rBIAS_boxplot
         mutate(OCC = factor(OCC) ) %>%
         ggplot (aes(x=Model, y=MAIPE, fill=Model)) +
         geom_col() +
@@ -62,10 +64,11 @@ function(cmetrics, type = c('bias_barplot',
               legend.title = element_text(size = 17, face = "bold"), # tamaño de titulo de leyenda
               legend.text = element_text(size = 17), # tamaño de texto de leyenda
               axis.title.y = element_text(size = 20),
-              strip.text = element_text(size = 20, face = "bold")) + # tamaño y estilo del texto del encabezado
-        facet_wrap(~OCC)
+              strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
+        facet_wrap(~OCC, ncol = n_occs)
     }
     else if (type ==  'IF30_plot') {
+      n_occs <- length(unique(cmetrics$OCC))
       pplot <- cmetrics %>%  #  IF20_plot
         mutate(OCC = factor(OCC) ) %>%
         ggplot(aes(x=Model, y=IF30)) +
@@ -83,11 +86,12 @@ function(cmetrics, type = c('bias_barplot',
               legend.title = element_text(size = 17, face = "bold"), # tamaño de titulo de leyenda
               legend.text = element_text(size = 17), # tamaño de texto de leyenda
               axis.title.y = element_text(size = 20),
-              strip.text = element_text(size = 20, face = "bold")) + # tamaño y estilo del texto del encabezado
-        facet_wrap(~OCC)
+              strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
+        facet_wrap(~OCC, ncol=n_occs)
     }
 
     else if (type ==  'IF20_plot') {
+      n_occs <- length(unique(cmetrics$OCC))
       pplot <- cmetrics %>%  #  IF20_plot
         mutate(OCC = factor(OCC) ) %>%
         ggplot(aes(x=Model, y=IF30))+
@@ -105,8 +109,8 @@ function(cmetrics, type = c('bias_barplot',
               legend.title = element_text(size = 17, face = "bold"), # tamaño de titulo de leyenda
               legend.text = element_text(size = 17), # tamaño de texto de leyenda
               axis.title.y = element_text(size = 20),
-              strip.text = element_text(size = 20, face = "bold")) + # tamaño y estilo del texto del encabezado
-        facet_wrap(~OCC)
+              strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
+        facet_wrap(~OCC, ncol = n_occs)
     }
 
     return(pplot)

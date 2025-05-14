@@ -142,17 +142,18 @@ the required format for proper processing.
 data("external_data_mapbayr", package = "preDose")  # Cargar dataset desde el paquete
 head(external_data_mapbayr)  # Ver primeras filas
 #> # A tibble: 6 × 30
-#>      ID   OCC    DD   AMT  TIME   POD    DV  EVID   CMT   MDV    II    SS Creatinine
-#>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>      <dbl>
-#> 1     1     1   6    3000   168     7   0       1     1     1    12     1       5.3 
-#> 2     1     1   6       0   168     7   9.4     0     2     0     0     0       5.3 
-#> 3     1     2   6.5  3250   264    11   0       1     1     1    12     1       4.17
-#> 4     1     2   6.5     0   264    11   8.4     0     2     0     0     0       4.17
-#> 5     1     3   7.5  3750   360    15   0       1     1     1    12     1       3.56
-#> 6     1     3   7.5     0   360    15   8.4     0     2     0     0     0       3.56
-#> # ℹ 17 more variables: SCR <dbl>, eGFR <dbl>, ClCrea <dbl>, AGE <dbl>, SEX <dbl>,
-#> #   WT <dbl>, HCT <dbl>, CYP3A5 <dbl>, EXPRESSION <dbl>, PDN_DOSE <dbl>, PDNXWT <dbl>,
-#> #   Heigth <dbl>, Height..m. <dbl>, BSA <dbl>, BMIcalc <dbl>, LBW <dbl>, DMELITU <dbl>
+#>      ID   OCC    DD   AMT  TIME   POD    DV  EVID   CMT   MDV    II    SS
+#>   <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl> <dbl>
+#> 1     1     1   6    3000   168     7   0       1     1     1    12     1
+#> 2     1     1   6       0   168     7   9.4     0     2     0     0     0
+#> 3     1     2   6.5  3250   264    11   0       1     1     1    12     1
+#> 4     1     2   6.5     0   264    11   8.4     0     2     0     0     0
+#> 5     1     3   7.5  3750   360    15   0       1     1     1    12     1
+#> 6     1     3   7.5     0   360    15   8.4     0     2     0     0     0
+#> # ℹ 18 more variables: Creatinine <dbl>, SCR <dbl>, eGFR <dbl>, ClCrea <dbl>,
+#> #   AGE <dbl>, SEX <dbl>, WT <dbl>, HCT <dbl>, CYP3A5 <dbl>, EXPRESSION <dbl>,
+#> #   PDN_DOSE <dbl>, PDNXWT <dbl>, Heigth <dbl>, Height..m. <dbl>, BSA <dbl>,
+#> #   BMIcalc <dbl>, LBW <dbl>, DMELITU <dbl>
 ```
 
 #### 3) Calculate individual parameters with run_MAP_estimations
@@ -442,3 +443,67 @@ print(plot3)
 ```
 
 <img src="man/figures/README-plot3-1.png" width="100%" />
+
+#### 8) Import Models and assess the predicitve performance
+
+##### 8.1) New Models and Estimations
+
+``` r
+
+source("inst/model_examples/ZuoX_etal_2013.R")
+
+map.est.2 <- run_MAP_estimations(model_name = "Test_Model2",
+                               model_code = ZuoX_etalfull_noCYP3A4,
+                               tool = "mapbayr",
+                               data = external_data_mapbayr,
+                               evaluation_type= "Progressive") 
+
+updt.md2 = actualize_model(map.est.2, evaluation_type = "Progressive")
+
+sim2 = run_ind_simulations(updt.md2, map.est.2)
+
+metrics2 = metrics_occ(simulations= sim2, 
+                      tool="mapbayr") 
+```
+
+##### 8.2) Compare Models
+
+###### 8.2.1) By Plotting: First Combine all metrics for all the tested models
+
+``` r
+metrics2 = metrics_occ(simulations= sim2, 
+                      tool="mapbayr") # Simulate for every ID in every OCC
+
+###### Generate a summary of metrics for all tested models
+model_list <- list(list(model_name="Han_etal", metrics_list=metrics),
+                   list(model_name="Zuo_etal", metrics_list=metrics2))
+
+#### Use combine_metrics() function with the summary created
+combined_results<- combine_metrics(model_list)
+
+#### Make the Plot! 
+plot_comparrison <- plot_combined(combined_results,
+                                  'bias_barplot')
+
+print(plot_comparrison)
+```
+
+<img src="man/figures/README-plot_comparisson-1.png" width="100%" />
+\###### 8.2.2) Select models according to a specific evaluation metric
+and threshold
+
+``` r
+
+Best_fit <- select_best_models(combined_results, metric = "rBIAS",
+                               top_n = 1)
+
+print(Best_fit)
+#> # A tibble: 5 × 9
+#>     OCC  rBIAS rBIAS_lower rBIAS_upper MAIPE rRMSE  IF20  IF30 Model   
+#>   <dbl>  <dbl>       <dbl>       <dbl> <dbl> <dbl> <dbl> <dbl> <chr>   
+#> 1     2 11.6        -0.576       23.7   36.0  46.0  34.5  58.2 Han_etal
+#> 2     3 -4.78      -14.6          5.08  32.6  41.7  38.0  50.7 Han_etal
+#> 3     4 -0.422     -10.0          9.17  26.3  33.4  38    66   Han_etal
+#> 4     5 -8.76      -18.5          1.02  25.9  35.1  52    66   Han_etal
+#> 5     6 -1.96      -13.9          9.94  31.2  36.3  30.8  53.8 Han_etal
+```

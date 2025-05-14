@@ -236,3 +236,63 @@ print(plot3)
 
 ```
 
+#### 8) Import Models and assess the predicitve performance
+##### 8.1) New Models and Estimations
+
+```{r new_scenarios, echo=TRUE, warning=FALSE, message=FALSE, cache=TRUE}
+
+source("inst/model_examples/ZuoX_etal_2013.R")
+
+map.est.2 <- run_MAP_estimations(model_name = "Test_Model2",
+                               model_code = ZuoX_etalfull_noCYP3A4,
+                               tool = "mapbayr",
+                               data = external_data_mapbayr,
+                               evaluation_type= "Progressive") 
+
+updt.md2 = actualize_model(map.est.2, evaluation_type = "Progressive")
+
+sim2 = run_ind_simulations(updt.md2, map.est.2)
+
+metrics2 = metrics_occ(simulations= sim2, 
+                      tool="mapbayr") 
+
+```
+
+##### 8.2) Compare Models
+###### 8.2.1) By Plotting: First Combine all metrics for all the tested models
+```{r plot_comparisson, echo=TRUE, message=FALSE, warning=TRUE, cache=TRUE}
+metrics2 = metrics_occ(simulations= sim2, 
+                      tool="mapbayr") # Simulate for every ID in every OCC
+
+###### Generate a summary of metrics for all tested models
+model_list <- list(list(model_name="Han_etal", metrics_list=metrics),
+                   list(model_name="Zuo_etal", metrics_list=metrics2))
+
+#### Use combine_metrics() function with the summary created
+combined_results<- combine_metrics(model_list)
+
+#### Make the Plot! 
+plot_comparrison <- plot_combined(combined_results,
+                                  'bias_barplot')
+
+print(plot_comparrison)
+
+```
+###### 8.2.2) Select models according to a specific evaluation metric and threshold
+```{r model_selection, echo=TRUE, message=FALSE, warning=TRUE, cache=TRUE}
+
+Best_fit <- select_best_models(combined_results, metric = "rBIAS",
+                               top_n = 1)
+
+print(Best_fit)
+
+```
+
+
+
+
+
+
+
+
+
