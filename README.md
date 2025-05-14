@@ -156,15 +156,26 @@ head(external_data_mapbayr)  # Ver primeras filas
 #> #   BMIcalc <dbl>, LBW <dbl>, DMELITU <dbl>
 ```
 
-#### 3) Calculate individual parameters with run_MAP_estimations
+#### 3) Calculate individual parameters with `run_MAP_estimations`
 
-The `run_MAP_estimations()` returns a list with four elements: \*
-Observed data per occasion: Includes the observed values for each
-individual in each occasion. \* Treatments per occasion: Contains
-information on the treatments administered in each occasion. \*
-Estimated individual parameters: Provides the MAP-estimated values of
-individual parameters for each subject and occasion. \* Mandatory: +
-Progressive + Most_Recent_Progressive + Cronologic_Ref + Most_Recent_rEF
+The `run_MAP_estimations()` function returns a list with four elements:
+
+- **Observed data per occasion**  
+  Includes the observed values for each individual in each occasion.
+
+- **Treatments per occasion**  
+  Contains information on the treatments administered in each occasion.
+
+- **Estimated individual parameters**  
+  Provides the MAP-estimated values of individual parameters for each
+  subject and occasion.
+
+- **Mandatory**
+
+  - Progressive  
+  - Most_Recent_Progressive  
+  - Cronologic_Ref  
+  - Most_Recent_rEF
 
 ``` r
 map.est <- run_MAP_estimations(model_name = "Test_Model",
@@ -468,7 +479,9 @@ metrics2 = metrics_occ(simulations= sim2,
 
 ##### 8.2) Compare Models
 
-###### 8.2.1) By Plotting: First Combine all metrics for all the tested models
+###### 8.2.1) By Plotting:
+
+First Combine all metrics for all the tested models
 
 ``` r
 metrics2 = metrics_occ(simulations= sim2, 
@@ -489,8 +502,10 @@ print(plot_comparrison)
 ```
 
 <img src="man/figures/README-plot_comparisson-1.png" width="100%" />
-\###### 8.2.2) Select models according to a specific evaluation metric
-and threshold
+
+###### 8.2.2) Select models according to a specific evaluation metric and threshold using select_best_models() function
+
+The `select_best_models()` function
 
 ``` r
 
