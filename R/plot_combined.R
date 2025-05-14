@@ -32,17 +32,17 @@ function(cmetrics, type = c('bias_barplot',
         geom_errorbar(aes(ymin = rBIAS_lower, ymax = rBIAS_upper), width = 0.2) +
         geom_hline(data = data.frame(yy = c(-20, 20)), aes(yintercept = yy), linetype = "dashed", color = 'firebrick') +
         scale_fill_brewer(palette = "Dark2") +
-        theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 15)) +
-        theme(axis.text.y = element_text(size = 15)) +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 13)) +
+        theme(axis.text.y = element_text(size = 13)) +
         guides(fill = guide_legend(title.position = "top", nrow = 8, ncol = 3)) +
         labs(y = "rBIAS(%)") +
         theme(legend.key.size = unit(0.25, "cm"), # alto de cuadrados de referencia
               legend.key.width = unit(0.4, "cm"), # ancho de cuadrados de referencia
               legend.position = "right", # ubicacion de leyenda
               legend.direction = "horizontal", # dirección de la leyenda
-              legend.title = element_text(size = 17, face = "bold"), # tamaño de titulo de leyenda
-              legend.text = element_text(size = 17), # tamaño de texto de leyenda
-              axis.title.y = element_text(size = 20),
+              legend.title = element_text(size = 15, face = "bold"), # tamaño de titulo de leyenda
+              legend.text = element_text(size = 13), # tamaño de texto de leyenda
+              axis.title.y = element_text(size = 15),
               strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
         facet_wrap(~OCC, ncol = n_occs, labeller = labeller(OCC = function(x) paste0("OCC ", x)))
     } else if (type == 'MAIPE_barplot') {
@@ -53,19 +53,19 @@ function(cmetrics, type = c('bias_barplot',
         geom_col() +
         geom_hline(data = data.frame(yy = c(30)), aes(yintercept = yy), linetype = "dashed", color = 'firebrick') +
         scale_fill_brewer(palette = "Dark2") +
-        theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 15)) +
-        theme(axis.text.y = element_text(size = 15)) +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 13)) +
+        theme(axis.text.y = element_text(size = 13)) +
         guides(fill = guide_legend(title.position = "top", nrow = 8, ncol = 3)) +
         labs(y = "MAIPE(%)") +
         theme(legend.key.size = unit(0.25, "cm"), # alto de cuadrados de referencia
               legend.key.width = unit(0.4, "cm"), # ancho de cuadrados de referencia
               legend.position = "right", # ubicacion de leyenda
               legend.direction = "horizontal", # dirección de la leyenda
-              legend.title = element_text(size = 17, face = "bold"), # tamaño de titulo de leyenda
-              legend.text = element_text(size = 17), # tamaño de texto de leyenda
-              axis.title.y = element_text(size = 20),
+              legend.title = element_text(size = 15, face = "bold"), # tamaño de titulo de leyenda
+              legend.text = element_text(size = 13), # tamaño de texto de leyenda
+              axis.title.y = element_text(size = 15),
               strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
-        facet_wrap(~OCC, ncol = n_occs)
+        facet_wrap(~OCC, ncol = n_occs, labeller = labeller(OCC = function(x) paste0("OCC ", x)))
     }
     else if (type ==  'IF30_plot') {
       n_occs <- length(unique(cmetrics$OCC))
@@ -75,19 +75,19 @@ function(cmetrics, type = c('bias_barplot',
         geom_col(aes(fill=Model) ) +
         geom_hline( aes(yintercept= 50), linetype = "dashed", colour= 'firebrick') +
         scale_fill_brewer(palette = "Dark2")+
-        theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 15)) +
-        theme(axis.text.y = element_text(size = 15)) +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 13)) +
+        theme(axis.text.y = element_text(size = 13)) +
         guides(fill = guide_legend(title.position = "top", nrow = 8, ncol = 3)) +
         labs(title="IF30- Bayesian Forecasting", y="IF30(%)")+
         theme(legend.key.size = unit(0.25, "cm"), # alto de cuadrados de referencia
               legend.key.width = unit(0.4, "cm"), # ancho de cuadrados de referencia
               legend.position = "right", # ubicacion de leyenda
               legend.direction = "horizontal", # dirección de la leyenda
-              legend.title = element_text(size = 17, face = "bold"), # tamaño de titulo de leyenda
-              legend.text = element_text(size = 17), # tamaño de texto de leyenda
-              axis.title.y = element_text(size = 20),
+              legend.title = element_text(size = 15, face = "bold"), # tamaño de titulo de leyenda
+              legend.text = element_text(size = 13), # tamaño de texto de leyenda
+              axis.title.y = element_text(size = 15),
               strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
-        facet_wrap(~OCC, ncol=n_occs)
+        facet_wrap(~OCC, ncol=n_occs, labeller = labeller(OCC = function(x) paste0("OCC ", x)))
     }
 
     else if (type ==  'IF20_plot') {
@@ -98,19 +98,19 @@ function(cmetrics, type = c('bias_barplot',
         geom_col( aes(fill=Model) )+
         geom_hline( aes(yintercept= 35), linetype = "dashed", colour= 'firebrick') +
         scale_fill_brewer(palette = "Dark2")+
-        theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 15)) +
-        theme(axis.text.y = element_text(size = 15)) +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 13)) +
+        theme(axis.text.y = element_text(size = 13)) +
         guides(fill = guide_legend(title.position = "top", nrow = 8, ncol = 3)) +
         labs(title="IF20- Bayesian Forecasting",y="IF20(%)")+
         theme(legend.key.size = unit(0.25, "cm"), # alto de cuadrados de referencia
               legend.key.width = unit(0.4, "cm"), # ancho de cuadrados de referencia
               legend.position = "right", # ubicacion de leyenda
               legend.direction = "horizontal", # dirección de la leyenda
-              legend.title = element_text(size = 17, face = "bold"), # tamaño de titulo de leyenda
-              legend.text = element_text(size = 17), # tamaño de texto de leyenda
-              axis.title.y = element_text(size = 20),
+              legend.title = element_text(size = 15, face = "bold"), # tamaño de titulo de leyenda
+              legend.text = element_text(size = 13), # tamaño de texto de leyenda
+              axis.title.y = element_text(size = 15),
               strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
-        facet_wrap(~OCC, ncol = n_occs)
+        facet_wrap(~OCC, ncol = n_occs, labeller = labeller(OCC = function(x) paste0("OCC ", x)))
     }
 
     return(pplot)

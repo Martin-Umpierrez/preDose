@@ -375,19 +375,30 @@ head(map.est[["map_estimations"]])
 #> 6 1048 4.5    0   3  15 26.9 50.2      3 -0.139 0.0789   3
 ```
 
-#### 4) Actualize Indiviudal models with parameters calcualted before.
+#### 4) Update Individual Models with Estimated Parameters
+
+Use `actualize_model()` to update each individual model using the
+parameters obtained from `run_MAP_estimations()`.
 
 ``` r
 updt.md = actualize_model(map.est, evaluation_type = "Progressive") #### Individual Models
 ```
 
-#### 5) Simulate observed concentrations
+#### 5) Simulate Observed Concentrations
+
+To simulate individual concentration profiles for each subject (ID)
+across all occasions (OCC), the `run_ind_simulations()` function
+requires the results from `run_MAP_estimations()` and updated individual
+parameters object from `actualize_model()`.
 
 ``` r
 sim = run_ind_simulations(updt.md, map.est) # Simulate for every ID in every OCC
 ```
 
-#### 6) Calucalte Metrics Accross Occasions
+#### 6) Calculate Metrics Across Occasions
+
+Use `metrics_occ()` to assess predictive performance by computing key
+metrics for each occasion.
 
 ``` r
 metrics = metrics_occ(simulations= sim, 
@@ -420,7 +431,8 @@ head(metrics[2])
 
 #### 7) Make Some Important Plots to compare metrics
 
-##### 7.1) Bias BarPlot
+Several plot types are available to visualize model performance using
+the `metrics_Plot()` function. \##### 7.1) Bias BarPlot
 
 ``` r
 
@@ -481,7 +493,10 @@ metrics2 = metrics_occ(simulations= sim2,
 
 ###### 8.2.1) By Plotting:
 
-First Combine all metrics for all the tested models
+1.  Use `combine_metrics()` to generate a summary of all evaluation
+    metrics across the tested models.  
+2.  Visualize and compare model performance using the `plot_combined()`
+    function.
 
 ``` r
 metrics2 = metrics_occ(simulations= sim2, 
@@ -505,7 +520,12 @@ print(plot_comparrison)
 
 ###### 8.2.2) Select models according to a specific evaluation metric and threshold using select_best_models() function
 
-The `select_best_models()` function
+The `select_best_models()` function selects the best models from a
+dataframe of combined metrics based on a specified ranking metric.  
+It requires a dataframe containing model evaluation metrics and the name
+of the metric to use for ranking.  
+Optionally, you can specify a particular occasion to focus on and the
+number of top models to select.
 
 ``` r
 
