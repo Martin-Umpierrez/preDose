@@ -2,7 +2,7 @@
 # Mayor Change in function : `run_MAP_estimations` Function
 
 ## Issue
-The function `run_MAP_estimations` was not performing well when data missing Steady Stated.
+The function `run_MAP_estimations` was not performing well when data missing Steady State.
 
 ## Fix
 The issue has been resolved. Now, the function correctly accumulate past events when Steady State is missing.

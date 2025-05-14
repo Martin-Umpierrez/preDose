@@ -1,8 +1,8 @@
 
-# Bug Fix: `run_map_estimations` Function
+# Bug Fix: `run_MAP_estimations` Function
 
 ## Issue
-The function `run_map_estimations` was not correctly generating all event times needed for posterior simulations. 
+The function `run_MAP_estimations` was not correctly generating all event times needed for posterior simulations. 
 Previously, it only included the time points corresponding to treatment administration. As a result, other expected time points were missing during simulations.
 
 ## Fix
