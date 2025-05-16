@@ -68,6 +68,7 @@ A list containing:
 \describe{
   \item{data_by_occ}{Filtered datasets by occasion.}
   \item{treatments_by_occ}{List of treatments grouped by occasion.}
+  \item{treatments_apriori}{List of "a priori" treatments }
   \item{map_estimations}{MAP estimation results for each subset of the data.}
   \item{eval_type}{The evaluation type used.}
   \item{pop_model}{The population PK or PKPD model}

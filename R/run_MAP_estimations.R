@@ -30,6 +30,7 @@
 #' \describe{
 #'   \item{data_by_occ}{Filtered datasets by occasion.}
 #'   \item{treatments_by_occ}{List of treatments grouped by occasion.}
+#'   \item{treatments_apriori}{List of "a priori" treatments }
 #'   \item{map_estimations}{MAP estimation results for each subset of the data.}
 #'   \item{eval_type}{The evaluation type used.}
 #'   \item{pop_model}{The population PK or PKPD model}
@@ -155,8 +156,7 @@ function(model_name, model_code,
         nombre_vector <- paste0("dfOCC", i)
         list_df_basedata[[nombre_vector]] <- filtered_data %>% filter(OCC <= i)
       }
-    # Paso 4: Generar los posibles tratamientos "a posteriori" para cada OCC
-    # En el caso de que la OCC sea a partir de OCC 2
+    # Paso 4.1: Generar los posibles tratamientos "a posteriori" para cada OCC
     list_ttos <- list()
     # add an if else sentece if data has ss or not , then how to compute ev tables
     if("SS" %in% names(data)|| "ss" %in% names(data)) {
@@ -233,6 +233,27 @@ function(model_name, model_code,
 
     }
 
+    # Paso 4.2: Generar los tratamientos "a priori" para OCC=1 o OCC=ref
+
+    list_apriori <- list()
+
+      occ_apriori<- ifelse(is.null(occ_ref),1,occ_ref)
+      vector_ttos <- paste0("tto_", occ_apriori)
+      apriori_data <- filtered_data %>% filter(OCC== occ_apriori)
+      list_apriori[[vector_ttos]] <- apriori_data
+
+      # Generar los eventos para cada tratamiento y cada ID
+      num_ids_apriori <- length(unique(list_apriori[[vector_ttos]]$ID))
+      lista_ttos_apriori_occ <- list()
+      for (ids in 1:num_ids_ttos) {
+        vector_eventos <- paste0("ev.tto.occ", occ_apriori, "_ID", ids)
+        lista_ttos_apriori_occ[[vector_eventos]] <- apriori_data %>%
+          filter(ID == ids)  ##### REMOVE OF EVID==1 to get all times for simulation
+      }
+
+      # Guardar los tratamientos por OCC
+      list_apriori[[paste0("apriori_occ_", occ_apriori)]] <- lista_ttos_apriori_occ
+
     # Paso 5: Correr las estimaciones MAP para cada conjunto de datos filtrados
     list_map <- list()
 
@@ -276,6 +297,7 @@ function(model_name, model_code,
     return(list(
       data_by_occ = list_df_basedata,
       treatments_by_occ = list_ttos,
+      apriori_treatments = list_apriori,
       map_estimations = list_map,
       eval_type = evaluation_type,
       pop_model = my_model
