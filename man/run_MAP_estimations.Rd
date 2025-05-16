@@ -70,6 +70,7 @@ A list containing:
   \item{treatments_by_occ}{List of treatments grouped by occasion.}
   \item{map_estimations}{MAP estimation results for each subset of the data.}
   \item{eval_type}{The evaluation type used.}
+  \item{pop_model}{The population PK or PKPD model}
 }
 }
 \description{

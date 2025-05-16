@@ -32,6 +32,7 @@
 #'   \item{treatments_by_occ}{List of treatments grouped by occasion.}
 #'   \item{map_estimations}{MAP estimation results for each subset of the data.}
 #'   \item{eval_type}{The evaluation type used.}
+#'   \item{pop_model}{The population PK or PKPD model}
 #' }
 #' @export
 #'
@@ -276,7 +277,8 @@ function(model_name, model_code,
       data_by_occ = list_df_basedata,
       treatments_by_occ = list_ttos,
       map_estimations = list_map,
-      eval_type = evaluation_type
+      eval_type = evaluation_type,
+      pop_model = my_model
     ))
   }
 
