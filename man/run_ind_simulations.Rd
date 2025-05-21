@@ -4,18 +4,29 @@
 \alias{run_ind_simulations}
 \title{Run Individual Simulations}
 \usage{
-run_ind_simulations(individual_model, tto_occ)
+run_ind_simulations(
+  individual_model,
+  tto_occ,
+  assessment = c("a_priori", "Bayesian_forecasting", "Complete")
+)
 }
 \arguments{
 \item{individual_model}{A list object generated from the `actualize_model` function. It contains posterior estimations for every ID on each occasion.}
 
 \item{tto_occ}{A list object generated from the `run_map_estimations` function. It contains treatment schedules for every ID in each occasion.}
+
+\item{assessment}{Character string. Specifies the type of prediction to perform. Options are:
+\itemize{
+  \item "a_priori": Simulates concentrations using the population model without individual data.
+  \item "Bayesian_Forecasting": Simulates concentrations using individual parameter estimates (posterior mode).
+  \item "Complete": Performs both a priori and Bayesian forecasting simulations.
+}}
 }
 \value{
 A list containing:
 \item{simulation_results}{A list of simulation results for each occasion and individual.}
 \item{ttoocc}{A list of treatments organized by occasion.}
-\item{events_tto}{A list of treatment events for each occasion.}
+\item{assessment}{A string indicating the type of assessment to perform.} Options are \code{"a_priori"}, \code{"Bayesian_forecasting"}, or \code{"Complete"}.
 }
 \description{
 Simulates individual concentrations based on posterior estimations and treatment schedules for each occasion.
