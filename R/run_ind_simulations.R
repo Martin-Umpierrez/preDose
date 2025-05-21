@@ -11,8 +11,6 @@
 #'     \item "Complete": Performs both a priori and Bayesian forecasting simulations.
 #'   }
 #'
-#'
-#'
 #' @return A list containing:
 #' \item{simulation_results}{A list of simulation results for each occasion and individual.}
 #' \item{ttoocc}{A list of treatments organized by occasion.}
@@ -71,6 +69,7 @@ run_ind_simulations <- function(individual_model,
       id_number <- sub(".*ID", "", id_name)
 
       tryCatch({
+        set.seed(12345)
         treatment <- tto_apriori[["apriori_occ_1"]][[paste0("ev.tto.occ1_ID", id_number)]]
         start <- min(treatment$TIME)
         end <- max(treatment$TIME)

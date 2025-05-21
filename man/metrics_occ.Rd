@@ -4,12 +4,24 @@
 \alias{metrics_occ}
 \title{metrics_occ}
 \usage{
-metrics_occ(simulations, sims, tool = c("mapbayr", "lixoftconnectors"))
+metrics_occ(
+  simulations,
+  sims,
+  assessment = c("a_priori", "Bayesian_forecasting", "Complete"),
+  tool = c("mapbayr", "lixoftconnectors")
+)
 }
 \arguments{
 \item{simulations}{A list containing simulation results from [run_ind_simulations()], must be used with tool `mapbayr`.}
 
 \item{sims}{A list of simulation outputs from `lixoftConnectors`.}
+
+\item{assessment}{Character string. Specifies the type of prediction to perform. Options are:
+\itemize{
+  \item "a_priori": Simulates concentrations using the population model without individual data.
+  \item "Bayesian_Forecasting": Simulates concentrations using individual parameter estimates (posterior mode).
+  \item "Complete": Performs both a priori and Bayesian forecasting simulations.
+}}
 
 \item{tool}{A character string specifying the tool used to obtain the list of simulations (`"mapbayr"` or `"lixoftConnectors"`).}
 }
@@ -27,7 +39,7 @@ grouping results by occasion (OCC). It supports both `mapbayr` and `lixoftConnec
 }
 \examples{
 # Example usage with mapbayr
-# results <- metrics_occ(simulations = my_simulations, tool = "mapbayr")
+# results <- metrics_occ(simulations = my_simulations, tool = "mapbayr", assessment="Complete)
 # Example usage with lixoftConnectors
 # results <- metrics_occ(sims = my_sims, tool = "lixoftConnectors")
 
