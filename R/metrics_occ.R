@@ -47,9 +47,7 @@ metrics_occ <- function(simulations,
 
 
     listtratamientos <- simulations[["ttoocc"]]
-    df_ttos <- do.call(rbind,
-
-                       listtratamientos) %>% filter(EVID==0) %>%
+    df_ttos <- do.call(rbind,listtratamientos) %>% filter(EVID==0) %>%
       select(ID, OCC, TIME, DV)
 
     df_merged = left_join(df_simulaciones, df_ttos, by=c("ID", "OCC","TIME"))
@@ -68,8 +66,6 @@ metrics_occ <- function(simulations,
     df_simulaciones <- do.call(rbind, combine)
     df_simulaciones = df_simulaciones %>% rename(Ind_Prediction = CP) %>%
       select (ID, OCC, TIME, Ind_Prediction) %>% filter(Ind_Prediction>0)
-
-    print(df_simulaciones)
 
     listtratamientos = simulations[["ttoocc"]]
     df_ttos = do.call(rbind, listtratamientos) %>% filter(EVID==0) %>%

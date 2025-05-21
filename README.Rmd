@@ -197,8 +197,10 @@ updt.md = actualize_model(map.est, evaluation_type = "Progressive") #### Individ
 #### 5) Simulate Observed Concentrations
 To simulate individual concentration profiles for each subject (ID) across all occasions (OCC), the `run_ind_simulations()` function requires the results from `run_MAP_estimations()` and updated individual parameters object from `actualize_model()`.
 
-```{r Simulate, echo=TRUE, message=FALSE, warning=FALSE, error=FALSE, cache=TRUE }
-sim = run_ind_simulations(updt.md, map.est) # Simulate for every ID in every OCC
+```{r Simulate, echo=TRUE, message=FALSE, warning=FALSE, error=FALSE, cache=TRUE}
+sim = run_ind_simulations(updt.md, 
+                          map.est,
+                          assessment = "Bayesian_forecasting") # Simulate for every ID in every OCC
 
 ```
 
@@ -207,7 +209,8 @@ sim = run_ind_simulations(updt.md, map.est) # Simulate for every ID in every OCC
 Use `metrics_occ()` to assess predictive performance by computing key metrics for each occasion.
 
 ```{r calcualte_metrics, echo=TRUE, message=FALSE}
-metrics = metrics_occ(simulations= sim, 
+metrics = metrics_occ(simulations= sim,
+                      assessment= "Bayesian_forecasting",
                       tool="mapbayr") # Simulate for every ID in every OCC
 
 head((metrics[["metrics"]]),10)
@@ -264,10 +267,13 @@ map.est.2 <- run_MAP_estimations(model_name = "Test_Model2",
 
 updt.md2 = actualize_model(map.est.2, evaluation_type = "Progressive")
 
-sim2 = run_ind_simulations(updt.md2, map.est.2)
+sim2 = run_ind_simulations(updt.md2, 
+                           map.est.2,
+                           assessment = "Bayesian_forecasting")
 
 metrics2 = metrics_occ(simulations= sim2, 
-                      tool="mapbayr") 
+                       assessment = "Bayesian_forecasting",
+                       tool="mapbayr") 
 
 ```
 
@@ -276,8 +282,6 @@ metrics2 = metrics_occ(simulations= sim2,
 1. Use `combine_metrics()` to generate a summary of all evaluation metrics across the tested models.  
 2. Visualize and compare model performance using the `plot_combined()` function.
 ```{r plot_comparisson, echo=TRUE, message=FALSE, warning=TRUE}
-metrics2 = metrics_occ(simulations= sim2, 
-                      tool="mapbayr") # Simulate for every ID in every OCC
 
 ###### Generate a summary of metrics for all tested models
 model_list <- list(list(model_name="Han_etal", metrics_list=metrics),

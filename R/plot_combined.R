@@ -40,10 +40,10 @@ function(cmetrics, type = c('bias_barplot',
               legend.key.width = unit(0.4, "cm"), # ancho de cuadrados de referencia
               legend.position = "right", # ubicacion de leyenda
               legend.direction = "horizontal", # dirección de la leyenda
-              legend.title = element_text(size = 15, face = "bold"), # tamaño de titulo de leyenda
-              legend.text = element_text(size = 13), # tamaño de texto de leyenda
-              axis.title.y = element_text(size = 15),
-              strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
+              legend.title = element_text(size = 13, face = "bold"), # tamaño de titulo de leyenda
+              legend.text = element_text(size = 12), # tamaño de texto de leyenda
+              axis.title.y = element_text(size = 13),
+              strip.text = element_text(size = 13, face = "bold")) + # tamaño y estilo del texto del encabezado
         facet_wrap(~OCC, ncol = n_occs, labeller = labeller(OCC = function(x) paste0("OCC ", x)))
     } else if (type == 'MAIPE_barplot') {
       n_occs <- length(unique(cmetrics$OCC))
@@ -61,10 +61,10 @@ function(cmetrics, type = c('bias_barplot',
               legend.key.width = unit(0.4, "cm"), # ancho de cuadrados de referencia
               legend.position = "right", # ubicacion de leyenda
               legend.direction = "horizontal", # dirección de la leyenda
-              legend.title = element_text(size = 15, face = "bold"), # tamaño de titulo de leyenda
-              legend.text = element_text(size = 13), # tamaño de texto de leyenda
-              axis.title.y = element_text(size = 15),
-              strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
+              legend.title = element_text(size = 13, face = "bold"), # tamaño de titulo de leyenda
+              legend.text = element_text(size = 12), # tamaño de texto de leyenda
+              axis.title.y = element_text(size = 13),
+              strip.text = element_text(size = 13, face = "bold")) + # tamaño y estilo del texto del encabezado
         facet_wrap(~OCC, ncol = n_occs, labeller = labeller(OCC = function(x) paste0("OCC ", x)))
     }
     else if (type ==  'IF30_plot') {
@@ -83,10 +83,10 @@ function(cmetrics, type = c('bias_barplot',
               legend.key.width = unit(0.4, "cm"), # ancho de cuadrados de referencia
               legend.position = "right", # ubicacion de leyenda
               legend.direction = "horizontal", # dirección de la leyenda
-              legend.title = element_text(size = 15, face = "bold"), # tamaño de titulo de leyenda
-              legend.text = element_text(size = 13), # tamaño de texto de leyenda
-              axis.title.y = element_text(size = 15),
-              strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
+              legend.title = element_text(size = 13, face = "bold"), # tamaño de titulo de leyenda
+              legend.text = element_text(size = 12), # tamaño de texto de leyenda
+              axis.title.y = element_text(size = 13),
+              strip.text = element_text(size = 13, face = "bold")) + # tamaño y estilo del texto del encabezado
         facet_wrap(~OCC, ncol=n_occs, labeller = labeller(OCC = function(x) paste0("OCC ", x)))
     }
 
@@ -106,10 +106,10 @@ function(cmetrics, type = c('bias_barplot',
               legend.key.width = unit(0.4, "cm"), # ancho de cuadrados de referencia
               legend.position = "right", # ubicacion de leyenda
               legend.direction = "horizontal", # dirección de la leyenda
-              legend.title = element_text(size = 15, face = "bold"), # tamaño de titulo de leyenda
-              legend.text = element_text(size = 13), # tamaño de texto de leyenda
-              axis.title.y = element_text(size = 15),
-              strip.text = element_text(size = 15, face = "bold")) + # tamaño y estilo del texto del encabezado
+              legend.title = element_text(size = 13, face = "bold"), # tamaño de titulo de leyenda
+              legend.text = element_text(size = 12), # tamaño de texto de leyenda
+              axis.title.y = element_text(size = 13),
+              strip.text = element_text(size = 13, face = "bold")) + # tamaño y estilo del texto del encabezado
         facet_wrap(~OCC, ncol = n_occs, labeller = labeller(OCC = function(x) paste0("OCC ", x)))
     }
 
