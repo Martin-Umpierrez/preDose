@@ -42,6 +42,7 @@ The function dynamically names the posterior estimation results, following the p
 `a.posteriori_occX_Y`, where `X` and `Y` represent the occasions used in the estimation.
 }
 \examples{
+\dontrun{
 # Example input data
 actualization_map <- list(
   eval_type = "Progressive",
@@ -54,5 +55,5 @@ actualization_map <- list(
 # Run the function
 result <- actualize_model(actualization_map, evaluation_type = "Progressive")
 print(result)
-
+}
 }

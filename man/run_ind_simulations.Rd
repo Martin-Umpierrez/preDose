@@ -37,6 +37,7 @@ For each posterior estimation, it retrieves the corresponding treatment schedule
 over the specified time range. The results are stored for each individual within each occasion.
 }
 \examples{
+\dontrun{
 # Assuming `individual_model` is created with actualize_model
 # and `tto_occ` is created with run_map_estimations:
 
@@ -50,7 +51,7 @@ treatments <- results$ttoocc
 
 # Access treatment events
 events <- results$events_tto
-
+}
 }
 \seealso{
 \code{\link{actualize_model}}, \code{\link{run_map_estimations}}

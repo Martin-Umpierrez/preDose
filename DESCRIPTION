@@ -34,7 +34,8 @@ Imports:
     magrittr,
     mrgsolve (>= 1.0.8),
     RJSONIO,
-    tidyr
+    tidyr,
+    scales
 RoxygenNote: 7.3.2
 Suggests: 
     knitr,

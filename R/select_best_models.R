@@ -19,7 +19,28 @@
 #' @export
 #'
 #' @examples
-#' top_models <- select_top_models(combined_results, metric = 'MAIPE', top_n = 3, occ_eval=2, rank_criteria = 'min')
+#' #' set.seed(123)  # Para reproducibilidad
+#' generate_fake_metrics <- function(n_occasions = 3) {
+#' data.frame(
+#' OCC = rep(1:n_occasions),  # Simula varias ocasiones
+#' rBIAS = rnorm(n_occasions, mean = 0, sd = 10),
+#' rBIAS_lower = rnorm(n_occasions, mean = -5, sd = 5),
+#' rBIAS_upper = rnorm(n_occasions, mean = 5, sd = 5),
+#' MAIPE = runif(n_occasions, min = 10, max = 50),
+#' IF20 = runif(n_occasions, min = 20, max = 80),
+#' IF30 = runif(n_occasions, min = 30, max = 90)
+#' )
+#' }
+#' # Save Results of metrics
+#' simulation1 <- list(metrics_means = generate_fake_metrics())
+#' simulation2 <- list(metrics_means = generate_fake_metrics())
+#' # List of models
+#' models_list <- list(
+#' list(model_name = "Test_Model1", metrics_list = simulation1),
+#' list(model_name = "Test_Model2", metrics_list = simulation2)
+#' )
+#'combined_results <- combine_metrics(models_list)
+#' top_models <- select_best_models(combined_results, metric = 'MAIPE', top_n = 3, occ_eval=2, rank_criteria = 'min')
 select_best_models <-
   function(data, metric, top_n = 3, occ_eval=NULL , rank_criteria = 'min') {
     if (is.null(occ_eval)){

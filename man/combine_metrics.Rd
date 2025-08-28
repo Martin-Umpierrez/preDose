@@ -35,10 +35,10 @@ IF20 = runif(n_occasions, min = 20, max = 80),
 IF30 = runif(n_occasions, min = 30, max = 90)
 )
 }
-Save Results of metrics
+# Save Results of metrics
 simulation1 <- list(metrics_means = generate_fake_metrics())
 simulation2 <- list(metrics_means = generate_fake_metrics())
-List of models
+# List of models
 models_list <- list(
 list(model_name = "Test_Model1", metrics_list = simulation1),
 list(model_name = "Test_Model2", metrics_list = simulation2)
