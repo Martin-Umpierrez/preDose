@@ -61,55 +61,53 @@ function(actualization_map,
   # Evaluationtype :
   evaluation_type <- match.arg(evaluation_type)
 
-  # Inicializar una lista para almacenar las nuevas estimaciones a posteriori
-
+  # list for save estimations
   posterior_estimations <- list()
 
   if(!"map_estimations" %in% names(actualization_map)) {
-    stop("There is no element ´map_estimation´ in the entry ")
+    stop("There is no element `map_estimation` in the entry ")
   }
 
   map_estimations <- actualization_map$map_estimations
-  # Obtener el número de estimaciones disponibles en la lista
   num_estimations <- length(map_estimations)
 
-  # Iterar sobre las estimaciones desde OCC 1 hasta OCC n-1
+  # loop over estimations
   if(evaluation_type=="Progressive") {
     for (i in 1:(num_estimations)) {
-      # Acceder a la estimación actual de OCC i (asegurarse que esté correctamente estructurado)
+      # current estimation
       previous_numbers <- paste0(1:i, collapse = "_")
 
       current_map_estimation <- map_estimations[[paste0("map.estimation.occ_0_",previous_numbers)]]
 
-      # Verificar si current_map_estimation no es nulo
+      # check current_map_estimation not null
       if (!is.null(current_map_estimation)) {
-        # Usar la estimación posterior para la siguiente OCC
+        # use posterior for next OCC
         posterior_result <- current_map_estimation %>% mapbayr::use_posterior()
 
-        # Guardar el resultado con un nombre dinámico como a.posteriori_occ1_2, a.posteriori_occ2_3, etc.
+        # save result with dynamic name like a.posteriori_occ1_2, a.posteriori_occ2_3, etc.
         posterior_name <- paste0("a.posteriori_occ", i, "_", i + 1)
         posterior_estimations[[posterior_name]] <- posterior_result
       } else {
-        message(paste0("Estimación para OCC ", i, " es nula, saltando a la siguiente."))
+        message(paste0("Estimation for OCC ", i, " is null, skiping to next."))
       }
     }
   }
 
   else if (evaluation_type=="Most_Recent_Progressive") {
     for (i in 1:(num_estimations)) {
-      # Acceder a la estimación actual de OCC i (asegurarse que esté correctamente estructurado)
+
       current_map_estimation <- map_estimations[[paste0("map.estimation.occ_", i)]]
 
-      # Verificar si current_map_estimation no es nulo
+      # check current_map_estimation is null
       if (!is.null(current_map_estimation)) {
-        # Usar la estimación posterior para la siguiente OCC
+        # use posterior for next OCC
         posterior_result <- current_map_estimation %>% mapbayr::use_posterior()
 
-        # Guardar el resultado con un nombre dinámico como a.posteriori_occ1_2, a.posteriori_occ2_3, etc.
+        # save result with dynamic name like a.posteriori_occ1_2, a.posteriori_occ2_3, etc.
         posterior_name <- paste0("a.posteriori_occ", i, "_", i + 1)
         posterior_estimations[[posterior_name]] <- posterior_result
       } else {
-        message(paste0("Estimación para OCC ", i, " es nula, saltando a la siguiente."))
+        message(paste0("Estimation for OCC ", i, " is null, skiping to next."))
       }
     }
   }
@@ -119,16 +117,16 @@ function(actualization_map,
       previous_numbers <- paste0(1:i, collapse = "_")
       current_map_estimation <- map_estimations[[paste0("map.estimation.occ_0_",previous_numbers)]]
 
-      # Verificar si current_map_estimation no es nulo
+      # check current_map_estimation is null
       if (!is.null(current_map_estimation)) {
-        # Usar la estimación posterior para la siguiente OCC
+        # use posterior for next OCC
         posterior_result <- current_map_estimation %>% mapbayr::use_posterior()
 
-        # Guardar el resultado con un nombre dinámico como a.posteriori_occ1_2, a.posteriori_occ2_3, etc.
+        # save result with dynamic name like a.posteriori_occ1_2, a.posteriori_occ2_3, etc.
         posterior_name <- paste0("a.posteriori_occ", i, "_", i + 1)
         posterior_estimations[[posterior_name]] <- posterior_result
       } else {
-        message(paste0("Estimación para OCC ", i, " es nula, saltando a la siguiente."))
+        message(paste0("Estimation for OCC ", i, " is null, skiping to next."))
       }
     }
   }
@@ -139,21 +137,21 @@ function(actualization_map,
       previous_numbers <- paste0((occ_ref-1):i, collapse = "_")
       current_map_estimation <- map_estimations[[paste0("map.estimation.occ_",previous_numbers)]]
 
-      # Verificar si current_map_estimation no es nulo
+      # check current_map_estimation is null
       if (!is.null(current_map_estimation)) {
-        # Usar la estimación posterior para la siguiente OCC
+        # use posterior for next OCC
         posterior_result <- current_map_estimation %>% mapbayr::use_posterior()
 
-        # Guardar el resultado con un nombre dinámico como a.posteriori_occ1_2, a.posteriori_occ2_3, etc.
+        # save result with dynamic name like a.posteriori_occ1_2, a.posteriori_occ2_3, etc.
         posterior_name <- paste0("a.posteriori_occ", i, "_", i + 1)
         posterior_estimations[[posterior_name]] <- posterior_result
       } else {
-        message(paste0("Estimación para OCC ", i, " es nula, saltando a la siguiente."))
+        message(paste0("Estimation for OCC ", i, " is null, skiping to next."))
       }
     }
   }
 
-  # Retornar la lista con las estimaciones a posteriori
+  # results
   return(list(ind_model=posterior_estimations,
               eval_type=evaluation_type))
 }

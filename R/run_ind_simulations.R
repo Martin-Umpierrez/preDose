@@ -36,7 +36,7 @@
 #' # Access treatment events
 #' events <- results$events_tto
 #'}
-#' @seealso \code{\link{actualize_model}}, \code{\link{run_map_estimations}}
+#' @seealso \code{\link{actualize_model}}, \code{\link{run_MAP_estimations}}
 #'
 #' @export
 

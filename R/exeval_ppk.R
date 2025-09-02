@@ -1,11 +1,11 @@
 #' External evaluation for Population Pharmacokinetic (PPK) Models
 #'
 #' Performs external evaluation of PPK models by conducting MAP estimations and individual simulations
-#' for each ocasion using different evaluation strategies (see evaluation_type)
+#' for each occasion using different evaluation strategies (see evaluation_type)
 #'
 #' @param model_name Character string. Name of the model to use in the analysis.
 #' @param model_code Character string. Code of the pharmacokinetic model in mrgsolve format.
-#' @param tool Character string. Specifies the tool to use for estimation. Options are "mapbayr" or "lixoftconnectors".
+#' @param tool Character string. Specifies the tool to use for estimation. Currently "mapbayr" is the only option.
 #' @param check_compile Logical. If `TRUE`, checks if the model compiles correctly in `mapbayr`.
 #' @param data Data frame. Contains the input data for the estimations, including columns like ID, TIME, and OCC.
 #' @param num_occ Integer. Number of occasions (OCC) to include in the analysis. If `NULL`, all unique occasions in `data` are used.
@@ -38,27 +38,29 @@
 #'   \item{metrics}{Evaluation metrics}
 #'   \item{estimations}{MAP estimation results for each subset of the data.}
 #'   \item{simulation}{A list of simulation results for each occasion and individual.}
-#'   \item{updates}: A list containing posterior estimations (`a.posteriori`) for each occasion.
+#'   \item{updates}{A list containing posterior estimations (`a.posteriori`) for each occasion.}
 #' }
 #' @export
 #'
 #' @examples
 #' \dontrun{
-#' # Example using mapbayr
-#' run_MAP_estimations(
-#'   model_name = "example_model",
-#'   model_code = "example_code",
-#'   tool = "mapbayr",
-#'   data = example_data,
-#'   evaluation_type = "Progressive"
-#' )
+#' data("data_tacHAN2011", package = "preDose")
+#' data("model_tacHAN2011", package = "preDose")
+#'
+#' dd <- data_tacHAN2011 |> subset(ID < 6)
+#'
+#' res <- exeval_ppk(model_name = "tacrolimus_HAN2011",
+#'                  model_code = model_tacHAN2011,
+#'                  data = dd,
+#'                  evaluation_type= "Progressive",
+#'                  assessment='Bayesian_forecasting' )
+#'
+#' res # Print the results
 #' }
-
-
 
 exeval_ppk <-  function(model_name,
                         model_code,
-                        tool = c("mapbayr", "lixoftconnectors"),### From mrg mode
+                        tool = "mapbayr",
                         check_compile = TRUE,
                         data,
                         num_occ = NULL, ### Para lixoft definimos solo occ
@@ -74,24 +76,10 @@ exeval_ppk <-  function(model_name,
                         method = c("L-BFGS-B", "newuoa"),
                         assessment = c("a_priori","Bayesian_forecasting", "Complete")) {
 
-  est <- run_MAP_estimations(
-    model_name,
-    model_code,
-    tool,
-    check_compile,
-    data,
-    num_occ,
-    num_ids,
-    sampling,
-    occ_ref,
-    evaluation_type,
-    file_mlxtran,
-    names_occ,
-    names_id,
-    names_time,
-    names_evid,
-    method
-  )
+  est <- run_MAP_estimations(model_name, model_code, tool, check_compile,
+                             data, num_occ, num_ids, sampling, occ_ref, evaluation_type, file_mlxtran,
+                             names_occ, names_id, names_time, names_evid, method
+                             )
 
   updt <- actualize_model(est, evaluation_type)
 
@@ -108,21 +96,4 @@ exeval_ppk <-  function(model_name,
     class = 'EvalPPK',
     attributes = info)
 
-}
-
-
-print.EvalPPK <- function(rr) {
-  info <- attr(res, 'attributes')
-  nn <- nchar(info[3,]) |> sum()
-  cat(rep("=", nn + 4), "\n", sep = "")
-  cat('Evaluation information')
-  cat("\n")
-  print(info)
-  cat(rep("=", nn + 4), "\n", sep = "")
-  cat("\n")
-  cat(rep("=", nn + 4), "\n", sep = "")
-  cat('Evaluation metrics')
-  cat("\n")
-  print( rr$metrics$metrics_means )
-  cat(rep("=", nn + 4), "\n", sep = "")
 }
