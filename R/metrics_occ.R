@@ -3,10 +3,9 @@
 #' Compute Metrics for Individual Predictions by Occasion
 #'
 #' This function calculates various prediction error metrics for individual pharmacokinetic simulations,
-#' grouping results by occasion (OCC). It supports both `mapbayr` and `lixoftConnectors` tools.
+#' grouping results by occasion (OCC). Currently supports  `mapbayr` models.
 #'
-#' @param simulations A list containing simulation results from [run_ind_simulations()], must be used with tool `mapbayr`.
-#' @param sims A list of simulation outputs from `lixoftConnectors`.
+#' @param simulations A list containing simulation results from [run_ind_simulations()].
 #' @param assessment Character string. Specifies the type of prediction to perform. Options are:
 #'   \itemize{
 #'     \item "a_priori": Simulates concentrations using the population model without individual data.
@@ -19,19 +18,15 @@
 #'   - `metrics_means`: A dataframe containing the rBIAS, MAPE, rRMSE, IF20 AND IF30 .
 #'
 #' @examples
-#' # Example usage with mapbayr
-#' # results <- metrics_occ(simulations = my_simulations, tool = "mapbayr", assessment="Complete)
-#' # Example usage with lixoftConnectors
-#' # results <- metrics_occ(sims = my_sims, tool = "lixoftConnectors")
+#' # results <- metrics_occ(simulations = my_simulations, assessment="Complete)
 #'
 #' @export
 #'
 metrics_occ <- function(simulations,
-                       sims,
                        assessment = c("a_priori",
                                       "Bayesian_forecasting",
                                       "Complete"),
-                       tool = c("mapbayr", "lixoftconnectors"))  {
+                       tool = "mapbayr")  {
 
   # Robust asignment of arguments
   assessment <- match.arg(assessment)
@@ -112,20 +107,20 @@ metrics_occ <- function(simulations,
   }
 
   # LixoftcConnectors
-  else if (tool == "lixoftConnectors") {
-    mm <- vector(mode='list', length = length(sims))
-    mm[[1]] <- sims[[1]] %>%
-      mutate(
-        IPE = ((Cc- DV)/DV) *100,
-        APE= abs(((Cc- DV)/DV))*100,
-        RMSE = (((Cc-DV)^2)/((DV)^2))
-      )
-
-    mm[-1] <- lapply( sims[-1], metrics_occasion) ### Cambio menor que no estaba tomando bien los datos
-    names(mm) <- names(sims)
-
-    metrics <- bind_rows(mm)
-  }
+  # else if (tool == "lixoftConnectors") {
+  #   mm <- vector(mode='list', length = length(sims))
+  #   mm[[1]] <- sims[[1]] %>%
+  #     mutate(
+  #       IPE = ((Cc- DV)/DV) *100,
+  #       APE= abs(((Cc- DV)/DV))*100,
+  #       RMSE = (((Cc-DV)^2)/((DV)^2))
+  #     )
+  #
+  #   mm[-1] <- lapply( sims[-1], metrics_occasion) ### Cambio menor que no estaba tomando bien los datos
+  #   names(mm) <- names(sims)
+  #
+  #   metrics <- bind_rows(mm)
+  # }
 
   if (!exists("metrics") || nrow(metrics) == 0) {
     stop("The 'metrics' object could not be generated. Please check the data and arguments.")

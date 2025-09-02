@@ -304,44 +304,43 @@ function(model_name, model_code,
     ))
   }
 
-  else if (tool == "lixoftConnectors") {
-    dat(file = file_mlxtran)
-    pp <- protodata(file = file_mlxtran, names_occ = names_occ)
-
-    names(pp[[1]])[which(names(pp[[1]]) == names_id)] <- 'ID'
-    names(pp[[1]])[which(names(pp[[1]]) == names_time)] <- 'TIME'
-    names(pp[[1]])[which(names(pp[[1]]) == names_evid)] <- 'EVID'
-
-    for (o in 1:occ) {
-      estimation_occ(occ = o,
-                     datos = pp[[1]],
-                     file = file_mlxtran)
-    }
-
-    lixoftConnectors::initializeLixoftConnectors(software = "simulx", force=TRUE)
-    lixoftConnectors::importProject(file_mlxtran)
-
-    out <- vector(mode = 'list', length = occ) # no simulation for last occ
-
-    for (o in 0:(occ-1) ) {
-
-      nn <- pp[[1]] %>%
-        filter(OCC == c(o+1), EVID==0) %>%
-        select(ID, TIME, DV, OCC)  |>
-        setNames( c('ID', 'time', 'DV', 'OCC') )
-
-      if (o == 0) {
-        out[[1]] <- rio::import("priorPred.csv")
-      } else {
-        ss <- simulation_occ(file = file_mlxtran, newD = nn[,1:2], o = o)
-        ss$data = nn
-        out[[o+1]] <- ss
-      }
-
-    }
-
-    names(out) <- paste0('simOCC_', 1:occ )
-    return(out)
-  }
+  # else if (tool == "lixoftConnectors") {
+  #   dat(file = file_mlxtran)
+  #   pp <- protodata(file = file_mlxtran, names_occ = names_occ)
+  #
+  #   names(pp[[1]])[which(names(pp[[1]]) == names_id)] <- 'ID'
+  #   names(pp[[1]])[which(names(pp[[1]]) == names_time)] <- 'TIME'
+  #   names(pp[[1]])[which(names(pp[[1]]) == names_evid)] <- 'EVID'
+  #
+  #   for (o in 1:occ) {
+  #     estimation_occ(occ = o,
+  #                    datos = pp[[1]],
+  #                    file = file_mlxtran)
+  #   }
+  #
+  #   lixoftConnectors::initializeLixoftConnectors(software = "simulx", force=TRUE)
+  #   lixoftConnectors::importProject(file_mlxtran)
+  #
+  #   out <- vector(mode = 'list', length = occ) # no simulation for last occ
+  #
+  #   for (o in 0:(occ-1) ) {
+  #
+  #     nn <- pp[[1]] %>%
+  #       filter(OCC == c(o+1), EVID==0) %>%
+  #       select(ID, TIME, DV, OCC)  |>
+  #       setNames( c('ID', 'time', 'DV', 'OCC') )
+  #
+  #     if (o == 0) {
+  #       out[[1]] <- rio::import("priorPred.csv")
+  #     } else {
+  #       ss <- simulation_occ(file = file_mlxtran, newD = nn[,1:2], o = o)
+  #       ss$data = nn
+  #       out[[o+1]] <- ss
+  #     }
+  #
+  #  }
+#     names(out) <- paste0('simOCC_', 1:occ )
+#     return(out)
+#   }
 
 }

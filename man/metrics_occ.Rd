@@ -6,15 +6,12 @@
 \usage{
 metrics_occ(
   simulations,
-  sims,
   assessment = c("a_priori", "Bayesian_forecasting", "Complete"),
-  tool = c("mapbayr", "lixoftconnectors")
+  tool = "mapbayr"
 )
 }
 \arguments{
-\item{simulations}{A list containing simulation results from [run_ind_simulations()], must be used with tool `mapbayr`.}
-
-\item{sims}{A list of simulation outputs from `lixoftConnectors`.}
+\item{simulations}{A list containing simulation results from [run_ind_simulations()].}
 
 \item{assessment}{Character string. Specifies the type of prediction to perform. Options are:
 \itemize{
@@ -35,12 +32,9 @@ Compute Metrics for Individual Predictions by Occasion
 }
 \details{
 This function calculates various prediction error metrics for individual pharmacokinetic simulations,
-grouping results by occasion (OCC). It supports both `mapbayr` and `lixoftConnectors` tools.
+grouping results by occasion (OCC). Currently supports  `mapbayr` models.
 }
 \examples{
-# Example usage with mapbayr
-# results <- metrics_occ(simulations = my_simulations, tool = "mapbayr", assessment="Complete)
-# Example usage with lixoftConnectors
-# results <- metrics_occ(sims = my_sims, tool = "lixoftConnectors")
+# results <- metrics_occ(simulations = my_simulations, assessment="Complete)
 
 }

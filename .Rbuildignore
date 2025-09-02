@@ -8,3 +8,6 @@
 ^shiny$
 ^slides$
 ^data_raw$
+README.html
+README_cache
+R/utils.R

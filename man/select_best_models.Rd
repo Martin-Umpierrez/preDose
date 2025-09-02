@@ -59,5 +59,5 @@ list(model_name = "Test_Model1", metrics_list = simulation1),
 list(model_name = "Test_Model2", metrics_list = simulation2)
 )
 combined_results <- combine_metrics(models_list)
-top_models <- select_best_models(combined_results, metric = 'MAIPE', top_n = 3, occ_eval=2, rank_criteria = 'min')
+top_models <- select_best_models(combined_results, metric='MAIPE', occ_eval=2)
 }

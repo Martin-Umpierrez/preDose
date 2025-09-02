@@ -5,7 +5,7 @@
 #'
 #' @export
 print.EvalPPK <- function(x, ...) {
-  info <- attr(res, 'attributes')
+  info <- attr(x, 'attributes')
   nn <- nchar(info[3,]) |> sum()
   cat(rep("=", nn + 4), "\n", sep = "")
   cat('Evaluation information')
