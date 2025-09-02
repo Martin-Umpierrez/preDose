@@ -54,5 +54,5 @@ events <- results$events_tto
 }
 }
 \seealso{
-\code{\link{actualize_model}}, \code{\link{run_map_estimations}}
+\code{\link{actualize_model}}, \code{\link{run_MAP_estimations}}
 }
