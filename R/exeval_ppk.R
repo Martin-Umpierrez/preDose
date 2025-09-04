@@ -76,16 +76,17 @@ exeval_ppk <-  function(model_name,
                         method = c("L-BFGS-B", "newuoa"),
                         assessment = c("a_priori","Bayesian_forecasting", "Complete")) {
 
+  ## Run estimation, simulation and predicton erro computation in every OCC
   est <- run_MAP_estimations(model_name, model_code, tool, check_compile,
                              data, num_occ, num_ids, sampling, occ_ref, evaluation_type, file_mlxtran,
                              names_occ, names_id, names_time, names_evid, method
                              )
-
   updt <- actualize_model(est, evaluation_type)
-
   sims <- run_ind_simulations(updt, est, assessment)
 
+  # Compute evaluation metrics
   metrics <- metrics_occ(sims, assessment=assessment,tool=tool )
+
 
   argument = c('Model Name', 'Evaluation', 'Assesment')
   value    = c(model_name, match.arg(evaluation_type), match.arg(assessment))

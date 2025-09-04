@@ -88,7 +88,7 @@ run_ind_simulations <- function(individual_model,
     event.tto[["OCC_1"]] <- event.tto.byocc
   }
 
-  ## 2. Simulaciones Bayesianas
+  ## 2. simulations
   if (assessment %in% c("Bayesian_forecasting", "Complete")) {
 
     posterior_estimations <- individual_model$ind_model

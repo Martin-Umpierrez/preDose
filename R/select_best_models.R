@@ -45,26 +45,26 @@ select_best_models <-
   function(data, metric, top_n = 3, occ_eval=NULL , rank_criteria = 'min') {
     if (is.null(occ_eval)){
       ranked_models <- data %>%
-        group_by(OCC) %>%
-        arrange(
+        dplyr::group_by(OCC) %>%
+        dplyr::arrange(
           if (rank_criteria == 'min') !!sym(metric)
           else if (rank_criteria == 'max') desc(!!sym(metric))
           else abs(!!sym(metric))
         ) %>%
-        slice_head(n = top_n) %>%
-        ungroup()
+        dplyr::slice_head(n = top_n) %>%
+        dplyr::ungroup()
     }
     else {
       ranked_models<- data %>%
-        group_by(OCC) %>%
-        arrange(
-          if (rank_criteria == 'min') !!sym(metric)
-          else if (rank_criteria == 'max') desc(!!sym(metric))
-          else abs(!!sym(metric))
+        dplyr::group_by(OCC) %>%
+        dplyr::arrange(
+          if (rank_criteria == 'min') !!dplyr::sym(metric)
+          else if (rank_criteria == 'max') dplyr::desc(!!sym(metric))
+          else abs(!!dplyr::sym(metric))
         ) %>%
-        slice_head(n = top_n) %>%
-        filter(OCC==occ_eval) %>%
-        ungroup()
+        dplyr::slice_head(n = top_n) %>%
+        dplyr::filter(OCC==occ_eval) %>%
+        dplyr::ungroup()
 
     }
     return(ranked_models)
