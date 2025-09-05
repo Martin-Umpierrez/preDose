@@ -23,7 +23,7 @@ and merges them into a single data frame.
 }
 \examples{
 
-set.seed(123)  # Para reproducibilidad
+set.seed(123) 
 generate_fake_metrics <- function(n_occasions = 3) {
 data.frame(
 OCC = rep(1:n_occasions),  # Simula varias ocasiones

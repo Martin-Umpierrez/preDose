@@ -7,7 +7,7 @@
 run_MAP_estimations(
   model_name,
   model_code,
-  tool = c("mapbayr", "lixoftconnectors"),
+  tool = "mapbayr",
   check_compile = TRUE,
   data,
   num_occ = NULL,
@@ -16,7 +16,6 @@ run_MAP_estimations(
   occ_ref = NULL,
   evaluation_type = c("Progressive", "Most_Recent_Progressive", "Cronologic_Ref",
     "Most_Recent_Ref"),
-  file_mlxtran = "M2_TEST.mlxtran",
   names_occ = "OCC",
   names_id = "ID",
   names_time = "TIME",
@@ -29,7 +28,7 @@ run_MAP_estimations(
 
 \item{model_code}{Character string. Code of the pharmacokinetic model in mrgsolve format.}
 
-\item{tool}{Character string. Specifies the tool to use for estimation. Options are "mapbayr" or "lixoftconnectors".}
+\item{tool}{Character string. Specifies the tool to use for estimation. Currently using "mapbayr".}
 
 \item{check_compile}{Logical. If `TRUE`, checks if the model compiles correctly in `mapbayr`.}
 
@@ -50,8 +49,6 @@ run_MAP_estimations(
   \item "Cronologic_Ref": Uses all data up to a reference occasion.
   \item "Most_Recent_Ref": Uses the most recent occasion relative to a reference.
 }}
-
-\item{file_mlxtran}{Character string. Path to the `.mlxtran` file for `lixoftConnectors`.}
 
 \item{names_occ}{Character string. Name of the OCC column in the data. Defaults to "OCC".}
 

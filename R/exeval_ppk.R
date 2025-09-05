@@ -19,7 +19,6 @@
 #'     \item "Cronologic_Ref": Uses all data up to a reference occasion.
 #'     \item "Most_Recent_Ref": Uses the most recent occasion relative to a reference.
 #'   }
-#' @param file_mlxtran Character string. Path to the `.mlxtran` file for `lixoftConnectors`.
 #' @param names_occ Character string. Name of the OCC column in the data. Defaults to "OCC".
 #' @param names_id Character string. Name of the ID column in the data. Defaults to "ID".
 #' @param names_time Character string. Name of the TIME column in the data. Defaults to "TIME".
@@ -68,7 +67,6 @@ exeval_ppk <-  function(model_name,
                         sampling = TRUE,
                         occ_ref = NULL , ### Se usa solo si evaluation_type es basado en una referencia
                         evaluation_type = c("Progressive", "Most_Recent_Progressive","Cronologic_Ref","Most_Recent_Ref"), ## Como se va a hacer la eval externa
-                        file_mlxtran= "M2_TEST.mlxtran",
                         names_occ = "OCC",
                         names_id = "ID",
                         names_time = "TIME",
@@ -78,7 +76,7 @@ exeval_ppk <-  function(model_name,
 
   ## Run estimation, simulation and predicton erro computation in every OCC
   est <- run_MAP_estimations(model_name, model_code, tool, check_compile,
-                             data, num_occ, num_ids, sampling, occ_ref, evaluation_type, file_mlxtran,
+                             data, num_occ, num_ids, sampling, occ_ref, evaluation_type,
                              names_occ, names_id, names_time, names_evid, method
                              )
   updt <- actualize_model(est, evaluation_type)

@@ -58,7 +58,6 @@ function(model_name, model_code,
                                 occ_ref = NULL , ### Se usa solo si evaluation_type es basado en una referencia
                                 evaluation_type = c("Progressive", "Most_Recent_Progressive",
                                                     "Cronologic_Ref","Most_Recent_Ref"), ## Como se va a hacer la eval externa
-                                file_mlxtran= "M2_TEST.mlxtran",
                                 names_occ = "OCC",
                                 names_id = "ID",
                                 names_time = "TIME",

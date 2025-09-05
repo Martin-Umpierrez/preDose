@@ -16,7 +16,6 @@ exeval_ppk(
   occ_ref = NULL,
   evaluation_type = c("Progressive", "Most_Recent_Progressive", "Cronologic_Ref",
     "Most_Recent_Ref"),
-  file_mlxtran = "M2_TEST.mlxtran",
   names_occ = "OCC",
   names_id = "ID",
   names_time = "TIME",
@@ -51,8 +50,6 @@ exeval_ppk(
   \item "Cronologic_Ref": Uses all data up to a reference occasion.
   \item "Most_Recent_Ref": Uses the most recent occasion relative to a reference.
 }}
-
-\item{file_mlxtran}{Character string. Path to the `.mlxtran` file for `lixoftConnectors`.}
 
 \item{names_occ}{Character string. Name of the OCC column in the data. Defaults to "OCC".}
 
