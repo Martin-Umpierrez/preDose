@@ -81,19 +81,19 @@ metrics_occ <- function(simulations,
     combine <- lapply(list.simulation, function(x) slot(x, "data"))
     df_simulaciones <- do.call(rbind, combine)
 
-    # Renombrar predicciones dependiendo de OCC
+    # rename predictions 
     df_simulaciones <- df_simulaciones %>%
       mutate(Ind_Prediction = ifelse(OCC == 1, CP, DV)) %>%  # CP para apriori (OCC1), DV para posteriores
       select(ID, OCC, TIME, Ind_Prediction) %>%
       filter(Ind_Prediction > 0)
 
-    # Obtener tratamientos de todas las OCC
+    # get tto for every OCC
     listtratamientos <- simulations[["ttoocc"]]
     df_ttos <- do.call(rbind, listtratamientos) %>%
       filter(EVID == 0) %>%
       select(ID, OCC, TIME, DV)
 
-    # Unión y métricas
+
     df_merged <- left_join(df_simulaciones, df_ttos, by = c("ID", "OCC", "TIME"))
 
     metrics <- df_merged %>%
@@ -105,22 +105,6 @@ metrics_occ <- function(simulations,
       filter(!is.na(DV)) %>%
       distinct()
   }
-
-  # LixoftcConnectors
-  # else if (tool == "lixoftConnectors") {
-  #   mm <- vector(mode='list', length = length(sims))
-  #   mm[[1]] <- sims[[1]] %>%
-  #     mutate(
-  #       IPE = ((Cc- DV)/DV) *100,
-  #       APE= abs(((Cc- DV)/DV))*100,
-  #       RMSE = (((Cc-DV)^2)/((DV)^2))
-  #     )
-  #
-  #   mm[-1] <- lapply( sims[-1], metrics_occasion) ### Cambio menor que no estaba tomando bien los datos
-  #   names(mm) <- names(sims)
-  #
-  #   metrics <- bind_rows(mm)
-  # }
 
   if (!exists("metrics") || nrow(metrics) == 0) {
     stop("The 'metrics' object could not be generated. Please check the data and arguments.")

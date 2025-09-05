@@ -13,7 +13,7 @@
 #' @export
 #' @examples
 #'
-#' set.seed(123)  # Para reproducibilidad
+#' set.seed(123) 
 #' generate_fake_metrics <- function(n_occasions = 3) {
 #' data.frame(
 #' OCC = rep(1:n_occasions),  # Simula varias ocasiones
@@ -44,10 +44,10 @@ function(models) {
     model_name <- entry$model_name
     metrics_list <- entry$metrics_list
 
-    # Agregar el nombre del modelo a la tabla de métricas
+    # add model name
     metrics_data <- metrics_list$metrics_means %>% mutate(Model = model_name)
 
-    # Combinar con datos existentes
+    # combined with data
     combined_data <- if (!is.null(combined_data)) {
       bind_rows(combined_data, metrics_data)
     } else {
