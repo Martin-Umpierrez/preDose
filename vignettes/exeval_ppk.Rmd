@@ -7,138 +7,124 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-#### 1) Properly code you model 
+This document presents a case of study to illustrates the external evaluation of a PPK model. The model and data come from Han, Nayoung, et al. "Prediction of the tacrolimus population pharmacokinetic parameters according to CYP3A5 genotype and clinical factors using NONMEM in adult kidney transplant recipients." European journal of clinical pharmacology 69.1 (2013): 53-63.
 
-##### 1.1) Code your model in mrgsolve format. 
-This is an example of a Tacrolimus model developed by Han et al(2011) : "Prediction of the tacrolimus population pharmacokinetic parameters according to CYP3A5 genotype and clinical factors using NONMEM in adult kidney transplant recipients"
+## Data and model 
 
-```{r Model, echo=T, message=FALSE, results='hide'}
-Han_etal_test<-
-  '$PROB
-# One Comparment Model with first order absorption- Ka is FIXED
-$GLOBAL
-#define CP (CENT/iV)
-$CMT  @annotated
-EV   : Extravascular compartment
-CENT : Central compartment#two compt model with first order absorption
-
-$PARAM @annotated 
-CL  :  24.13 : Clearance for CYP3A5*3*3
-V  :  716 : central volume
-KA  : 4.5 : absorption rate constant
-ETA1 : 0 : IIVCl (L/h)
-ETA2 : 0 : IIVV (L)
-
-$PARAM @annotated @covariate
-POD    : 0   : COV POST OPERATIVE DAY
-HCT      : 0  : COV HCH
-WT      : 0  : COV WT
-CYP3A5      : 0  : Polimorfismo CYP3A5
-OCC     : -99  : Occasion, shall be passed by dataset imported
-
-$ODE
-dxdt_EV = -iKA*EV;
-dxdt_CENT = iKA*EV  - iCL*CP;
-
-$MAIN
-##CYP3A5 effect on Cl##
-
-double HM = 1.186 ;  ####Rapid Metabolizer ####
-double IM = 1.13 ;  ####Intermediate Metabolizer ####
-double PM = 1 ;  ####Poor Metabolizer####
-
-if(CYP3A5==1) double CL_EFFECT = HM ;
-if(CYP3A5==2) CL_EFFECT = IM ;
-if(CYP3A5==3) CL_EFFECT = PM ;
-
-double CL_HCT1 = 1.3458 ; ##Effect of HCT< 33
-double CL_HCT2 = 1.124 ;  ##Effect of HCT >33
-
-if(HCT< 33) double CL_HCT = CL_HCT1 ;
-if(HCT >= 33) CL_HCT = CL_HCT2 ;
-
-double CL_POD = - 0.00762 ;
-
-double iCL =  CL *exp(ETA(1) + ETA1)* pow(POD, CL_POD) * CL_EFFECT * CL_HCT ;  
-double iV =  V *exp(ETA(2) + ETA2) * exp (0.355*WT/59.025) ;  
-double iKA =  KA ;    
+First, we need to load the data and the model in `mrgsolve` format, both are preloaded in `preDose`package so they can be loaded usint `data()` funciton. 
 
 
-$OMEGA @name IIV 
-0.248 
-0.237
+```{r}
+library(tidyverse)
+library(preDose)
 
-$SIGMA  @name SIGMA @annotated
-ADD : 0 : ADD residual error
-PROP : 0.16 : Proportional residual error
-
-
-$TABLE
-double IPRED = CENT/iV;
-double DV = IPRED * (1 + PROP) ;
-
-$CAPTURE @annotated
-CP : Plasma concentration (mass/volume)
-iCL :  Clearance
-iV : :Central Volume
-iKA : KA: absorption rate constant
-EVID : EVENT ID
-DV : PREDICCION
-OCC: OCCASION
-
-               '
-
+# load data and model code 
+data(data_tacHAN2011)
+data(model_tacHAN2011)
 ```
 
-#### 2) Import your external data
+Data consist in records for 49 patients, most of them meassured in 6 occassions and 2 or 3 times per ocassion.  (TODO: EXPLAIN REQUIRED DATA FORMAT)
 
-Import the data set either in Monolix-formatted datasets or NM-TRAN-formatted datasets
-Ensure that the dataset structure aligns with the required format for proper processing.
+```{r}
+# Max OCC per ID 
+data_tacHAN2011 |> 
+  select(ID, OCC) |> 
+  group_by(ID) |> 
+  summarise( OCC = max(OCC) )  |> 
+  group_by(OCC) |> 
+  count()
 
-```{r external_data_mapbayr}
-data("external_data_mapbayr", package = "preDose")  # Cargar dataset desde el paquete
-head(external_data_mapbayr)  # Ver primeras filas
+# add a relevant plot of the data? 
 ```
 
-#### 3) Calculate individual parameters with `run_MAP_estimations`
+The model object is simply a character string describing the PPK model in a format that `mrgsolve::mcode()` can interpret, 
+
+```{r}
+# PPK model text  
+str(model_tacHAN2011)
+```
+
+## External evaluation 
+
+
+
+```{r}
+res <- exeval_ppk(model_name = "HAN2011",
+                  model_code = model_tacHAN2011,
+                  data = data_tacHAN2011,
+                  evaluation_type= "Progressive",                  assessment='Bayesian_forecasting' )
+```
+
+## Results 
+
+```{r}
+res
+```
+
+Make some plots 
+```{r}
+metrics_Plot(data_list, type = "bias_barplot")
+```
+
+## Compare models 
+
+```{r}
+source("inst/model_examples/ZuoX_etal_2013.R")
+
+resZ <- exeval_ppk(model_name = "ZuoX",
+                  model_code = ZuoX_etalfull_noCYP3A4,
+                  data = data_tacHAN2011,
+                  evaluation_type= "Progressive",                  assessment='Bayesian_forecasting' )
+
+resALL <- list(res, resZ) |> combine_metrics()  
+
+plot_combined(resALL, 'bias_barplot')
+```
+
+
+Finally, `select_best_models()` function selects the best models from a dataframe of combined metrics based on a specified ranking metric.\
+It requires a dataframe containing model evaluation metrics and the name of the metric to use for ranking.
+
+Optionally, you can specify a particular occasion to focus on and the number of top models to select.
+
+```{r model_selection, echo=TRUE, message=FALSE, warning=TRUE}
+
+Best_fit <- select_best_models(resALL, metric = "rBIAS", top_n = 1)
+
+Best_fit
+```
+
+## Intermediate steps in external evaluation process
+
+### Calculate individual parameters with `run_MAP_estimations`
 
 The `run_MAP_estimations()` function returns a list with four elements:
 
-* **Observed data per occasion**  
-  Includes the observed values for each individual in each occasion.
+-   **Observed data per occasion**: Includes the observed values for each individual in each occasion.
 
-* **Treatments per occasion**  
-  Contains information on the treatments administered in each occasion.
+-   **Treatments per occasion**: Contains information on the treatments administered in each occasion.
 
-* **Estimated individual parameters**  
-  Provides the MAP-estimated values of individual parameters for each subject and occasion.
+-   **Estimated individual parameters**: Provides the MAP-estimated values of individual parameters for each subject and occasion.
 
-* **Mandatory**  
-  + Progressive  
-  + Most_Recent_Progressive  
-  + Cronologic_Ref  
-  + Most_Recent_rEF
-
+-   **Mandatory** Used evaluation method (Progressive, Most_Recent_Progressive, Cronologic_Ref, Most_Recent_rEF) 
 
 ```{r map_estim, echo=TRUE, message=FALSE, warning=FALSE, cache=TRUE}
 map.est <- run_MAP_estimations(model_name = "Test_Model",
                                model_code = Han_etal_test,
                                tool = "mapbayr",
                                data = external_data_mapbayr,
-                               evaluation_type= "Progressive")  # Cargar dataset desde el paquete
-head(map.est[["map_estimations"]])
-
+                               evaluation_type= "Progressive") 
 ```
 
-#### 4) Update Individual Models with Estimated Parameters
+### Update Individual Models with Estimated Parameters
+
 Use `actualize_model()` to update each individual model using the parameters obtained from `run_MAP_estimations()`.
 
 ```{r indiviudal_Actualization, echo=TRUE, message=FALSE, warning=FALSE, cache=TRUE}
 updt.md = actualize_model(map.est, evaluation_type = "Progressive") #### Individual Models
 ```
 
-
-#### 5) Simulate Observed Concentrations
+### Simulate Observed Concentrations
 To simulate individual concentration profiles for each subject (ID) across all occasions (OCC), the `run_ind_simulations()` function requires the results from `run_MAP_estimations()` and updated individual parameters object from `actualize_model()`.
 
 ```{r Simulate, echo=TRUE, message=FALSE, warning=FALSE, error=FALSE, cache=TRUE}
@@ -148,8 +134,7 @@ sim = run_ind_simulations(updt.md,
 
 ```
 
-#### 6) Calculate Metrics Across Occasions
-
+### Calculate Metrics Across Occasions
 Use `metrics_occ()` to assess predictive performance by computing key metrics for each occasion.
 
 ```{r calcualte_metrics, echo=TRUE, message=FALSE}
@@ -157,103 +142,5 @@ metrics = metrics_occ(simulations= sim,
                       assessment= "Bayesian_forecasting",
                       tool="mapbayr") # Simulate for every ID in every OCC
 
-head((metrics[["metrics"]]),10)
-
-head(metrics[2])
 
 ```
-
-#### 7) Make Some Important Plots to compare metrics
-Several plot types are available to visualize model performance using the `metrics_Plot()` function.
-##### 7.1) Bias BarPlot 
-```{r plot1, echo=TRUE, message=FALSE}
-
-plot1 = metrics_Plot(mm=metrics,
-             type = "bias_barplot")
-
-print(plot1)
-
-```
-##### 7.2) Bias boxplot 
-
-```{r plot2, echo=TRUE, message=FALSE}
-
-plot2 = metrics_Plot(mm=metrics,
-             type = "bias_boxplot")
-
-print(plot2)
-
-```
-
-##### 7.3) Bias dotplot 
-
-```{r plot3, echo=TRUE, message=FALSE}
-
-plot3 = metrics_Plot(mm=metrics,
-             type = 'bias_dotplot')
-
-print(plot3)
-
-```
-
-#### 8) Import Models and assess the predicitve performance
-##### 8.1) New Models and Estimations
-
-```{r new_scenarios, echo=TRUE, warning=FALSE, message=FALSE, cache=TRUE}
-
-source("inst/model_examples/ZuoX_etal_2013.R")
-
-map.est.2 <- run_MAP_estimations(model_name = "Test_Model2",
-                               model_code = ZuoX_etalfull_noCYP3A4,
-                               tool = "mapbayr",
-                               data = external_data_mapbayr,
-                               evaluation_type= "Progressive") 
-
-updt.md2 = actualize_model(map.est.2, evaluation_type = "Progressive")
-
-sim2 = run_ind_simulations(updt.md2, 
-                           map.est.2,
-                           assessment = "Bayesian_forecasting")
-
-metrics2 = metrics_occ(simulations= sim2, 
-                       assessment = "Bayesian_forecasting",
-                       tool="mapbayr") 
-
-```
-
-##### 8.2) Compare Models
-###### 8.2.1) By Plotting: 
-1. Use `combine_metrics()` to generate a summary of all evaluation metrics across the tested models.  
-2. Visualize and compare model performance using the `plot_combined()` function.
-```{r plot_comparisson, echo=TRUE, message=FALSE, warning=TRUE}
-
-###### Generate a summary of metrics for all tested models
-model_list <- list(list(model_name="Han_etal", metrics_list=metrics),
-                   list(model_name="Zuo_etal", metrics_list=metrics2))
-
-#### Use combine_metrics() function with the summary created
-combined_results<- combine_metrics(model_list)
-
-#### Make the Plot! 
-plot_comparrison <- plot_combined(combined_results,
-                                  'bias_barplot')
-
-print(plot_comparrison)
-
-```
-
-
-###### 8.2.2) Select models according to a specific evaluation metric and threshold using select_best_models() function
-The `select_best_models()` function selects the best models from a dataframe of combined metrics based on a specified ranking metric.  
-It requires a dataframe containing model evaluation metrics and the name of the metric to use for ranking.  
-Optionally, you can specify a particular occasion to focus on and the number of top models to select.
-
-```{r model_selection, echo=TRUE, message=FALSE, warning=TRUE}
-
-Best_fit <- select_best_models(combined_results, metric = "rBIAS",
-                               top_n = 1)
-
-print(Best_fit)
-
-```
-
