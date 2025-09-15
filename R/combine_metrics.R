@@ -13,7 +13,7 @@
 #' @export
 #' @examples
 #'
-#' set.seed(123) 
+#' set.seed(123)
 #' generate_fake_metrics <- function(n_occasions = 3) {
 #' data.frame(
 #' OCC = rep(1:n_occasions),  # Simula varias ocasiones
@@ -39,6 +39,15 @@
 combine_metrics <-
 function(models) {
   combined_data <- NULL
+
+  # Extract all the evaluation type in the models to be compared
+  eval_types <- sapply(models, function(model) model$metrics_list$eval_type)
+
+  # Check que todos sean iguales
+  if (length(unique(eval_types)) > 1) {
+    stop("Error: Models must have the same 'eval_type' to be combined.")
+  }
+
 
   for (entry in models) {
     model_name <- entry$model_name

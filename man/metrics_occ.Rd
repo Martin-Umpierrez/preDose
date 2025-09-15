@@ -26,6 +26,7 @@ metrics_occ(
 A list with two elements:
   - `metrics`: A dataframe summarizing observation, individual prediction and error metrics for each ID in every OCC.
   - `metrics_means`: A dataframe containing the rBIAS, MAPE, rRMSE, IF20 AND IF30 .
+  - `eval_type`: A string with the evaluation type used to perform external evaluation.
 }
 \description{
 Compute Metrics for Individual Predictions by Occasion

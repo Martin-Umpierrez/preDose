@@ -16,7 +16,7 @@
 #' @return A list with two elements:
 #'   - `metrics`: A dataframe summarizing observation, individual prediction and error metrics for each ID in every OCC.
 #'   - `metrics_means`: A dataframe containing the rBIAS, MAPE, rRMSE, IF20 AND IF30 .
-#'
+#'   - `eval_type`: A string with the evaluation type used to perform external evaluation.
 #' @examples
 #' # results <- metrics_occ(simulations = my_simulations, assessment="Complete)
 #'
@@ -28,6 +28,8 @@ metrics_occ <- function(simulations,
                                       "Complete"),
                        tool = "mapbayr")  {
 
+  # Create evaluation type
+  evaluation_type <-simulations$eval_type
   # Robust asignment of arguments
   assessment <- match.arg(assessment)
   tool <- match.arg(tool)
@@ -81,7 +83,7 @@ metrics_occ <- function(simulations,
     combine <- lapply(list.simulation, function(x) slot(x, "data"))
     df_simulaciones <- do.call(rbind, combine)
 
-    # rename predictions 
+    # rename predictions
     df_simulaciones <- df_simulaciones %>%
       mutate(Ind_Prediction = ifelse(OCC == 1, CP, DV)) %>%  # CP para apriori (OCC1), DV para posteriores
       select(ID, OCC, TIME, Ind_Prediction) %>%
@@ -122,6 +124,8 @@ metrics_occ <- function(simulations,
       IF30= sum(abs(IPE) <= 30) *100 / length(IPE),
       OCC= first(OCC) )
 
-  out <- list(metrics=metrics, metrics_means = metrics_means)
+  out <- list(metrics=metrics,
+              metrics_means = metrics_means,
+              eval_type=evaluation_type)
   return(out)
 }
