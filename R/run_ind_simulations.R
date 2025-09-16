@@ -15,6 +15,7 @@
 #' \item{simulation_results}{A list of simulation results for each occasion and individual.}
 #' \item{ttoocc}{A list of treatments organized by occasion.}
 #' \item{assessment}{A string indicating the type of assessment to perform.} Options are \code{"a_priori"}, \code{"Bayesian_forecasting"}, or \code{"Complete"}.
+#' \item{eval_type}{The evaluation type used.}
 #'
 #' @details This function performs individual simulations for multiple occasions and individuals at the times an observation is available.
 #' For each posterior estimation, it retrieves the corresponding treatment schedule and executes a simulation
@@ -47,7 +48,7 @@ run_ind_simulations <- function(individual_model,
                                                "Complete")) {
 
   assessment <- match.arg(assessment)
-
+  evaluation_type <-tto_occ$eval_type
   # Listas vacías para acumular resultados
   simulation_results <- list()
   event.tto <- list()
@@ -130,6 +131,7 @@ run_ind_simulations <- function(individual_model,
   return(list(
     simulation_results = simulation_results,
     ttoocc = treatment.occ.list,
+    eval_type=evaluation_type,
     events_tto = event.tto,
     assessment = assessment
   ))

@@ -27,6 +27,7 @@ A list containing:
 \item{simulation_results}{A list of simulation results for each occasion and individual.}
 \item{ttoocc}{A list of treatments organized by occasion.}
 \item{assessment}{A string indicating the type of assessment to perform.} Options are \code{"a_priori"}, \code{"Bayesian_forecasting"}, or \code{"Complete"}.
+\item{eval_type}{The evaluation type used.}
 }
 \description{
 Simulates individual concentrations based on posterior estimations and treatment schedules for each occasion.
