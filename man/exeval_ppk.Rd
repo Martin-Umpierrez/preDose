@@ -2,7 +2,7 @@
 % Please edit documentation in R/exeval_ppk.R
 \name{exeval_ppk}
 \alias{exeval_ppk}
-\title{External evaluation for Population Pharmacokinetic (PPK) Models}
+\title{External evaluation for Population Pharmacokinetic (popPK) Models}
 \usage{
 exeval_ppk(
   model_name,
@@ -21,7 +21,8 @@ exeval_ppk(
   names_time = "TIME",
   names_evid = "EVID",
   method = c("L-BFGS-B", "newuoa"),
-  assessment = c("a_priori", "Bayesian_forecasting", "Complete")
+  assessment = c("a_priori", "Bayesian_forecasting", "Complete"),
+  verbose = FALSE
 )
 }
 \arguments{
@@ -67,6 +68,9 @@ exeval_ppk(
   \item "Bayesian_Forecasting": Simulates concentrations using individual parameter estimates (posterior mode).
   \item "Complete": Performs both a priori and Bayesian forecasting simulations.
 }}
+
+\item{verbose}{Logical. If TRUE, messages are printed during execution.
+If FALSE (default), errors are stored as warnings accessible with `warnings()`}
 }
 \value{
 A list containing:
@@ -78,7 +82,7 @@ A list containing:
 }
 }
 \description{
-Performs external evaluation of PPK models by conducting MAP estimations and individual simulations
+Performs external evaluation of popPK models by conducting MAP estimations and individual simulations
 for each occasion using different evaluation strategies (see evaluation_type)
 }
 \examples{

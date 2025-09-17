@@ -7,7 +7,8 @@
 run_ind_simulations(
   individual_model,
   tto_occ,
-  assessment = c("a_priori", "Bayesian_forecasting", "Complete")
+  assessment = c("a_priori", "Bayesian_forecasting", "Complete"),
+  verbose = FALSE
 )
 }
 \arguments{
@@ -21,6 +22,9 @@ run_ind_simulations(
   \item "Bayesian_Forecasting": Simulates concentrations using individual parameter estimates (posterior mode).
   \item "Complete": Performs both a priori and Bayesian forecasting simulations.
 }}
+
+\item{verbose}{Logical. If TRUE, messages are printed during execution.
+If FALSE (default), errors are stored as warnings accessible with `warnings()`.}
 }
 \value{
 A list containing:

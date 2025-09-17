@@ -1,6 +1,6 @@
-#' External evaluation for Population Pharmacokinetic (PPK) Models
+#' External evaluation for Population Pharmacokinetic (popPK) Models
 #'
-#' Performs external evaluation of PPK models by conducting MAP estimations and individual simulations
+#' Performs external evaluation of popPK models by conducting MAP estimations and individual simulations
 #' for each occasion using different evaluation strategies (see evaluation_type)
 #'
 #' @param model_name Character string. Name of the model to use in the analysis.
@@ -30,7 +30,8 @@
 #'     \item "Bayesian_Forecasting": Simulates concentrations using individual parameter estimates (posterior mode).
 #'     \item "Complete": Performs both a priori and Bayesian forecasting simulations.
 #'   }
-
+#' @param verbose Logical. If TRUE, messages are printed during execution.
+#'   If FALSE (default), errors are stored as warnings accessible with `warnings()`
 #'
 #' @return A list containing:
 #' \describe{
@@ -72,7 +73,8 @@ exeval_ppk <-  function(model_name,
                         names_time = "TIME",
                         names_evid = "EVID",
                         method = c("L-BFGS-B", "newuoa"),
-                        assessment = c("a_priori","Bayesian_forecasting", "Complete")) {
+                        assessment = c("a_priori","Bayesian_forecasting", "Complete"),
+                        verbose=FALSE) {
 
   ## Run estimation, simulation and predicton erro computation in every OCC
   est <- run_MAP_estimations(model_name, model_code, tool, check_compile,

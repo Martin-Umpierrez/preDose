@@ -10,6 +10,8 @@
 #'     \item "Bayesian_Forecasting": Simulates concentrations using individual parameter estimates (posterior mode).
 #'     \item "Complete": Performs both a priori and Bayesian forecasting simulations.
 #'   }
+#' @param verbose Logical. If TRUE, messages are printed during execution.
+#'   If FALSE (default), errors are stored as warnings accessible with `warnings()`.
 #'
 #' @return A list containing:
 #' \item{simulation_results}{A list of simulation results for each occasion and individual.}
@@ -43,9 +45,8 @@
 
 run_ind_simulations <- function(individual_model,
                                 tto_occ,
-                                assessment = c("a_priori",
-                                               "Bayesian_forecasting",
-                                               "Complete")) {
+                                assessment = c("a_priori","Bayesian_forecasting","Complete"),
+                                verbose= FALSE) {
 
   assessment <- match.arg(assessment)
   evaluation_type <-tto_occ$eval_type
@@ -82,7 +83,12 @@ run_ind_simulations <- function(individual_model,
         event.tto.byocc[[paste0("ID_", id_number)]] <- treatment
 
       }, error = function(e) {
+        if (verbose) {
         message(paste0("Could not simulate ID_", id_number, " in OCC1 (a_priori): ", e$message))
+        } else {
+          warning(paste0("Could not simulate ID_", id_number, " in OCC1 (a_priori): ", e$message),
+                  call. = FALSE, immediate. = FALSE)
+        }
       })
     }
 
@@ -118,7 +124,12 @@ run_ind_simulations <- function(individual_model,
           event.tto.byocc[[paste0("ID_", id_number)]] <- treatment
 
         }, error = function(e) {
-          message(paste0("Could not process OCC_", occ_number, " ID_", id_number, ": ", e$message))
+          if(verbose) {
+            message(paste0("Could not process OCC_", occ_number, " ID_", id_number, ": ", e$message))
+          } else {
+            warning(paste0("Could not process OCC_", occ_number, " ID_", id_number, ": ", e$message),
+                           call. = FALSE, immediate. = FALSE)
+            }
         })
       }
 
