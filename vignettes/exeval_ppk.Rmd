@@ -45,14 +45,19 @@ str(model_tacHAN2011)
 ```
 
 ## External evaluation 
+Explain: 
+  - external evaluation idea
+  - evaluation type options
+  - assesment options 
 
-
-
+The whole procedure can be done calling the `exeval_ppk()` function, its minimal arguments are the model name and code, the data, 
+and the type of evaluation and assesment, 
 ```{r}
 res <- exeval_ppk(model_name = "HAN2011",
                   model_code = model_tacHAN2011,
                   data = data_tacHAN2011,
-                  evaluation_type= "Progressive",                  assessment='Bayesian_forecasting' )
+                  evaluation_type= "Progressive", 
+                  assessment='Bayesian_forecasting' )
 ```
 
 ## Results 
@@ -63,7 +68,7 @@ res
 
 Make some plots 
 ```{r}
-metrics_Plot(data_list, type = "bias_barplot")
+metrics_Plot(res$metrics, type = "bias_barplot")
 ```
 
 ## Compare models 
