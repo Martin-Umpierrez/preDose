@@ -7,7 +7,8 @@
 metrics_Plot(
   mm,
   type = c("bias_barplot", "bias_pointrange", "MAIPE_barplot", "bias_boxplot",
-    "bias_violin", "bias_dotplot", "bias_density", "IF20_plot", "IF30_plot", "IF_plot")
+    "bias_violin", "bias_dotplot", "bias_density", "IF20_plot", "IF30_plot", "IF_plot",
+    "error_plot")
 )
 }
 \arguments{
@@ -25,6 +26,7 @@ metrics_Plot(
   \item \code{"IF20_plot"}: Bar plot of IF20 values with reference line at 35%.
   \item \code{"IF30_plot"}: Bar plot of IF30 values with reference line at 50%.
   \item \code{"IF_plot"}: Combine both IF20 and IF30 plots.
+  \item \code{"error_plot"}: Stacked bar plot showing the proportion of prediction errors within predefined IPE bands.
 }}
 }
 \value{

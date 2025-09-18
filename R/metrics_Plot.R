@@ -17,6 +17,7 @@
 #'     \item \code{"IF20_plot"}: Bar plot of IF20 values with reference line at 35%.
 #'     \item \code{"IF30_plot"}: Bar plot of IF30 values with reference line at 50%.
 #'     \item \code{"IF_plot"}: Combine both IF20 and IF30 plots.
+#'     \item \code{"error_plot"}: Stacked bar plot showing the proportion of prediction errors within predefined IPE bands.
 #'   }
 #'
 #' @return A ggplot object corresponding to the selected plot type.
@@ -51,7 +52,8 @@ metrics_Plot <-
                         'bias_density',
                         'IF20_plot',
                         'IF30_plot',
-                        'IF_plot'
+                        'IF_plot',
+                        "error_plot"
                         )) {
     pp <- NULL
 
@@ -199,5 +201,56 @@ metrics_Plot <-
                            nrow = 2, ncol = 1,
                            align = "v")
     }
+
+    else if(type== "error_plot") {
+    mm_plot <- mm[[1]] %>%
+      mutate(tramo = case_when(
+        abs(IPE) > 30 ~ "30+",
+        abs(IPE) > 20 & abs(IPE) <= 30 ~ "20+",
+        abs(IPE) > 10 & abs(IPE) <= 20 ~ "10+",
+        abs(IPE) <= 10 ~ "<10",
+        TRUE ~ "cucu"
+      )) %>%
+      mutate(tramo = factor(tramo, levels = c("30+", "20+", "10+", "<10"))) %>%
+      count(OCC, tramo) %>%
+      group_by(OCC) %>%
+      mutate(prop = n / sum(n)) %>%
+      ungroup()
+
+    color_error <- c(
+      "30+" = "lightcoral",
+      "20+" = "wheat",
+      "10+" = "darkseagreen",
+      "<10" = "paleturquoise"
+    )
+
+    # final plot
+    pp <- ggplot(mm_plot, aes(x = OCC, y = prop, fill = tramo)) +
+      geom_bar(stat = "identity", position = "fill", alpha = 0.7) +
+      geom_text(aes(label = sprintf("%.2f", prop)),
+                position = position_fill(vjust = 0.5), size = 3,
+                fontface="bold") +
+      scale_fill_manual(values = color_error, name = "Proportion within IPE bands") +
+      scale_y_continuous(limits = c(0,1) ) +
+      labs(
+        title = "Relative Error Distribution by OCC",
+        x = "OCC",
+        y = "Proportion"
+      ) +
+      theme_bw() +
+      theme(
+        panel.grid.minor = element_blank(),
+        axis.title.x = element_text(size=10),
+        axis.title.y = element_text(size=10),
+        axis.text.x = element_text(size = 8),
+        axis.text.y = element_text(size = 8),
+        plot.title = element_text(hjust = 0.5, face = "bold", size = 11),
+        axis.title = element_text(face = "bold"),
+        legend.title = element_text(size = 8, face = "bold"),
+        legend.text = element_text(size = 8),
+        legend.position = "right"
+      )
+    }
+
     return(pp)
   }
