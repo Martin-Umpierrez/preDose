@@ -4,6 +4,7 @@
 #' for each occasion using different evaluation strategies (see evaluation_type)
 #'
 #' @param model_name Character string. Name of the model to use in the analysis.
+#' @param drug_name Character string. Used only for reporting purposes.
 #' @param model_code Character string. Code of the pharmacokinetic model in mrgsolve format.
 #' @param tool Character string. Specifies the tool to use for estimation. Currently "mapbayr" is the only option.
 #' @param check_compile Logical. If `TRUE`, checks if the model compiles correctly in `mapbayr`.
@@ -59,6 +60,7 @@
 #' }
 
 exeval_ppk <-  function(model_name,
+                        drug_name,
                         model_code,
                         tool = "mapbayr",
                         check_compile = TRUE,
@@ -88,8 +90,11 @@ exeval_ppk <-  function(model_name,
   metrics <- metrics_occ(sims, assessment=assessment,tool=tool )
 
 
-  argument = c('Model Name', 'Evaluation', 'Assesment')
-  value    = c(model_name, match.arg(evaluation_type), match.arg(assessment))
+  argument = c('Num IDs', 'Observations','Max Num Occasion',
+               'Num of Ref Occasion','Drug Name', 'Model Name', 'Evaluation', 'Assessment')
+  value    = c(length(unique(data[[names_id]])), length(dd %>% filter(EVID==0)),
+               max((unique(data[[names_occ]]))), ifelse(is.null(occ_ref), "", occ_ref),
+               drug_name, model_name, match.arg(evaluation_type), match.arg(assessment))
   info = data.frame(argument, value)
 
   structure(

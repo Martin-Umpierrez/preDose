@@ -54,41 +54,7 @@ mm[[1]] |>
   geom_point( aes(y=error, x=Ind_Prediction)) +
   facet_wrap(~OCC, scales='free')
 
-
-# para los dibujos de IF20 y IF30
-mm[[1]] |>
-  mutate(
-    tramo = case_when(
-     abs(IPE) <= 20 ~ 'Good',
-     abs(IPE)>20 & abs(IPE)<= 30 ~ '20+',
-     abs(IPE) > 30 ~ '30+',
-     TRUE ~ 'cucu'
-    )) |>
-  mutate(tramo = factor(tramo, levels=c('30+', '20+', 'Good') ) ) |>
-  ggplot() +
-  geom_bar(aes(x=OCC, fill=tramo), position = 'fill' , alpha=.7) +
-  scale_fill_manual( values = c('Lightcoral', 'wheat', 'darkseagreen')) +
-  theme_bw() +
-  theme(panel.grid.major = element_line(linewidth = .5, linetype=2, color='grey30'))
-
-
-mm[[1]] |>
-  mutate(
-    tramo = case_when(
-      abs(IPE) <= 10 ~ "<10",
-      abs(IPE)>10 & abs(IPE)<= 20 ~ '10+',
-      abs(IPE)>20 & abs(IPE)<= 30 ~ '20+',
-      abs(IPE) > 30 ~ '30+',
-      TRUE ~ 'cucu'
-    )) |>
-  mutate(tramo = factor(tramo, levels=c('30+', '20+', '10+', "<10" ) ) ) |>
-  ggplot() +
-  geom_bar(aes(x=OCC, fill=tramo), position = 'fill' , alpha=.7) +
-  scale_fill_manual( values = c("lightcoral", 'wheat', 'darkseagreen', "paleturquoise")) +
-  theme_bw() +
-  theme(panel.grid.major = element_line(linewidth = .5, linetype=2, color='grey30'))
-
-# Preparar datos con tramos y proporciones
+# Combinado de
 mm_plot <- mm[[1]] %>%
   mutate(tramo = case_when(
     abs(IPE) > 30 ~ "30+",        # peor
@@ -137,6 +103,5 @@ ggplot(mm_plot, aes(x = OCC, y = prop, fill = tramo)) +
     legend.text = element_text(size = 8),
     legend.position = "right"
   )
-
 
 

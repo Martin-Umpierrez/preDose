@@ -6,6 +6,7 @@
 \usage{
 exeval_ppk(
   model_name,
+  drug_name,
   model_code,
   tool = "mapbayr",
   check_compile = TRUE,
@@ -27,6 +28,8 @@ exeval_ppk(
 }
 \arguments{
 \item{model_name}{Character string. Name of the model to use in the analysis.}
+
+\item{drug_name}{Character string. Used only for reporting purposes.}
 
 \item{model_code}{Character string. Code of the pharmacokinetic model in mrgsolve format.}
 
