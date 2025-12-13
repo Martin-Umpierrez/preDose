@@ -32,7 +32,7 @@ ggplot(mm[[2]], aes( x =OCC, y = rBIAS ) ) +
 
 library(ggdist)
  #ggplot(data, aes(x = group, y = value, fill = group)) +
-  ggplot(mm[[1]], aes( x =factor(OCC), y = IPE ) ) +
+  ggplot(metriquitas[[1]], aes( x =factor(OCC), y = IPE ) ) +
   # Cloud (density)
   stat_halfeye(adjust = 0.5, width = 0.5, .width = 0,
                justification = -0.5, point_colour = NA) +
@@ -103,5 +103,4 @@ ggplot(mm_plot, aes(x = OCC, y = prop, fill = tramo)) +
     legend.text = element_text(size = 8),
     legend.position = "right"
   )
-
 
