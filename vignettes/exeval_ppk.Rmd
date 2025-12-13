@@ -57,7 +57,8 @@ res <- exeval_ppk(model_name = "HAN2011",
                   model_code = model_tacHAN2011,
                   data = data_tacHAN2011,
                   evaluation_type= "Progressive", 
-                  assessment='Bayesian_forecasting' )
+                  assessment='Bayesian_forecasting', 
+                  verbose = FALSE )
 ```
 
 ## Results 
