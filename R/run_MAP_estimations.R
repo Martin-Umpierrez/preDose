@@ -91,7 +91,7 @@ function(model_name, model_code,
     # more checks
     verificar_OCC(model_code)
 
-    # check OCC and CMT exist
+    # check OCC and CMT exist in the external dataset
     if (!"OCC" %in% names(data)) {
       stop(" 'OCC' column is mandatory in the base data.")
     }
