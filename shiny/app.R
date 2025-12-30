@@ -1,11 +1,25 @@
+library(shiny)
+library(shinyAce)
 ui <- fluidPage(
-  titlePanel("Tacrolimus PK Model"),
+  titlePanel("preDose: A Robust External Evaluation Package forPKPD models"),
   sidebarLayout(
     sidebarPanel(
       fileInput("data_file", "Upload Patient Data (CSV)", accept = ".csv"),
       selectInput("eval_type", "Evaluation Type",
                   choices = c("Progressive", "Most_Recent_Progressive", "Cronologic_Ref", "Most_Recent_Ref")),
-      actionButton("run_map", "Run MAP Estimations")
+      actionButton("run_map", "Run MAP Estimations"),
+      aceEditor(
+        outputId = "model_code",
+        value = "$Global\n\n$Prob\n- 2 Compartment model with Michaelis-Menten elimination\n\n$CMT @annotated\nEV   : Extravascular compartment (mg)\nCENT : Central compartment (mg)\nPERI : Peripheral (mg)\n",
+        mode = "r",
+        theme = "chrome",
+        height = "400px",
+        fontSize = 14,
+        showPrintMargin = FALSE,
+        highlightActiveLine = TRUE
+      )
+
+
     ),
     mainPanel(
       tabsetPanel(
