@@ -49,7 +49,7 @@
 #' }
 
 run_MAP_estimations <-
-function(model_name, model_code,
+function(model, model_name= NULL,
                                 tool = "mapbayr",
                                 check_compile = TRUE,
                                 data, num_occ = NULL, ### Para lixoft definimos solo occ
@@ -80,7 +80,21 @@ function(model_name, model_code,
 
   if (tool == "mapbayr") {
     # check mrgsolve format
-    my_model <- mrgsolve::mcode(model_name, model_code)
+    if (inherits(model, "mrgmod")) {
+
+      my_model <- model
+
+    } else if (is.character(model)) {
+
+      if (is.null(model_name)) {
+        stop("model_name must be provided when model is character code.")
+      }
+
+      my_model <- mrgsolve::mcode(model_name, model)
+
+    } else {
+      stop("model must be either a mrgmod object or character model code.")
+    }
     if (check_compile) {
       check_model <- mapbayr::check_mapbayr_model(my_model, check_compile = TRUE)
       message("Model is ok for estimation")
@@ -89,7 +103,7 @@ function(model_name, model_code,
       }
     }
     # more checks
-    verificar_OCC(model_code)
+    verificar_OCC(model)
 
     # check OCC and CMT exist in the external dataset
     if (!"OCC" %in% names(data)) {
