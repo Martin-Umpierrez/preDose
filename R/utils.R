@@ -28,11 +28,27 @@ function(simresults) {
     )
 }
 verificar_OCC <- function(modelo) {
+  # get model_code
+  if (inherits(modelo, "mrgmod")) {
+    codigo <- modelo@code
+  } else if (is.character(modelo)) {
+    codigo <- modelo
+  } else {
+    stop("modelo must be either character model code or a mrgmod object.")
+  }
+
+  # normalizar a vector de líneas
+  if (length(codigo) == 1) {
+    lineas <- strsplit(codigo, "\n")[[1]]
+  } else {
+    lineas <- codigo
+  }
+
   # split every line of the model code
   lineas <- strsplit(modelo, "\n")[[1]]
 
   # starts of $CAPTURE
-  inicio_capture <- grep("^\\$CAPTURE", lineas)
+  inicio_capture <- grep("^\\s*\\$CAPTURE\\b", lineas)
 
   if (length(inicio_capture) == 0) {
     stop("Error: The $CAPTURE section was not found in the model.")
@@ -49,7 +65,6 @@ verificar_OCC <- function(modelo) {
     stop("Error: 'OCC' is not present in the $CAPTURE section.")
   }
 }
-
 
 pop_sim <-
   function(population_model,
