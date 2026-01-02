@@ -6,11 +6,11 @@
 \usage{
 exeval_ppk(
   model,
+  data,
   model_name = NULL,
-  drug_name,
+  drug_name = NULL,
   tool = "mapbayr",
   check_compile = TRUE,
-  data,
   num_occ = NULL,
   num_ids = NULL,
   sampling = TRUE,
@@ -35,6 +35,8 @@ exeval_ppk(
 }
 If a character string is provided, \code{model_name} must also be specified.}
 
+\item{data}{Data frame. Contains the input data for the estimations, including columns like ID, TIME, and OCC.}
+
 \item{model_name}{Character string. Name of the model.
 Required only if \code{model} is provided as character model code.#'}
 
@@ -43,8 +45,6 @@ Required only if \code{model} is provided as character model code.#'}
 \item{tool}{Character string. Specifies the tool to use for estimation. Currently "mapbayr" is the only option.}
 
 \item{check_compile}{Logical. If `TRUE`, checks if the model compiles correctly in `mapbayr`.}
-
-\item{data}{Data frame. Contains the input data for the estimations, including columns like ID, TIME, and OCC.}
 
 \item{num_occ}{Integer. Number of occasions (OCC) to include in the analysis. If `NULL`, all unique occasions in `data` are used.}
 

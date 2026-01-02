@@ -68,11 +68,11 @@
 #' }
 
 exeval_ppk <-  function(model,
+                        data,
                         model_name=NULL,
-                        drug_name,
+                        drug_name=NULL,
                         tool = "mapbayr",
                         check_compile = TRUE,
-                        data,
                         num_occ = NULL, ### Para lixoft definimos solo occ
                         num_ids= NULL,
                         sampling = TRUE,

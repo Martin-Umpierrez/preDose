@@ -30,8 +30,9 @@ dd <- data_tacHAN2011 |> subset(ID < 11)
 # todo el wkf ---------------
 res <- exeval_ppk(
   model_name = "tacrolimus_HAN2011",
-  model_code = model_tacHAN2011,
+  model = model_tacHAN2011,
   data = dd,
+  num_ids = 2,
   evaluation_type = "Progressive",
   assessment = 'Bayesian_forecasting'
 )
