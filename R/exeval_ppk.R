@@ -3,7 +3,15 @@
 #' Performs external evaluation of popPK models by conducting MAP estimations and individual simulations
 #' for each occasion using different evaluation strategies (see evaluation_type)
 #'
-#' @param model_name Character string. Name of the model to use in the analysis.
+#' @param model Either:
+#' \itemize{
+#'   \item A character string containing the pharmacokinetic model code written
+#'         in \code{mrgsolve} format.
+#'   \item A pre-compiled \code{mrgmod} object (S3 class from \code{mrgsolve}).
+#' }
+#' If a character string is provided, \code{model_name} must also be specified.
+#' @param model_name Character string. Name of the model.
+#' Required only if \code{model} is provided as character model code.#'
 #' @param drug_name Character string. Used only for reporting purposes.
 #' @param model_code Character string. Code of the pharmacokinetic model in mrgsolve format.
 #' @param tool Character string. Specifies the tool to use for estimation. Currently "mapbayr" is the only option.
@@ -59,9 +67,9 @@
 #' res # Print the results
 #' }
 
-exeval_ppk <-  function(model_name,
+exeval_ppk <-  function(model,
+                        model_name=NULL,
                         drug_name,
-                        model_code,
                         tool = "mapbayr",
                         check_compile = TRUE,
                         data,
@@ -79,7 +87,7 @@ exeval_ppk <-  function(model_name,
                         verbose=FALSE) {
 
   ## Run estimation, simulation and predicton erro computation in every OCC
-  est <- run_MAP_estimations(model_name, model_code, tool, check_compile,
+  est <- run_MAP_estimations(model, model_name, tool, check_compile,
                              data, num_occ, num_ids, sampling, occ_ref, evaluation_type,
                              names_occ, names_id, names_time, names_evid, method
                              )

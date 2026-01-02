@@ -5,9 +5,9 @@
 \title{External evaluation for Population Pharmacokinetic (popPK) Models}
 \usage{
 exeval_ppk(
-  model_name,
+  model,
+  model_name = NULL,
   drug_name,
-  model_code,
   tool = "mapbayr",
   check_compile = TRUE,
   data,
@@ -27,11 +27,18 @@ exeval_ppk(
 )
 }
 \arguments{
-\item{model_name}{Character string. Name of the model to use in the analysis.}
+\item{model}{Either:
+\itemize{
+  \item A character string containing the pharmacokinetic model code written
+        in \code{mrgsolve} format.
+  \item A pre-compiled \code{mrgmod} object (S3 class from \code{mrgsolve}).
+}
+If a character string is provided, \code{model_name} must also be specified.}
+
+\item{model_name}{Character string. Name of the model.
+Required only if \code{model} is provided as character model code.#'}
 
 \item{drug_name}{Character string. Used only for reporting purposes.}
-
-\item{model_code}{Character string. Code of the pharmacokinetic model in mrgsolve format.}
 
 \item{tool}{Character string. Specifies the tool to use for estimation. Currently "mapbayr" is the only option.}
 
@@ -74,6 +81,8 @@ exeval_ppk(
 
 \item{verbose}{Logical. If TRUE, messages are printed during execution.
 If FALSE (default), errors are stored as warnings accessible with `warnings()`}
+
+\item{model_code}{Character string. Code of the pharmacokinetic model in mrgsolve format.}
 }
 \value{
 A list containing:
