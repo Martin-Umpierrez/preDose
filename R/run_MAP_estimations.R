@@ -3,8 +3,21 @@
 #' Performs Maximum A Posteriori (MAP) estimations for pharmacokinetic models
 #' using either `mapbayr` or `lixoftConnectors`.
 #'
-#' @param model_name Character string. Name of the model to use in the analysis.
-#' @param model_code Character string. Code of the pharmacokinetic model in mrgsolve format.
+#' @details
+#' The function accepts pharmacokinetic models either as raw \code{mrgsolve}
+#' model code or as a pre-loaded \code{mrgmod} object. When a character string
+#' is supplied, the model is compiled internally using \code{mrgsolve::mcode()}.
+#' If a \code{mrgmod} object is provided, it is used directly for MAP estimation.
+#'
+#' @param model Either:
+#' \itemize{
+#'   \item A character string containing the pharmacokinetic model code written
+#'         in \code{mrgsolve} format.
+#'   \item A pre-compiled \code{mrgmod} object (S3 class from \code{mrgsolve}).
+#' }
+#' If a character string is provided, \code{model_name} must also be specified.
+#' @param model_name Character string. Name of the model.
+#' Required only if \code{model} is provided as character model code.#'
 #' @param tool Character string. Specifies the tool to use for estimation. Currently using "mapbayr".
 #' @param check_compile Logical. If `TRUE`, checks if the model compiles correctly in `mapbayr`.
 #' @param data Data frame. Contains the input data for the estimations, including columns like ID, TIME, and OCC.

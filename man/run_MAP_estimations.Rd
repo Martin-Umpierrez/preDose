@@ -5,8 +5,8 @@
 \title{Run MAP Estimations}
 \usage{
 run_MAP_estimations(
-  model_name,
-  model_code,
+  model,
+  model_name = NULL,
   tool = "mapbayr",
   check_compile = TRUE,
   data,
@@ -24,9 +24,16 @@ run_MAP_estimations(
 )
 }
 \arguments{
-\item{model_name}{Character string. Name of the model to use in the analysis.}
+\item{model}{Either:
+\itemize{
+  \item A character string containing the pharmacokinetic model code written
+        in \code{mrgsolve} format.
+  \item A pre-compiled \code{mrgmod} object (S3 class from \code{mrgsolve}).
+}
+If a character string is provided, \code{model_name} must also be specified.}
 
-\item{model_code}{Character string. Code of the pharmacokinetic model in mrgsolve format.}
+\item{model_name}{Character string. Name of the model.
+Required only if \code{model} is provided as character model code.#'}
 
 \item{tool}{Character string. Specifies the tool to use for estimation. Currently using "mapbayr".}
 
@@ -74,6 +81,12 @@ A list containing:
 \description{
 Performs Maximum A Posteriori (MAP) estimations for pharmacokinetic models
 using either `mapbayr` or `lixoftConnectors`.
+}
+\details{
+The function accepts pharmacokinetic models either as raw \code{mrgsolve}
+model code or as a pre-loaded \code{mrgmod} object. When a character string
+is supplied, the model is compiled internally using \code{mrgsolve::mcode()}.
+If a \code{mrgmod} object is provided, it is used directly for MAP estimation.
 }
 \examples{
 \dontrun{
