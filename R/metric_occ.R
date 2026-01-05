@@ -1,7 +1,13 @@
-#' Compute metrics by occasion
+#' Compute pharmacokinetic evaluation metrics by occasion
 #'
-#' @param x Object containing individual simulations
-#' @param ... Additional arguments
+#' Generic function to compute prediction error metrics by occasion (OCC).
+#' The method dispatched depends on the class of \code{x}.
+#'
+#' @param x An object containing individual simulations.
+#' @param ... Additional arguments passed to specific methods.
+#'
+#' @return An object of class \code{EvalMetricsPPK}.
+#'
 #' @export
 metric_occ <- function(x, ...) {
   UseMethod("metric_occ")
