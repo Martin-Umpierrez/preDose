@@ -10,5 +10,5 @@
 #'
 #' @export
 metrics_occ <- function(x, ...) {
-  UseMethod("metric_occ")
+  UseMethod("metrics_occ")
 }
