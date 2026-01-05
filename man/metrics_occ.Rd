@@ -2,40 +2,19 @@
 % Please edit documentation in R/metrics_occ.R
 \name{metrics_occ}
 \alias{metrics_occ}
-\title{metrics_occ}
+\title{Compute pharmacokinetic evaluation metrics by occasion}
 \usage{
-metrics_occ(
-  simulations,
-  assessment = c("a_priori", "Bayesian_forecasting", "Complete"),
-  tool = "mapbayr"
-)
+metrics_occ(x, ...)
 }
 \arguments{
-\item{simulations}{A list containing simulation results from [run_ind_simulations()].}
+\item{x}{An object containing individual simulations.}
 
-\item{assessment}{Character string. Specifies the type of prediction to perform. Options are:
-\itemize{
-  \item "a_priori": Simulates concentrations using the population model without individual data.
-  \item "Bayesian_Forecasting": Simulates concentrations using individual parameter estimates (posterior mode).
-  \item "Complete": Performs both a priori and Bayesian forecasting simulations.
-}}
-
-\item{tool}{A character string specifying the tool used to obtain the list of simulations (`"mapbayr"` or `"lixoftConnectors"`).}
+\item{...}{Additional arguments passed to specific methods.}
 }
 \value{
-A list with two elements:
-  - `metrics`: A dataframe summarizing observation, individual prediction and error metrics for each ID in every OCC.
-  - `metrics_means`: A dataframe containing the rBIAS, MAPE, rRMSE, IF20 AND IF30 .
-  - `eval_type`: A string with the evaluation type used to perform external evaluation.
+An object of class \code{EvalMetricsPPK}.
 }
 \description{
-Compute Metrics for Individual Predictions by Occasion
-}
-\details{
-This function calculates various prediction error metrics for individual pharmacokinetic simulations,
-grouping results by occasion (OCC). Currently supports  `mapbayr` models.
-}
-\examples{
-# results <- metrics_occ(simulations = my_simulations, assessment="Complete)
-
+Generic function to compute prediction error metrics by occasion (OCC).
+The method dispatched depends on the class of \code{x}.
 }
