@@ -1,27 +1,34 @@
-#' metrics_occ
+#' Compute pharmacokinetic evaluation metrics by occasion (MAPbayr)
 #'
-#' Compute Metrics for Individual Predictions by Occasion
+#' Computes prediction error metrics by occasion (OCC) for individual
+#' simulations generated using MAP Bayesian estimation with \pkg{mapbayr}.
 #'
-#' This function calculates various prediction error metrics for individual pharmacokinetic simulations,
-#' grouping results by occasion (OCC). Currently supports  `mapbayr` models.
+#' @param x An object of class \code{"mapbayr"} returned by
+#'   \code{\link{run_ind_simulations}}.
+#' @param assessment Character string specifying the type of prediction.
+#'   One of \code{"a_priori"}, \code{"Bayesian_forecasting"}, or
+#'   \code{"Complete"}.
+#' @param tool Character string specifying the estimation tool.
+#'   Currently only \code{"mapbayr"} is supported.
+#' @param ... Additional arguments (not used).
 #'
-#' @param simulations A list containing simulation results from [run_ind_simulations()].
-#' @param assessment Character string. Specifies the type of prediction to perform. Options are:
-#'   \itemize{
-#'     \item "a_priori": Simulates concentrations using the population model without individual data.
-#'     \item "Bayesian_Forecasting": Simulates concentrations using individual parameter estimates (posterior mode).
-#'     \item "Complete": Performs both a priori and Bayesian forecasting simulations.
-#'   }
-#' @param tool A character string specifying the tool used to obtain the list of simulations (`"mapbayr"` or `"lixoftConnectors"`).
-#' @return A list with two elements:
-#'   - `metrics`: A dataframe summarizing observation, individual prediction and error metrics for each ID in every OCC.
-#'   - `metrics_means`: A dataframe containing the rBIAS, MAPE, rRMSE, IF20 AND IF30 .
-#'   - `eval_type`: A string with the evaluation type used to perform external evaluation.
-#' @examples
-#' # results <- metrics_occ(simulations = my_simulations, assessment="Complete)
+#' @return An object of class \code{EvalMetricsPPK} containing:
+#' \itemize{
+#'   \item \code{metrics}: Individual-level prediction errors by ID and OCC.
+#'   \item \code{metrics_means}: Summary metrics by OCC.
+#' }
 #'
+#' @details
+#' This method extracts individual predictions and observed concentrations
+#' from simulation outputs, merges them by ID, OCC and time, and computes
+#' relative bias (rBIAS), relative RMSE (rRMSE), mean absolute individual
+#' prediction error (MAIPE), and the percentages of predictions within
+#' 20\% and 30\% of the observations (IF20 and IF30).
+#'
+#' @seealso \code{\link{metrics_occ}}, \code{\link{run_ind_simulations}}
+#'
+#' @method metrics_occ mapbayr
 #' @export
-#'
 metrics_occ.mapbayr <- function(simulations,
                        assessment = c("a_priori",
                                       "Bayesian_forecasting",

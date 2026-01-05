@@ -9,6 +9,6 @@
 #' @return An object of class \code{EvalMetricsPPK}.
 #'
 #' @export
-metric_occ <- function(x, ...) {
+metrics_occ <- function(x, ...) {
   UseMethod("metric_occ")
 }
