@@ -100,9 +100,14 @@ exeval_ppk <-  function(model,
 
   argument = c('Num IDs', 'Observations','Max Num Occasion',
                'Num of Ref Occasion','Drug Name', 'Model Name', 'Evaluation', 'Assessment')
-  value    = c(length(unique(data[[names_id]])), length(dd %>% filter(EVID==0)),
-               max((unique(data[[names_occ]]))), ifelse(is.null(occ_ref), "", occ_ref),
-               drug_name, model_name, match.arg(evaluation_type), match.arg(assessment))
+  value    = c(length(unique(data[[names_id]])),
+               length(dd %>% filter(EVID==0)),
+               max((unique(data[[names_occ]]))),
+               ifelse(is.null(occ_ref), "", occ_ref),
+               ifelse(is.null(drug_name), "", drug_name),
+               ifelse(is.null(model_name), "", model_name),
+               match.arg(evaluation_type),
+               match.arg(assessment))
   info = data.frame(argument, value)
 
   structure(

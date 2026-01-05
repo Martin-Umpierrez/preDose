@@ -4,6 +4,7 @@ devtools::load_all()
 ?mcode
 data(model_tacHAN2011)
 
+
 m1 <- mcode("conR", model_tacHAN2011, compile = TRUE)
 
 
@@ -29,10 +30,8 @@ dd <- data_tacHAN2011 |> subset(ID < 11)
 
 # todo el wkf ---------------
 res <- exeval_ppk(
-  model_name = "tacrolimus_HAN2011",
-  model = model_tacHAN2011,
+  model = mod1,
   data = dd,
-  num_ids = 2,
   evaluation_type = "Progressive",
   assessment = 'Bayesian_forecasting'
 )
@@ -55,8 +54,8 @@ p.all <- profvis(
 profvis(
   {
     run_MAP_estimations(
-      model_name = "Test_Model",
-      model_code = model_tacHAN2011,
+      model = Han_etal_test,
+      model_name = "Han_etal_test",
       tool = "mapbayr",
       data = dd,
       evaluation_type = "Progressive"
@@ -77,7 +76,7 @@ map.est <- run_MAP_estimations(
 # Update models
 
 p.act <- profvis(
-  updt.md <- actualize_model(map.est, evaluation_type = "Progressive")
+  updt.md.prueba <- actualize_model(map.est_prueba, evaluation_type = "Progressive")
 )
 updt.md <- actualize_model(map.est, evaluation_type = "Progressive")
 

@@ -139,13 +139,17 @@ run_ind_simulations <- function(individual_model,
 
 
   ## Return unified output
-  return(list(
+  out <-list(
     simulation_results = simulation_results,
     ttoocc = treatment.occ.list,
     eval_type=evaluation_type,
     events_tto = event.tto,
     assessment = assessment
-  ))
+  )
+
+  class(out) <- "mapbayr"
+  return(out)
+
 }
 
 
