@@ -22,11 +22,11 @@
 #'
 #' @export
 #'
-metrics_occ.mapbayr <- function(simulations,
-                       assessment = c("a_priori",
-                                      "Bayesian_forecasting",
-                                      "Complete"),
-                       tool = "mapbayr", ...)  {
+metrics_occ2 <- function(simulations,
+                                assessment = c("a_priori",
+                                               "Bayesian_forecasting",
+                                               "Complete"),
+                                tool = "mapbayr")  {
 
   # Create evaluation type
   evaluation_type <-simulations$eval_type
@@ -124,11 +124,8 @@ metrics_occ.mapbayr <- function(simulations,
       IF30= sum(abs(IPE) <= 30) *100 / length(IPE),
       OCC= first(OCC) )
 
-  eval_metrics_ppk(
-    metrics = metrics,
-    metrics_means = metrics_means,
-    eval_type = evaluation_type,
-    assessment = assessment,
-    tool = tool
-  )
+  out <- list(metrics=metrics,
+              metrics_means = metrics_means,
+              eval_type=evaluation_type)
+  return(out)
 }

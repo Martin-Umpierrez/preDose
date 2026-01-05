@@ -84,3 +84,21 @@ pop_sim <-
   }
 
 
+eval_metrics_ppk <- function(metrics,
+                             metrics_means,
+                             eval_type,
+                             assessment,
+                             tool) {
+
+  structure(
+    list(
+      metrics = metrics,
+      metrics_means = metrics_means
+    ),
+    class = "EvalMetricsPPK",
+    eval_type = eval_type,
+    assessment = assessment,
+    tool = tool
+  )
+}
+
