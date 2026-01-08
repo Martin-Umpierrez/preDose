@@ -1,0 +1,33 @@
+/* Navbar */
+.navbar {
+  background-color: #1f3c88;
+  border-color: #1f3c88;
+}
+
+.navbar-brand, .navbar-nav > li > a {
+  color: #ffffff !important;
+}
+
+/* Sidebar */
+.sidebar {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+/* Buttons */
+.btn-primary {
+  background-color: #1f3c88;
+  border-color: #1f3c88;
+}
+
+.btn-primary:hover {
+  background-color: #162d66;
+  border-color: #162d66;
+}
+
+/* Titles */
+h4 {
+  font-weight: 600;
+  margin-bottom: 15px;
+}

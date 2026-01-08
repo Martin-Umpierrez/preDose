@@ -76,7 +76,7 @@ map.est <- run_MAP_estimations(
 # Update models
 
 p.act <- profvis(
-  updt.md.prueba <- actualize_model(map.est_prueba, evaluation_type = "Progressive")
+  updt.md.prueba <- actualize_model(a, evaluation_type = "Progressive")
 )
 updt.md <- actualize_model(map.est, evaluation_type = "Progressive")
 
@@ -87,6 +87,7 @@ updt.md <- actualize_model(map.est, evaluation_type = "Progressive")
 # Simulate
 
 sim = run_ind_simulations(updt.md, map.est, assessment = "Bayesian_forecasting")
+sim_test = run_ind_simulations(updt.md.prueba, a, assessment = "Bayesian_forecasting")
 # notas:
 # sale este error: Could not process OCC_4 ID_13: error in evaluating the argument 'object' in selecting a method for function 'update': Zero rows in data after filtering.
 # explicar argumentos
@@ -109,7 +110,7 @@ metrics_Plot(mm = metrics, type = "IF30_plot")
 # revisar cada grafico que se produce
 
 ###################################################
-exeval_ppk(model = Han_etal_test,
+res2<- exeval_ppk(model = Han_etal_test,
            model_name = "han",
            data = dd,
            evaluation_type = "Progressive",
