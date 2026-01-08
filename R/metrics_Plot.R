@@ -194,7 +194,7 @@ metrics_Plot <-
           strip.text = element_text(face = "bold", size = 10)
         )
 
-      pp= ggarrange(plot_resumen_bayes_IF20,
+      pp= ggpubr::ggarrange(plot_resumen_bayes_IF20,
                            plot_resumen_bayes_IF30,
                            common.legend = TRUE,
                            legend = "right",

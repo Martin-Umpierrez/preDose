@@ -109,3 +109,8 @@ metrics_Plot(mm = metrics, type = "IF30_plot")
 # revisar cada grafico que se produce
 
 ###################################################
+exeval_ppk(model = Han_etal_test,
+           model_name = "han",
+           data = dd,
+           evaluation_type = "Progressive",
+           assessment = "Bayesian_forecasting")
