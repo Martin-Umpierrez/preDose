@@ -8,8 +8,8 @@ ui <- page_navbar(theme = bs_theme(version = 5, bootswatch = "flatly"),
     title = div(
       style = "display: flex; align-items: center; gap: 15px;",
 
-      tags$img(src = "predose.png", height = "35px"),
-      tags$img(src = "udelar.png", height = "35px"),
+      tags$img(src = "assets/predose.png", height = "100px"),
+      tags$img(src = "assets/udelar.png", height = "35px"),
 
       tags$span(
         "preDose",
@@ -24,8 +24,7 @@ ui <- page_navbar(theme = bs_theme(version = 5, bootswatch = "flatly"),
     ),
 
     # ===== MAIN NAVIGATION (CONTENT) =====
-    navset_tab(
-
+navset_tab(
       # ---------- DATA ----------
       nav_panel(
         title = "Data",
@@ -122,17 +121,71 @@ ui <- page_navbar(theme = bs_theme(version = 5, bootswatch = "flatly"),
           )
         )
       )
+    ,
+
+),
+nav_spacer(),
+nav_menu(
+  title = "Links",
+  align = "right",
+  nav_item(tags$a(icon("github"), " GitHub", href = "https://github.com/Martin-Umpierrez/preDose")),
+  nav_item(tags$a(icon("github"), " Cebiobe", href = "https://www.fq.edu.uy/?q=es/node/474"))
+)
+)
+
+
+
+
+
+
+
+
+# ===== FOOTER (ACÁ VA) =====
+footer = tags$footer(
+  class = "bg-dark text-light mt-5",
+
+  div(
+    class = "container py-4",
+
+    layout_columns(
+      col_widths = c(4, 4, 4),
+
+      div(
+        tags$h6("preDose"),
+        tags$p(
+          "A robust external evaluation and TDM framework for PK/PD models.",
+          class = "small text-muted"
+        )
+      ),
+
+      div(
+        tags$h6("Institution"),
+        tags$img(src = "udelar.png", height = "35px"),
+        tags$p(
+          "Center for Bioinformatics and Biostatistics (CEBIOBE)",
+          class = "small text-muted mt-2"
+        )
+      ),
+
+      div(
+        tags$h6("Resources"),
+        tags$ul(
+          class = "list-unstyled small",
+          tags$li(tags$a("GitHub", href = "https://github.com/Martin-Umpierrez/preDose", class = "text-light")),
+          tags$li(tags$a("Documentation", href = "#", class = "text-light")),
+          tags$li(tags$a("Contact", href = "mailto:your@email.com", class = "text-light"))
+        )
+      )
     ),
-    nav_spacer(),
-    nav_menu(
-      title = "Links",
-      align = "right",
-      nav_item(tags$a(icon("github"), " GitHub", href = "https://github.com/Martin-Umpierrez/preDose")),
-      nav_item(tags$a("Cebiobe", href = "https://www.fq.edu.uy/?q=es/node/474")),
+
+    tags$hr(class = "border-secondary"),
+
+    tags$p(
+      paste0("© ", format(Sys.Date(), "%Y"), " preDose project"),
+      class = "small text-center text-muted"
     )
-
   )
-
+)
 
 server <- function(input, output, session) {
   # server logic
@@ -141,24 +194,4 @@ server <- function(input, output, session) {
 shinyApp(ui, server)
 
 
-
-
-
-ui <- page_navbar(
-  title = "My App",
-  bg = "#2D89C8",
-  inverse = TRUE,
-  nav_panel(title = "One", p("First page content.")),
-  nav_panel(title = "Two", p("Second page content.")),
-  nav_panel(title = "Three", p("Third page content.")),
-  nav_spacer(),
-  nav_menu(
-    title = "Links",
-    align = "right",
-    nav_item(tags$a("Posit", href = "https://posit.co")),
-    nav_item(tags$a("Shiny", href = "https://shiny.posit.co"))
-  )
-)
-
-
-
+serve

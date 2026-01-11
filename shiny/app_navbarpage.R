@@ -1,130 +1,161 @@
 library(shiny)
 library(bslib)
-ui <-
-  fluidPage(
-    theme = bs_theme(version = 5, bootswatch = "flatly")
-  ,
-  navbarPage(
 
-    title = div(
-      style = "display: flex; align-items: center; gap: 15px;",
+ui <- page_navbar(theme = bs_theme(version = 5, bootswatch = "flatly"),
 
-      tags$img(
-        src = "predose.png",
-        height = "35px"
-      ),
 
-      tags$img(
-        src = "udelar.png",
-        height = "35px"
-      ),
+                  # ===== HEADER / BRANDING =====
+                  title = div(
+                    style = "display: flex; align-items: center; gap: 15px;",
 
-      tags$span(
-        "preDose",
-        style = "font-weight: 600; font-size: 20px;"
-      ),
+                    tags$img(src = "predose.png", height = "35px"),
+                    tags$img(src = "udelar.png", height = "35px"),
 
-      tags$span(
-        "A Robust External Evaluation Package for PKPD models",
-        class = "d-none d-md-inline",
-        style = "font-size: 14px; color: #d1d5db;"
-      )
-    ),
+                    tags$span(
+                      "preDose",
+                      style = "font-weight: 600; font-size: 20px;"
+                    ),
 
-    tabPanel(
-      title = "Data",
+                    tags$span(
+                      "A Robust External Evaluation Package for PKPD models",
+                      class = "d-none d-md-inline",
+                      style = "font-size: 14px; color: #d1d5db;"
+                    )
+                  ),
 
-      layout_columns(
-        col_widths = c(4, 8),
+                  # ===== MAIN NAVIGATION (CONTENT) =====
+                  navset_tab(
 
-        card(
-          card_header("Data upload"),
-          fileInput("data_file", "Upload data (CSV)"),
-          checkboxInput("header", "Header", TRUE)
-        ),
+                    # ---------- DATA ----------
+                    nav_panel(
+                      title = "Data",
 
-        card(
-          card_header("Data preview"),
-          tableOutput("data_table")
-        )
-      )
-    ),
+                      layout_columns(
+                        col_widths = c(4, 8),
 
-    tabPanel(
-      title = "External evaluation",
+                        card(
+                          card_header("Data upload"),
+                          fileInput("data_file", "Upload data (CSV)"),
+                          checkboxInput("header", "Header", TRUE)
+                        ),
 
-      sidebarLayout(
-        sidebarPanel(
-          selectInput("model_eval", "Model", choices = c("Model 1", "Model 2")),
-          actionButton("run_eval", "Run external evaluation")
-        ),
-        mainPanel(
-          plotOutput("eval_plot"),
-          tableOutput("eval_metrics")
-        )
-      )
-    ),
+                        card(
+                          card_header("Data preview"),
+                          tableOutput("data_table")
+                        )
+                      )
+                    ),
 
-    tabPanel(
-      title = "TDM",
+                    # ---------- EXTERNAL EVALUATION ----------
+                    nav_panel(
+                      title = "External evaluation",
 
-      layout_columns(
-        col_widths = c(4, 8),
+                      layout_columns(
+                        col_widths = c(4, 8),
 
-        # INPUTS (lado izquierdo)
-        card(
-          card_header("TDM workflow"),
+                        card(
+                          card_header("Model & settings"),
+                          selectInput("model_eval", "Model",
+                                      choices = c("Model 1", "Model 2")),
+                          actionButton("run_eval", "Run external evaluation")
+                        ),
 
-          navset_card_tab(
+                        card(
+                          card_header("Evaluation results"),
+                          plotOutput("eval_plot"),
+                          hr(),
+                          tableOutput("eval_metrics")
+                        )
+                      )
+                    ),
 
-            nav_panel(
-              title = "Patient",
+                    # ---------- TDM ----------
+                    nav_panel(
+                      title = "TDM",
 
-              numericInput("age", "Age (years)", 45),
-              numericInput("weight", "Weight (kg)", 70),
-              selectInput("sex", "Sex", c("Male", "Female"))
-            ),
+                      layout_columns(
+                        col_widths = c(4, 8),
 
-            nav_panel(
-              title = "Information",
+                        # INPUTS
+                        card(
+                          card_header("TDM workflow"),
 
-              selectInput("model_tdm", "PK model",
-                          choices = c("Tacrolimus", "Cyclosporine")),
-              numericInput("dose", "Dose (mg)", 5),
-              numericInput("tau", "Dosing interval (h)", 12)
-            ),
+                          navset_card_tab(
 
-            nav_panel(
-              title = "Laboratory",
+                            nav_panel(
+                              title = "Patient",
+                              numericInput("age", "Age (years)", 45),
+                              numericInput("weight", "Weight (kg)", 70),
+                              selectInput("sex", "Sex", c("Male", "Female"))
+                            ),
 
-              numericInput("conc", "Measured concentration", 7.5),
-              numericInput("time", "Time post-dose (h)", 12),
-              actionButton("run_tdm", "Run TDM")
-            )
-          )
-        ),
+                            nav_panel(
+                              title = "Information",
+                              selectInput("model_tdm", "PK model",
+                                          choices = c("Tacrolimus", "Cyclosporine")),
+                              numericInput("dose", "Dose (mg)", 5),
+                              numericInput("tau", "Dosing interval (h)", 12)
+                            ),
 
-        # OUTPUTS (lado derecho)
-        layout_columns(
-          col_widths = c(6, 6),
+                            nav_panel(
+                              title = "Laboratory",
+                              numericInput("conc", "Measured concentration", 7.5),
+                              numericInput("time", "Time post-dose (h)", 12),
+                              actionButton("run_tdm", "Run TDM")
+                            )
+                          )
+                        ),
 
-          card(
-            card_header("PK profile"),
-            plotOutput("tdm_plot")
-          ),
+                        # OUTPUTS
+                        layout_columns(
+                          col_widths = c(6, 6),
 
-          card(
-            card_header("Dose recommendation"),
-            verbatimTextOutput("tdm_results")
-          )
-        )
-      )
-    )
-  )
+                          card(
+                            card_header("PK profile"),
+                            plotOutput("tdm_plot")
+                          ),
+
+                          card(
+                            card_header("Dose recommendation"),
+                            verbatimTextOutput("tdm_results")
+                          )
+                        )
+                      )
+                    )
+                  ),
+                  nav_spacer(),
+                  nav_menu(
+                    title = "Links",
+                    align = "right",
+                    nav_item(tags$a(icon("github"), " GitHub", href = "https://github.com/Martin-Umpierrez/preDose")),
+                    nav_item(tags$a("Cebiobe", href = "https://www.fq.edu.uy/?q=es/node/474")),
+                  )
+
 )
+
 
 server <- function(input, output, session) {
   # server logic
 }
 
 shinyApp(ui, server)
+
+
+
+
+
+ui <- page_navbar(
+  title = "My App",
+  bg = "#2D89C8",
+  inverse = TRUE,
+  nav_panel(title = "One", p("First page content.")),
+  nav_panel(title = "Two", p("Second page content.")),
+  nav_panel(title = "Three", p("Third page content.")),
+  nav_spacer(),
+  nav_menu(
+    title = "Links",
+    align = "right",
+    nav_item(tags$a("Posit", href = "https://posit.co")),
+    nav_item(tags$a("Shiny", href = "https://shiny.posit.co"))
+  )
+)
