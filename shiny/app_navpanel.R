@@ -213,6 +213,8 @@ server <- function(input, output, session){
     modelos <- switch(input$model_tdm,
                       "Tacrolimus"   = c("Umpierrez(2026)", "Han(2011)", "Zuo(2013)"),
                       "Cyclosporine" = c("Umpierrez A", "Modelo B", "Modelo C"),
+                      "Vancomycin" = c("Goti(2018", "Thomson(2009)", "Adane(2015)"),
+                      "Metotrexate" = c("Ibarra(2025", "Modelo F", "Modelo G")
                       character(0)
     )
 
