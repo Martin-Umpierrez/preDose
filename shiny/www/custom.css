@@ -2,9 +2,9 @@
 .navbar {
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
-  background-color: #red;
-  border-color: #red;
 }
+
+
 
 
 .navbar-brand, .navbar-nav > li > a {

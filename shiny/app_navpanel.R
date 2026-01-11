@@ -1,11 +1,9 @@
 library(shiny)
 library(bslib)
 
-ui <- page_navbar(theme = bs_theme(version = 5, bootswatch = "flatly"),
-
-                  tags$head(
-                    tags$link(rel = "stylesheet", href = "assets/custom.css")
-                  ),
+ui <- page_navbar(
+  theme = bs_theme(version = 5, bootswatch = "flatly"),
+  tags$head(tags$link(rel = "stylesheet", href = "assets/custom.css")),
     # ===== HEADER / BRANDING =====
     title = div(
       style = "display:flex; align-items:center; gap:12px;",
