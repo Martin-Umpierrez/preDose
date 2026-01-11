@@ -20,13 +20,15 @@ ui <- page_navbar(
 
     # ===== MAIN NAVIGATION (CONTENT) =====
 navset_tab(
-      # ---------- DATA ----------
+      # ---------- Data Upload----------
       nav_panel(
         title = "Data", icon = icon("file") ,
 
         layout_columns(
           col_widths = c(4, 8),
           # ================= LEFT: INPUTS =================
+          tagList(
+            # ================= Data Upload=================
           card(
             card_header(
             div(
@@ -44,6 +46,28 @@ navset_tab(
 
             checkboxInput("header", "Header", TRUE)
           ),
+
+          # ================= Filtering Data=================
+          card(
+            card_header(
+              div(
+                style="display:flex; align-items:center; gap:8px;",
+                "Filtering data",
+                popover(
+                  icon("filter"),
+                  title = "Data filtering",
+                  "Apply basic filters before visualization and evaluation",
+                  placement = "right"
+                )
+              )
+            ),
+            selectInput("filter_id", "Subject ID", choices = NULL),
+            sliderInput("filter_time", "Time range", min = 0, max = 4000, value = c(0, 4000)),
+            selectInput("filter_occ", "Subject OCC", choices = NULL),
+            checkboxInput("remove_blq", "Remove BLQ values", FALSE)
+          )
+          )
+          ,
 
           # ================= RIGHT: TABBED OUTPUT =================
           card(
