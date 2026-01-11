@@ -1,12 +1,17 @@
 library(shiny)
+library(shinydashboard)
 library(shinyAce)
 ui <- fluidPage(
   titlePanel("preDose: A Robust External Evaluation Package forPKPD models"),
   sidebarLayout(
     sidebarPanel(
       fileInput("data_file", "Upload Patient Data (CSV)", accept = ".csv"),
-      selectInput("eval_type", "Evaluation Type",
-                  choices = c("Progressive", "Most_Recent_Progressive", "Cronologic_Ref", "Most_Recent_Ref")),
+
+      selectInput("eval_type", "External Evaluation Type",
+                  choices = c("Progressive",
+                              "Most_Recent_Progressive",
+                              "Cronologic_Ref",
+                              "Most_Recent_Ref")),
       actionButton("run_map", "Run MAP Estimations"),
       aceEditor(
         outputId = "model_code",

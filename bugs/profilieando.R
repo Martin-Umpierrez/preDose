@@ -30,8 +30,9 @@ dd <- data_tacHAN2011 |> subset(ID < 11)
 
 # todo el wkf ---------------
 res <- exeval_ppk(
-  model = mod1,
+  model = Han_etal_test,
   data = dd,
+  model_name = "Test2",
   evaluation_type = "Progressive",
   assessment = 'Bayesian_forecasting'
 )
@@ -115,3 +116,8 @@ res2<- exeval_ppk(model = Han_etal_test,
            data = dd,
            evaluation_type = "Progressive",
            assessment = "Bayesian_forecasting")
+
+
+metrics_plot(res, type="bias_barplot")
+
+metrics_Plot(res$metrics, type= "bias_barplot")

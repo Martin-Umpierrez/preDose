@@ -85,3 +85,56 @@ erver <- function(input, output) {
 }
 
 shinyApp(ui, server)
+
+
+
+
+
+ui <- fluidPage(
+
+  tags$head(
+    tags$link(rel = "stylesheet", href = "custom.css"),
+    tags$link(
+      rel = "stylesheet",
+      href = "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    )
+  ),
+
+  h2("preDose Platform"),
+  br(),
+
+  fluidRow(
+
+    column(
+      4,
+      div(
+        class = "feature-card",
+        icon("database", class = "feature-icon"),
+        h4("Data Input"),
+        p("Upload patient data, define models and prepare datasets.")
+      )
+    ),
+
+    column(
+      4,
+      div(
+        class = "feature-card",
+        icon("chart-line", class = "feature-icon"),
+        h4("External Evaluation"),
+        p("Run external evaluations and assess model performance.")
+      )
+    ),
+
+    column(
+      4,
+      div(
+        class = "feature-card",
+        icon("user-doctor", class = "feature-icon"),
+        h4("Therapeutic Drug Monitoring"),
+        p("Individual predictions, Bayesian forecasting and TDM.")
+      )
+    )
+  )
+)
+
+server<- function(input, output)
