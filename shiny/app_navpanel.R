@@ -3,23 +3,20 @@ library(bslib)
 
 ui <- page_navbar(theme = bs_theme(version = 5, bootswatch = "flatly"),
 
-
+                  tags$head(
+                    tags$link(rel = "stylesheet", href = "assets/custom.css")
+                  ),
     # ===== HEADER / BRANDING =====
     title = div(
-      style = "display: flex; align-items: center; gap: 15px;",
+      style = "display:flex; align-items:center; gap:12px;",
 
-      tags$img(src = "assets/predose.png", height = "100px"),
+      tags$img(src = "assets/predose.png", height = "42px"),
       tags$img(src = "assets/udelar.png", height = "35px"),
-
-      tags$span(
-        "preDose",
-        style = "font-weight: 600; font-size: 20px;"
-      ),
-
+      tags$span("preDose", style = "font-weight:600; font-size:18px;"),
       tags$span(
         "A Robust External Evaluation Package for PKPD models",
         class = "d-none d-md-inline",
-        style = "font-size: 14px; color: #d1d5db;"
+        style = "font-size:13px; color:#d1d5db;"
       )
     ),
 
@@ -134,7 +131,11 @@ nav_menu(
 )
 
 
+server <- function(input, output, session) {
+  # server logic
+}
 
+shinyApp(ui, server)
 
 
 
@@ -187,11 +188,7 @@ footer = tags$footer(
   )
 )
 
-server <- function(input, output, session) {
-  # server logic
-}
 
-shinyApp(ui, server)
 
 
 serve
