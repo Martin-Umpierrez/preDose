@@ -20,11 +20,11 @@
 }
 
 .card-header {
-  background-color: #f8f9fa;
+  background-color: #e7f1ff;
   border-bottom: 2px solid #0d6efd;
+  color: #0d3b66;
   font-weight: 600;
 }
-
 
 /* Buttons */
 .btn-primary {
@@ -42,3 +42,18 @@ h4 {
   font-weight: 600;
   margin-bottom: 15px;
 }
+
+/* Achicar texto del menú Links */
+.navbar-nav .dropdown-toggle {
+  font-size: 0.85rem;
+  padding: 0.4rem 0.6rem;
+  opacity: 0.85;
+}
+
+/* Ícono del menú */
+.navbar-nav .dropdown-toggle .fa-link {
+  font-size: 0.9rem;
+}
+
+
+

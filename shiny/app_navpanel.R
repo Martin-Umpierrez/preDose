@@ -26,7 +26,7 @@ navset_tab(
 
         layout_columns(
           col_widths = c(4, 8),
-
+          # ================= LEFT: INPUTS =================
           card(
             card_header(
             div(
@@ -45,9 +45,35 @@ navset_tab(
             checkboxInput("header", "Header", TRUE)
           ),
 
+          # ================= RIGHT: TABBED OUTPUT =================
           card(
-            card_header("Data preview"),
-            tableOutput("data_table")
+            full_screen = TRUE,
+            navset_card_tab(
+
+              # ---- Filtered data ----
+              nav_panel(
+                title = tagList(icon("table"), "Filtered data"),
+                DT::dataTableOutput("dataset_page_table"),
+                br(),
+                downloadButton(
+                  "download_nmdataset_for_plot",
+                  "Download Data (.csv)",
+                  class = "btn-sm"
+                )
+              ),
+
+              # ---- Summary statistics ----
+              nav_panel(
+                title = tagList(icon("list"), "Summary statistics"),
+                DT::dataTableOutput("data_info"),
+                checkboxInput("transpose_data_info", "Transpose table", FALSE),
+                downloadButton(
+                  "download_data_info",
+                  "Download summary statistics",
+                  class = "btn-sm"
+                )
+              )
+            )
           )
         )
       ),
@@ -132,10 +158,14 @@ navset_tab(
 ),
 nav_spacer(),
 nav_menu(
-  title = "Links",
+  title = tagList(icon("link"), span(" Links", class = "d-none d-lg-inline")),
   align = "right",
-  nav_item(tags$a(icon("github"), " GitHub", href = "https://github.com/Martin-Umpierrez/preDose")),
-  nav_item(tags$a(icon("github"), " Cebiobe", href = "https://www.fq.edu.uy/?q=es/node/474"))
+  nav_item(tags$a(icon("github"), " GitHub",
+                  href = "https://github.com/Martin-Umpierrez/preDose",
+                  target = "_blank")),
+  nav_item(tags$a(icon("globe"), " CEBIOBE",
+                  href = "https://www.fq.edu.uy/?q=es/node/474",
+                  target = "_blank"))
 )
 )
 
@@ -200,4 +230,63 @@ footer = tags$footer(
 
 
 
-serve
+
+
+
+layout_columns(
+  col_widths = c(4, 8),
+
+  # ================= LEFT: INPUTS =================
+  card(
+    card_header(
+      div(
+        style="display:flex; align-items:center; gap:8px;",
+        "Data upload",
+        popover(
+          icon("circle-question"),
+          title = "Upload dataset",
+          "Upload a NONMEM-formatted dataset (.csv) or tab-delimited text (.txt)",
+          placement = "right"
+        )
+      )
+    ),
+    fileInput(
+      "upload",
+      label = NULL,
+      accept = c(".csv", ".txt"),
+      placeholder = "Upload NONMEM dataset"
+    ),
+    checkboxInput("header", "Header", TRUE)
+  ),
+
+  # ================= RIGHT: TABBED OUTPUT =================
+  card(
+    full_screen = TRUE,
+    navset_card_tab(
+
+      # ---- Filtered data ----
+      nav_panel(
+        title = tagList(icon("table"), "Filtered data"),
+        DT::dataTableOutput("dataset_page_table"),
+        br(),
+        downloadButton(
+          "download_nmdataset_for_plot",
+          "Download Data (.csv)",
+          class = "btn-sm"
+        )
+      ),
+
+      # ---- Summary statistics ----
+      nav_panel(
+        title = tagList(icon("list"), "Summary statistics"),
+        DT::dataTableOutput("data_info"),
+        checkboxInput("transpose_data_info", "Transpose table", FALSE),
+        downloadButton(
+          "download_data_info",
+          "Download summary statistics",
+          class = "btn-sm"
+        )
+      )
+    )
+  )
+)
