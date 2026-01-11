@@ -11,8 +11,8 @@ ui <- page_navbar(
     title = div(
       style = "display:flex; align-items:center; gap:12px;",
 
-      tags$img(src = "assets/predose.png", height = "42px"),
-      tags$img(src = "assets/udelar.png", height = "35px"),
+      tags$img(src = "assets/predose.png", height = "60px"),
+      tags$img(src = "assets/udelar_2.png", height = "60px"),
       tags$span("preDose", style = "font-weight:600; font-size:18px;"),
       tags$span(
         "A Robust External Evaluation Package for PKPD models",
@@ -148,9 +148,9 @@ navset_tab(
               ),
 
               nav_panel(
-                title = "Information",
-                selectInput("model_tdm", "PK model",
-                            choices = c("Tacrolimus", "Cyclosporine")),
+                title = "Model Information & Dosign Events",
+                selectInput("model_tdm", "PK model", choices = c("Tacrolimus", "Cyclosporine")),
+                selectInput("pk_model_tdm", "Select Model", choices = NULL),
                 numericInput("dose", "Dose (mg)", 5),
                 numericInput("tau", "Dosing interval (h)", 12)
               ),
@@ -198,13 +198,27 @@ nav_menu(
 )
 )
 
+# server
 server <- function(input, output, session){
+
+  # Dark mode
   observe({
     session$setCurrentTheme(
       if(isTRUE(input$dark_mode)) dark_theme else light_theme
     )
   })
-}  # server logic
+
+  # Modelos según fármaco seleccionado
+  observeEvent(input$model_tdm, {
+    modelos <- switch(input$model_tdm,
+                      "Tacrolimus"   = c("Umpierrez(2026)", "Han(2011)", "Zuo(2013)"),
+                      "Cyclosporine" = c("Umpierrez A", "Modelo B", "Modelo C"),
+                      character(0)
+    )
+
+    updateSelectInput(session, "pk_model_tdm", choices = modelos)
+  })
+}
 
 
 shinyApp(ui, server)
@@ -264,7 +278,3 @@ footer = tags$footer(
 
 
 
-
-
-layout_columns(
-  col_widths = c(4, 8),
