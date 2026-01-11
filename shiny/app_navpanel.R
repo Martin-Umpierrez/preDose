@@ -1,8 +1,11 @@
 library(shiny)
 library(bslib)
 
+light_theme <- bs_theme(version = 5, bootswatch = "flatly")
+dark_theme  <- bs_theme(version = 5, bootswatch = "darkly")
+
 ui <- page_navbar(
-  theme = bs_theme(version = 5, bootswatch = "flatly"),
+  theme = light_theme,
   tags$head(tags$link(rel = "stylesheet", href = "assets/custom.css")),
     # ===== HEADER / BRANDING =====
     title = div(
@@ -189,14 +192,20 @@ nav_menu(
                   target = "_blank")),
   nav_item(tags$a(icon("globe"), " CEBIOBE",
                   href = "https://www.fq.edu.uy/?q=es/node/474",
-                  target = "_blank"))
+                  target = "_blank")),
+  nav_item(checkboxInput("dark_mode", "Dark mode"))
+
 )
 )
 
+server <- function(input, output, session){
+  observe({
+    session$setCurrentTheme(
+      if(isTRUE(input$dark_mode)) dark_theme else light_theme
+    )
+  })
+}  # server logic
 
-server <- function(input, output, session) {
-  # server logic
-}
 
 shinyApp(ui, server)
 
@@ -259,58 +268,3 @@ footer = tags$footer(
 
 layout_columns(
   col_widths = c(4, 8),
-
-  # ================= LEFT: INPUTS =================
-  card(
-    card_header(
-      div(
-        style="display:flex; align-items:center; gap:8px;",
-        "Data upload",
-        popover(
-          icon("circle-question"),
-          title = "Upload dataset",
-          "Upload a NONMEM-formatted dataset (.csv) or tab-delimited text (.txt)",
-          placement = "right"
-        )
-      )
-    ),
-    fileInput(
-      "upload",
-      label = NULL,
-      accept = c(".csv", ".txt"),
-      placeholder = "Upload NONMEM dataset"
-    ),
-    checkboxInput("header", "Header", TRUE)
-  ),
-
-  # ================= RIGHT: TABBED OUTPUT =================
-  card(
-    full_screen = TRUE,
-    navset_card_tab(
-
-      # ---- Filtered data ----
-      nav_panel(
-        title = tagList(icon("table"), "Filtered data"),
-        DT::dataTableOutput("dataset_page_table"),
-        br(),
-        downloadButton(
-          "download_nmdataset_for_plot",
-          "Download Data (.csv)",
-          class = "btn-sm"
-        )
-      ),
-
-      # ---- Summary statistics ----
-      nav_panel(
-        title = tagList(icon("list"), "Summary statistics"),
-        DT::dataTableOutput("data_info"),
-        checkboxInput("transpose_data_info", "Transpose table", FALSE),
-        downloadButton(
-          "download_data_info",
-          "Download summary statistics",
-          class = "btn-sm"
-        )
-      )
-    )
-  )
-)
