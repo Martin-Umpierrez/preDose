@@ -11,12 +11,20 @@
   color: #ffffff !important;
 }
 
-/* Sidebar */
-.sidebar {
-  background-color: #f8f9fa;
-  padding: 15px;
-  border-radius: 8px;
+/* cards */
+.card {
+  border-radius: 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  background-color: #ffffff;
 }
+
+.card-header {
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #0d6efd;
+  font-weight: 600;
+}
+
 
 /* Buttons */
 .btn-primary {
