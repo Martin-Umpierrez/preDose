@@ -22,14 +22,26 @@ ui <- page_navbar(
 navset_tab(
       # ---------- DATA ----------
       nav_panel(
-        title = "Data",
+        title = "Data", icon = icon("file") ,
 
         layout_columns(
           col_widths = c(4, 8),
 
           card(
-            card_header("Data upload"),
-            fileInput("data_file", "Upload data (CSV)"),
+            card_header(
+            div(
+              style="display:flex; align-items:center; gap:8px;",
+              "Data upload",
+            popover(icon("circle-question"),
+                    title = "Upload dataset",
+                    "Upload a NONMEM-formatted dataset (.csv) or tab-delimited text (.txt)",
+                    placement = "right")
+            )
+            ),
+            fileInput("upload", label = NULL,  accept = c("text/csv",
+                                                          "text/comma-separated-values,text/plain",
+                                                          ".csv"), placeholder = 'Upload a NONMEM-formatted Dataset (.csv) or tab-delimited text (.txt)'),
+
             checkboxInput("header", "Header", TRUE)
           ),
 
@@ -42,8 +54,7 @@ navset_tab(
 
       # ---------- EXTERNAL EVALUATION ----------
       nav_panel(
-        title = "External evaluation",
-
+        title = "External evaluation", icon = icon("chart-line"),
         layout_columns(
           col_widths = c(4, 8),
 
@@ -65,7 +76,7 @@ navset_tab(
 
       # ---------- TDM ----------
       nav_panel(
-        title = "TDM",
+        title = "TDM", icon = icon("droplet"),
 
         layout_columns(
           col_widths = c(4, 8),
