@@ -53,13 +53,13 @@
 #'
 #' @examples
 #' \dontrun{
-#' data("data_tacHAN2011", package = "preDose")
+#' data("tacrolimus_pk1_kidney", package = "preDose")
 #' data("model_tacHAN2011", package = "preDose")
 #'
-#' dd <- data_tacHAN2011 |> subset(ID < 6)
+#' dd <- tacrolimus_pk1_kidney |> subset(ID < 6)
 #'
 #' res <- exeval_ppk(model_name = "tacrolimus_HAN2011",
-#'                  model_code = model_tacHAN2011,
+#'                  model = model_tacHAN2011,
 #'                  data = dd,
 #'                  evaluation_type= "Progressive",
 #'                  assessment='Bayesian_forecasting' )

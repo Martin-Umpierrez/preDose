@@ -33,6 +33,7 @@ metrics_plot_2(
 A ggplot object corresponding to the selected plot type.
 }
 \description{
+This funcions was the past verison of actual metrics:plot asd
 Generate Different Type of Metrics Plots
 }
 \details{
