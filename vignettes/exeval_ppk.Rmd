@@ -19,7 +19,7 @@ library(tidyverse)
 library(preDose)
 
 # load data and model code 
-data(data_tacHAN2011)
+data(tacrolimus_pk1_kidney)
 data(model_tacHAN2011)
 ```
 
@@ -27,7 +27,7 @@ Data consist in records for 49 patients, most of them meassured in 6 occassions 
 
 ```{r}
 # Max OCC per ID 
-data_tacHAN2011 |> 
+tacrolimus_pk1_kidney |> 
   select(ID, OCC) |> 
   group_by(ID) |> 
   summarise( OCC = max(OCC) )  |> 
@@ -54,8 +54,8 @@ The whole procedure can be done calling the `exeval_ppk()` function, its minimal
 and the type of evaluation and assesment, 
 ```{r}
 res <- exeval_ppk(model_name = "HAN2011",
-                  model_code = model_tacHAN2011,
-                  data = data_tacHAN2011,
+                  model = model_tacHAN2011,
+                  data = subset(tacrolimus_pk1_kidney, ID < 6), 
                   evaluation_type= "Progressive", 
                   assessment='Bayesian_forecasting', 
                   verbose = FALSE )
@@ -69,7 +69,7 @@ res
 
 Make some plots 
 ```{r}
-metrics_Plot(res$metrics, type = "bias_barplot")
+metrics_plot_2(res$metrics, type = "bias_barplot")
 ```
 
 ## Compare models 
@@ -78,11 +78,15 @@ metrics_Plot(res$metrics, type = "bias_barplot")
 source("inst/model_examples/ZuoX_etal_2013.R")
 
 resZ <- exeval_ppk(model_name = "ZuoX",
-                  model_code = ZuoX_etalfull_noCYP3A4,
-                  data = data_tacHAN2011,
+                  model = ZuoX_etalfull_noCYP3A4,
+                  data = subset(tacrolimus_pk1_kidney, ID < 6), 
                   evaluation_type= "Progressive",                  assessment='Bayesian_forecasting' )
 
-resALL <- list(res, resZ) |> combine_metrics()  
+resALL <- list(
+  list(model_name='HAN2011', metrics_list=res$metrics), 
+  list(model_name = "ZuoX",  metrics_list=resZ$metrics)
+  ) |> combine_metrics()  
+
 
 plot_combined(resALL, 'bias_barplot')
 ```
